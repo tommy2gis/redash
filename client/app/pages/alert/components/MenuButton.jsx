@@ -53,7 +53,7 @@ export default function MenuButton({ doDelete, canEdit, mute, unmute, muted }) {
             )}
           </Menu.Item>
           <Menu.Item>
-            <a onClick={confirmDelete}>删除提醒</a>
+            <a onClick={confirmDelete}>删除</a>
           </Menu.Item>
         </Menu>
       }>
