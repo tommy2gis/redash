@@ -4,7 +4,10 @@ import PropTypes from "prop-types";
 import Tooltip from "antd/lib/tooltip";
 import Button from "antd/lib/button";
 import Select from "antd/lib/select";
+import Upload from 'antd/lib/upload';
+import message from 'antd/lib/message';
 import KeyboardShortcuts, { humanReadableShortcut } from "@/services/KeyboardShortcuts";
+import { UploadOutlined } from '@ant-design/icons';
 
 import AutocompleteToggle from "./AutocompleteToggle";
 import "./QueryEditorControls.less";
@@ -55,6 +58,26 @@ export default function EditorControl({
       };
     }
   }, [addParameterButtonProps, formatButtonProps, saveButtonProps, executeButtonProps]);
+
+  const uploadProps = {
+    name: 'file',
+    showUploadList: false,
+    accept: `.${dataSourceSelectorProps.type==='excel' ? 'xls,.xlsx' : dataSourceSelectorProps.type}`,
+    action: `/api/queries/${dataSourceSelectorProps.value}/upload`,
+    headers: {
+      authorization: 'authorization-text',
+    },
+    onChange(info) {
+      if (info.file.status !== 'uploading') {
+        console.log(info.file, info.fileList);
+      }
+      if (info.file.status === 'done') {
+        executeButtonProps.onClick(info.file.response);
+      } else if (info.file.status === 'error') {
+        message.error(`${info.file.name} 文件上载失败！`);
+      }
+    },
+  };
 
   return (
     <div className="query-editor-controls">
