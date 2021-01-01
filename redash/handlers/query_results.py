@@ -1,5 +1,6 @@
 import logging
 import time
+import os
 
 import unicodedata
 from flask import make_response, request
@@ -44,7 +45,7 @@ def error_response(message, http_status=400):
 
 error_messages = {
     "unsafe_when_shared": error_response(
-        "This query contains potentially unsafe parameters and cannot be executed on a shared dashboard or an embedded visualization.",
+        "这个查询包含不安全的文本参数，不能用于共享报表或嵌入视图。",
         403,
     ),
     "unsafe_on_view_only": error_response(
@@ -52,10 +53,10 @@ error_messages = {
         403,
     ),
     "no_permission": error_response(
-        "You do not have permission to run queries with this data source.", 403
+        "没有权限运行当前查询。", 403
     ),
     "select_data_source": error_response(
-        "Please select data source to run this query.", 401
+        "请为当前查询选择数据源。", 401
     ),
 }
 
@@ -63,11 +64,11 @@ error_messages = {
 def run_query(query, parameters, data_source, query_id, should_apply_auto_limit, max_age=0):
     if data_source.paused:
         if data_source.pause_reason:
-            message = "{} is paused ({}). Please try later.".format(
+            message = "{}由于({})已暂停，请稍后再试。".format(
                 data_source.name, data_source.pause_reason
             )
         else:
-            message = "{} is paused. Please try later.".format(data_source.name)
+            message = "{}已暂停，请稍后再试。".format(data_source.name)
 
         return error_response(message)
 
@@ -455,3 +456,23 @@ class JobResource(BaseResource):
         """
         job = Job.fetch(job_id)
         job.cancel()
+
+
+class QueryUploadResource(BaseResource):
+    @require_permission("execute_query")
+    def post(self, datasource_id):
+        data_source = models.DataSource.get_by_id_and_org(datasource_id, self.current_org)
+        file = request.files['file']
+
+        basepath = os.path.abspath(os.path.join(settings.STATIC_ASSETS_PATH,'files'))
+        if not os.path.exists(basepath):
+            os.mkdir(basepath)
+
+        filename = str(self.current_user.id) + "_" + file.filename
+        fullname = os.path.join(basepath, filename)
+        if os.path.isfile(fullname):
+            os.remove(fullname)
+
+        file.save(fullname)
+        query = "files/" + filename
+        return query

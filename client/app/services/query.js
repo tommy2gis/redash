@@ -140,7 +140,7 @@ export class Query {
   getQueryResultByText(maxAge, selectedQueryText) {
     const queryText = selectedQueryText || this.query;
     if (!queryText) {
-      return new QueryResultError("Can't execute empty query.");
+      return new QueryResultError("空查询语句无法执行。");
     }
 
     const parameters = this.getParameters().getExecutionValues({ joinListValues: true });
@@ -399,7 +399,7 @@ const QueryService = {
 QueryService.newQuery = function newQuery() {
   return new Query({
     query: "",
-    name: "New Query",
+    name: "新查询",
     schedule: null,
     user: currentUser,
     options: { apply_auto_limit: localOptions.get("applyAutoLimit", true) },

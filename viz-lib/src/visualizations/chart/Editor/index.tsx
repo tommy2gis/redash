@@ -18,7 +18,7 @@ const isPieChart = (options: any) => options.globalSeriesType === "pie";
 export default createTabbedEditor([
   {
     key: "General",
-    title: "General",
+    title: "通用",
     component: (props: any) => <React.Fragment>
       <GeneralSettings {...props} />
       {isCustomChart(props.options) && <CustomChartSettings {...props} />}
@@ -28,7 +28,7 @@ export default createTabbedEditor([
     key: "XAxis",
     title: ({
       swappedAxes
-    }: any) => (!swappedAxes ? "X Axis" : "Y Axis"),
+    }: any) => (!swappedAxes ? "X轴" : "Y轴"),
     component: XAxisSettings,
     isAvailable: (options: any) => !isCustomChart(options) && !isPieChart(options),
   },
@@ -36,25 +36,25 @@ export default createTabbedEditor([
     key: "YAxis",
     title: ({
       swappedAxes
-    }: any) => (!swappedAxes ? "Y Axis" : "X Axis"),
+    }: any) => (!swappedAxes ? "Y轴" : "X轴"),
     component: YAxisSettings,
     isAvailable: (options: any) => !isCustomChart(options) && !isPieChart(options),
   },
   {
     key: "Series",
-    title: "Series",
+    title: "系列",
     component: SeriesSettings,
     isAvailable: (options: any) => !isCustomChart(options),
   },
   {
     key: "Colors",
-    title: "Colors",
+    title: "颜色",
     component: ColorsSettings,
     isAvailable: (options: any) => !isCustomChart(options),
   },
   {
     key: "DataLabels",
-    title: "Data Labels",
+    title: "标注",
     component: DataLabelsSettings,
     isAvailable: (options: any) => !isCustomChart(options),
   },

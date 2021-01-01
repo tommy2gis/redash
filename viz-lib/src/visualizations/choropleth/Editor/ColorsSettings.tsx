@@ -16,23 +16,23 @@ export default function ColorsSettings({
       <Section>
         <Select
           layout="horizontal"
-          label="Clustering Mode"
+          label="聚类模式"
           data-test="Choropleth.Editor.ClusteringMode"
           defaultValue={options.clusteringMode}
           onChange={(clusteringMode: any) => onOptionsChange({ clusteringMode })}>
           {/* @ts-expect-error ts-migrate(2339) FIXME: Property 'Option' does not exist on type '({ class... Remove this comment to see the full error message */}
           <Select.Option value="q" data-test="Choropleth.Editor.ClusteringMode.q">
-            quantile
+            分位数(quantile)
           {/* @ts-expect-error ts-migrate(2339) FIXME: Property 'Option' does not exist on type '({ class... Remove this comment to see the full error message */}
           </Select.Option>
           {/* @ts-expect-error ts-migrate(2339) FIXME: Property 'Option' does not exist on type '({ class... Remove this comment to see the full error message */}
           <Select.Option value="e" data-test="Choropleth.Editor.ClusteringMode.e">
-            equidistant
+            等距(equidistant)
           {/* @ts-expect-error ts-migrate(2339) FIXME: Property 'Option' does not exist on type '({ class... Remove this comment to see the full error message */}
           </Select.Option>
           {/* @ts-expect-error ts-migrate(2339) FIXME: Property 'Option' does not exist on type '({ class... Remove this comment to see the full error message */}
           <Select.Option value="k" data-test="Choropleth.Editor.ClusteringMode.k">
-            k-means
+            K均值(k-means)
           {/* @ts-expect-error ts-migrate(2339) FIXME: Property 'Option' does not exist on type '({ class... Remove this comment to see the full error message */}
           </Select.Option>
         </Select>
@@ -42,7 +42,7 @@ export default function ColorsSettings({
       <Section>
         <InputNumber
           layout="horizontal"
-          label="Steps"
+          label="层级"
           data-test="Choropleth.Editor.ColorSteps"
           min={3}
           max={11}
@@ -55,7 +55,7 @@ export default function ColorsSettings({
       <Section>
         <ColorPicker
           layout="horizontal"
-          label="Min Color"
+          label="最小值颜色"
           interactive
           presetColors={ColorPalette}
           placement="topRight"
@@ -71,7 +71,7 @@ export default function ColorsSettings({
       <Section>
         <ColorPicker
           layout="horizontal"
-          label="Max Color"
+          label="最大值颜色"
           interactive
           presetColors={ColorPalette}
           placement="topRight"
@@ -87,7 +87,7 @@ export default function ColorsSettings({
       <Section>
         <ColorPicker
           layout="horizontal"
-          label="No Value Color"
+          label="无值颜色"
           interactive
           presetColors={ColorPalette}
           placement="topRight"
@@ -103,7 +103,7 @@ export default function ColorsSettings({
       <Section>
         <ColorPicker
           layout="horizontal"
-          label="Background Color"
+          label="背景颜色"
           interactive
           presetColors={ColorPalette}
           placement="topRight"
@@ -119,7 +119,7 @@ export default function ColorsSettings({
       <Section>
         <ColorPicker
           layout="horizontal"
-          label="Borders Color"
+          label="边框颜色"
           interactive
           presetColors={ColorPalette}
           placement="topRight"

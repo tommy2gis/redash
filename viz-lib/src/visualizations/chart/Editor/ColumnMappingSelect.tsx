@@ -3,18 +3,18 @@ import React from "react";
 import { Section, Select } from "@/components/visualizations/editor";
 
 const MappingTypes = {
-  x: { label: "X Column" },
-  y: { label: "Y Columns", multiple: true },
-  series: { label: "Group by" },
-  yError: { label: "Errors column" },
-  size: { label: "Bubble Size Column" },
-  zVal: { label: "Color Column" },
+  x: { label: "X轴" },
+  y: { label: "Y轴", multiple: true },
+  series: { label: "分组" },
+  yError: { label: "Y轴误差" },
+  size: { label: "气泡尺寸(Bubble Size)" },
+  zVal: { label: "颜色" },
 };
 
 const SwappedMappingTypes = {
   ...MappingTypes,
-  x: { label: "Y Column" },
-  y: { label: "X Columns", multiple: true },
+  x: { label: "Y轴" },
+  y: { label: "X轴", multiple: true },
 };
 
 type OwnProps = {
@@ -41,7 +41,7 @@ export default function ColumnMappingSelect({ value, availableColumns, type, onC
         mode={multiple ? "multiple" : "default"}
         allowClear
         showSearch
-        placeholder={multiple ? "Choose columns..." : "Choose column..."}
+        placeholder={multiple ? "请选择列(多选)..." : "请选择列..."}
         value={value || undefined}
         // @ts-expect-error ts-migrate(2349) FIXME: This expression is not callable.
         onChange={(column: any) => onChange(column || null, type)}>

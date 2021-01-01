@@ -33,7 +33,7 @@ function NumberFormatSpecs() {
     <HelpTriggerComponent
       // @ts-expect-error ts-migrate(2322) FIXME: Type '{ children: Element; type: string; title: st... Remove this comment to see the full error message
       type="NUMBER_FORMAT_SPECS"
-      title="Formatting Numbers"
+      title="格式化数字"
       href="https://redash.io/help/user-guide/visualizations/formatting-numbers"
       className="visualization-editor-context-help">
       {ContextHelp.defaultIcon}
@@ -45,7 +45,7 @@ function DateTimeFormatSpecs() {
   const { HelpTriggerComponent } = visualizationsSettings;
   return (
     <HelpTriggerComponent
-      title="Formatting Dates and Times"
+      title="格式化日期和时间"
       href="https://momentjs.com/docs/#/displaying/format/"
       className="visualization-editor-context-help">
       {ContextHelp.defaultIcon}

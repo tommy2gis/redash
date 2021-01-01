@@ -44,7 +44,7 @@ function UserProfile({ userId, onError }) {
   const canEdit = user && (currentUser.isAdmin || currentUser.id === user.id);
   return (
     <React.Fragment>
-      <EmailSettingsWarning featureName="invite emails" className="m-b-20" adminOnly />
+      <EmailSettingsWarning featureName="邮件邀请用户" className="m-b-20" adminOnly />
       <div className="row">
         {!user && <LoadingState className="" />}
         {user && (
@@ -71,7 +71,7 @@ UserProfile.defaultProps = {
 const UserProfilePage = wrapSettingsTab(
   "Users.Account",
   {
-    title: "Account",
+    title: "个人设置",
     path: "users/me",
     order: 7,
   },
@@ -82,7 +82,7 @@ routes.register(
   "Users.Account",
   routeWithUserSession({
     path: "/users/me",
-    title: "Account",
+    title: "个人设置",
     render: pageProps => <UserProfilePage {...pageProps} />,
   })
 );
@@ -90,7 +90,7 @@ routes.register(
   "Users.ViewOrEdit",
   routeWithUserSession({
     path: "/users/:userId",
-    title: "Users",
+    title: "用户",
     render: pageProps => <UserProfilePage {...pageProps} />,
   })
 );

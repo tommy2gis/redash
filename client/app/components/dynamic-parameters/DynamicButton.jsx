@@ -25,7 +25,7 @@ function DynamicButton({ options, selectedDynamicValue, onSelect, enabled, stati
       {options.map((option, index) => (
         // eslint-disable-next-line react/no-array-index-key
         <Menu.Item key={index}>
-          {option.name} {option.label && <em>{isFunction(option.label) ? option.label() : option.label}</em>}
+          {option.title} {option.label && <em>{isFunction(option.label) ? option.label() : option.label}</em>}
         </Menu.Item>
       ))}
       {enabled && <Menu.Divider />}

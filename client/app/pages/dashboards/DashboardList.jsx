@@ -29,12 +29,12 @@ const sidebarMenu = [
   {
     key: "all",
     href: "dashboards",
-    title: "All Dashboards",
+    title: "所有报表",
   },
   {
     key: "favorites",
     href: "dashboards/favorites",
-    title: "Favorites",
+    title: "关注的报表",
     icon: () => <Sidebar.MenuIcon icon="fa fa-star" />,
   },
 ];
@@ -56,14 +56,14 @@ const listColumns = [
       </React.Fragment>
     ),
     {
-      title: "Name",
+      title: "名称",
       field: "name",
       width: null,
     }
   ),
-  Columns.custom((text, item) => item.user.name, { title: "Created By", width: "1%" }),
+  Columns.custom((text, item) => item.user.name, { title: "创建人", width: "1%" }),
   Columns.dateTime.sortable({
-    title: "Created At",
+    title: "创建时间",
     field: "created_at",
     width: "1%",
   }),
@@ -90,7 +90,7 @@ function DashboardList({ controller }) {
             currentUser.hasPermission("create_dashboard") ? (
               <Button block type="primary" onClick={() => CreateDashboardDialog.showModal()}>
                 <i className="fa fa-plus m-r-5" />
-                New Dashboard
+                新建报表
               </Button>
             ) : null
           }
@@ -98,7 +98,7 @@ function DashboardList({ controller }) {
         <Layout>
           <Layout.Sidebar className="m-b-0">
             <Sidebar.SearchInput
-              placeholder="Search Dashboards..."
+              placeholder="搜索报表..."
               value={controller.searchTerm}
               onChange={controller.updateSearch}
             />
@@ -171,7 +171,7 @@ routes.register(
   "Dashboards.List",
   routeWithUserSession({
     path: "/dashboards",
-    title: "Dashboards",
+    title: "报表",
     render: pageProps => <DashboardListPage {...pageProps} currentPage="all" />,
   })
 );
@@ -179,7 +179,7 @@ routes.register(
   "Dashboards.Favorites",
   routeWithUserSession({
     path: "/dashboards/favorites",
-    title: "Favorite Dashboards",
+    title: "我关注的报表",
     render: pageProps => <DashboardListPage {...pageProps} currentPage="favorites" />,
   })
 );

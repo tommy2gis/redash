@@ -32,7 +32,7 @@ class GroupsList extends React.Component {
       (text, group) => (
         <div>
           <Link href={"groups/" + group.id}>{group.name}</Link>
-          {group.type === "builtin" && <span className="label label-default m-l-10">built-in</span>}
+          {group.type === "builtin" && <span className="label label-default m-l-10">内置</span>}
         </div>
       ),
       {
@@ -43,8 +43,8 @@ class GroupsList extends React.Component {
     Columns.custom(
       (text, group) => (
         <Button.Group>
-          <Link.Button href={`groups/${group.id}`}>Members</Link.Button>
-          {currentUser.isAdmin && <Link.Button href={`groups/${group.id}/data_sources`}>Data Sources</Link.Button>}
+          <Link.Button href={`groups/${group.id}`}>成员</Link.Button>
+          {currentUser.isAdmin && <Link.Button href={`groups/${group.id}/data_sources`}>数据源</Link.Button>}
         </Button.Group>
       ),
       {
@@ -60,9 +60,9 @@ class GroupsList extends React.Component {
             className="w-100"
             disabled={!canRemove}
             group={group}
-            title={canRemove ? null : "Cannot delete built-in group"}
+            title={canRemove ? null : "不能删除内置角色"}
             onClick={() => this.onGroupDeleted()}>
-            Delete
+            删除
           </DeleteGroupButton>
         );
       },
@@ -94,7 +94,7 @@ class GroupsList extends React.Component {
           <div className="m-b-15">
             <Button type="primary" onClick={this.createGroup}>
               <i className="fa fa-plus m-r-5" />
-              New Group
+              新建角色
             </Button>
           </div>
         )}
@@ -131,7 +131,7 @@ const GroupsListPage = wrapSettingsTab(
   "Groups.List",
   {
     permission: "list_users",
-    title: "Groups",
+    title: "角色",
     path: "groups",
     order: 3,
   },
@@ -155,7 +155,7 @@ routes.register(
   "Groups.List",
   routeWithUserSession({
     path: "/groups",
-    title: "Groups",
+    title: "角色",
     render: pageProps => <GroupsListPage {...pageProps} currentPage="groups" />,
   })
 );

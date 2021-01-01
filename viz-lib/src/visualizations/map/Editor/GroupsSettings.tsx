@@ -40,7 +40,7 @@ export default function GroupsSettings({
 
   const columns = [
     {
-      title: "Group",
+      title: "分组",
       dataIndex: "name",
     },
     {

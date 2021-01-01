@@ -44,8 +44,8 @@ class EmbedQueryDialog extends React.Component {
       <Modal
         {...dialog.props}
         className="embed-query-dialog"
-        title="Embed Query"
-        footer={<Button onClick={dialog.dismiss}>Close</Button>}>
+        title="嵌入查询"
+        footer={<Button onClick={dialog.dismiss}>关闭</Button>}>
         {query.is_safe ? (
           <React.Fragment>
             <h5 className="m-t-0">Public URL</h5>
@@ -88,14 +88,14 @@ class EmbedQueryDialog extends React.Component {
             </div>
             {this.snapshotUrl && (
               <React.Fragment>
-                <h5>Image Embed</h5>
+                <h5>嵌入图片</h5>
                 <CodeBlock copyable>{this.snapshotUrl}</CodeBlock>
               </React.Fragment>
             )}
           </React.Fragment>
         ) : (
           <Alert
-            message="Currently it is not possible to embed queries that contain text parameters."
+            message="不能嵌入带有文本型参数的查询！"
             type="error"
             data-test="EmbedErrorAlert"
           />

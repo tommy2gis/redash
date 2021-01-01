@@ -44,9 +44,9 @@ class EditDestination extends React.Component {
     const { destination } = this.state;
     helper.updateTargetWithValues(destination, values);
     Destination.save(destination)
-      .then(() => successCallback("Saved."))
+      .then(() => successCallback("保存成功！"))
       .catch(error => {
-        const message = get(error, "response.data.message", "Failed saving.");
+        const message = get(error, "response.data.message", "保存失败。");
         errorCallback(message);
       });
   };
@@ -57,7 +57,7 @@ class EditDestination extends React.Component {
     const doDelete = () => {
       Destination.delete(destination)
         .then(() => {
-          notification.success("Alert destination deleted successfully.");
+          notification.success("提醒设置删除成功！");
           navigateTo("destinations");
         })
         .catch(() => {
@@ -66,9 +66,10 @@ class EditDestination extends React.Component {
     };
 
     Modal.confirm({
-      title: "Delete Alert Destination",
-      content: "Are you sure you want to delete this alert destination?",
-      okText: "Delete",
+      title: "删除提醒设置",
+      content: "确定要删除提醒设置吗？",
+      okText: "删除",
+      cancelText: "取消",
       okType: "danger",
       onOk: doDelete,
       onCancel: callback,
@@ -83,7 +84,7 @@ class EditDestination extends React.Component {
     const formProps = {
       fields,
       type,
-      actions: [{ name: "Delete", type: "danger", callback: this.deleteDestination }],
+      actions: [{ name: "删除", type: "danger", callback: this.deleteDestination }],
       onSubmit: this.saveDestination,
       defaultShowExtraFields: helper.hasFilledExtraField(type, destination),
       feedbackIcons: true,
@@ -113,7 +114,7 @@ routes.register(
   "AlertDestinations.Edit",
   routeWithUserSession({
     path: "/destinations/:destinationId",
-    title: "Alert Destinations",
+    title: "提醒设置",
     render: pageProps => <EditDestinationPage {...pageProps} />,
   })
 );

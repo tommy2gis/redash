@@ -69,6 +69,7 @@ from redash.handlers.query_results import (
     QueryDropdownsResource,
     QueryResultListResource,
     QueryResultResource,
+    QueryUploadResource,
 )
 from redash.handlers.query_snippets import (
     QuerySnippetListResource,
@@ -270,6 +271,9 @@ api.add_org_resource(
     "/api/queries/<query_id>/results.<filetype>",
     "/api/queries/<query_id>/results/<query_result_id>.<filetype>",
     endpoint="query_result",
+)
+api.add_org_resource(
+    QueryUploadResource,"/api/queries/<datasource_id>/upload",endpoint="query_upload",
 )
 api.add_org_resource(
     JobResource,

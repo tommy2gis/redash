@@ -27,7 +27,7 @@ function OrganizationSettings({ onError }) {
               <Skeleton.Button active />
             ) : (
               <Button type="primary" htmlType="submit" loading={isSaving} data-test="OrganizationSettingsSaveButton">
-                Save
+                保存
               </Button>
             )}
           </Form.Item>
@@ -49,7 +49,7 @@ const OrganizationSettingsPage = wrapSettingsTab(
   "Settings.Organization",
   {
     permission: "admin",
-    title: "General",
+    title: "系统设置",
     path: "settings/general",
     order: 6,
   },
@@ -60,7 +60,7 @@ routes.register(
   "Settings.Organization",
   routeWithUserSession({
     path: "/settings/general",
-    title: "General Settings",
+    title: "系统设置",
     render: pageProps => <OrganizationSettingsPage {...pageProps} />,
   })
 );

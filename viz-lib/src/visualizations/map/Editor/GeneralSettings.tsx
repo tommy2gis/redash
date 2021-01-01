@@ -26,7 +26,7 @@ export default function GeneralSettings({
       {/* @ts-expect-error ts-migrate(2745) FIXME: This JSX tag's 'children' prop expects type 'never... Remove this comment to see the full error message */}
       <Section>
         <Select
-          label="Latitude Column Name"
+          label="纬度取值"
           data-test="Map.Editor.LatitudeColumnName"
           value={options.latColName}
           onChange={(latColName: any) => onOptionsChange({ latColName })}>
@@ -43,7 +43,7 @@ export default function GeneralSettings({
       {/* @ts-expect-error ts-migrate(2745) FIXME: This JSX tag's 'children' prop expects type 'never... Remove this comment to see the full error message */}
       <Section>
         <Select
-          label="Longitude Column Name"
+          label="经度取值"
           data-test="Map.Editor.LongitudeColumnName"
           value={options.lonColName}
           onChange={(lonColName: any) => onOptionsChange({ lonColName })}>
@@ -60,7 +60,7 @@ export default function GeneralSettings({
       {/* @ts-expect-error ts-migrate(2745) FIXME: This JSX tag's 'children' prop expects type 'never... Remove this comment to see the full error message */}
       <Section>
         <Select
-          label="Group By"
+          label="分组取值"
           data-test="Map.Editor.GroupBy"
           allowClear
           placeholder="none"

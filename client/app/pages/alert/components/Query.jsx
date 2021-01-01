@@ -25,10 +25,10 @@ export default function QueryFormItem({ query, queryResult, onChange, editMode }
       </small>
     ) : (
       <small>
-        <WarningFilledIcon className="warning-icon-danger" /> This query has no <i>refresh schedule</i>.{" "}
-        <Tooltip title="A query schedule is not necessary but is highly recommended for alerts. An Alert without a query schedule will only send notifications if a user in your organization manually executes this query.">
+        <WarningFilledIcon className="warning-icon-danger" /> 这个查询没有设置 <i>自动刷新</i>.{" "}
+        <Tooltip title="要设置提醒，强烈建议使用自动刷新。对于不自动刷新的查询，仅在用户执行时发送一次提醒。">
           <a>
-            Why it&apos;s recommended <QuestionCircleTwoToneIcon />
+          强烈推荐 <QuestionCircleTwoToneIcon />
           </a>
         </Tooltip>
       </small>
@@ -39,7 +39,7 @@ export default function QueryFormItem({ query, queryResult, onChange, editMode }
       {editMode ? (
         <QuerySelector onChange={onChange} selectedQuery={query} className="alert-query-selector" type="select" />
       ) : (
-        <Tooltip title="Open query in a new tab.">
+        <Tooltip title="在新标签页中打开查询。">
           <Link href={`queries/${query.id}`} target="_blank" rel="noopener noreferrer" className="alert-query-link">
             {query.name}
             <i className="fa fa-external-link" />
@@ -49,7 +49,7 @@ export default function QueryFormItem({ query, queryResult, onChange, editMode }
       <div className="ant-form-item-explain">{query && queryHint}</div>
       {query && !queryResult && (
         <div className="m-t-30">
-          <LoadingOutlinedIcon className="m-r-5" /> Loading query data
+          <LoadingOutlinedIcon className="m-r-5" /> 加载查询结果
         </div>
       )}
     </>

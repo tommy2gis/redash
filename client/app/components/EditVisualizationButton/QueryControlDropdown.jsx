@@ -19,14 +19,14 @@ export default function QueryControlDropdown(props) {
       {!props.query.isNew() && (!props.query.is_draft || !props.query.is_archived) && (
         <Menu.Item>
           <a target="_self" onClick={() => props.openAddToDashboardForm(props.selectedTab)}>
-            <PlusCircleFilledIcon /> Add to Dashboard
+            <PlusCircleFilledIcon /> 添加至报表
           </a>
         </Menu.Item>
       )}
       {!clientConfig.disablePublicUrls && !props.query.isNew() && (
         <Menu.Item>
           <a onClick={() => props.showEmbedDialog(props.query, props.selectedTab)} data-test="ShowEmbedDialogButton">
-            <ShareAltOutlinedIcon /> Embed Elsewhere
+            <ShareAltOutlinedIcon /> 嵌入到其它应用
           </a>
         </Menu.Item>
       )}
@@ -38,7 +38,7 @@ export default function QueryControlDropdown(props) {
           queryResult={props.queryResult}
           embed={props.embed}
           apiKey={props.apiKey}>
-          <FileOutlinedIcon /> Download as CSV File
+          <FileOutlinedIcon /> 另存为CSV文件
         </QueryResultsLink>
       </Menu.Item>
       <Menu.Item>
@@ -49,7 +49,7 @@ export default function QueryControlDropdown(props) {
           queryResult={props.queryResult}
           embed={props.embed}
           apiKey={props.apiKey}>
-          <FileOutlinedIcon /> Download as TSV File
+          <FileOutlinedIcon /> 另存为TSV文件
         </QueryResultsLink>
       </Menu.Item>
       <Menu.Item>
@@ -60,7 +60,7 @@ export default function QueryControlDropdown(props) {
           queryResult={props.queryResult}
           embed={props.embed}
           apiKey={props.apiKey}>
-          <FileExcelOutlinedIcon /> Download as Excel File
+          <FileExcelOutlinedIcon /> 另存为Excel文件
         </QueryResultsLink>
       </Menu.Item>
     </Menu>

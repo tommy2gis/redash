@@ -50,17 +50,17 @@ class OutdatedQueries extends React.Component {
         </React.Fragment>
       ),
       {
-        title: "Name",
+        title: "名称",
         field: "name",
         width: null,
       }
     ),
-    Columns.avatar({ field: "user", className: "p-l-0 p-r-0" }, name => `Created by ${name}`),
-    Columns.dateTime.sortable({ title: "Created At", field: "created_at" }),
-    Columns.duration.sortable({ title: "Runtime", field: "runtime" }),
-    Columns.dateTime.sortable({ title: "Last Executed At", field: "retrieved_at", orderByField: "executed_at" }),
+    Columns.avatar({ field: "user", className: "p-l-0 p-r-0" }, name => `创建人 ${name}`),
+    Columns.dateTime.sortable({ title: "创建时间", field: "created_at" }),
+    Columns.duration.sortable({ title: "耗时", field: "runtime" }),
+    Columns.dateTime.sortable({ title: "最后执行时间", field: "retrieved_at", orderByField: "executed_at" }),
     Columns.custom.sortable((text, item) => <SchedulePhrase schedule={item.schedule} isNew={item.isNew()} />, {
-      title: "Update Schedule",
+      title: "更新调度",
       field: "schedule",
     }),
   ];
@@ -94,7 +94,7 @@ class OutdatedQueries extends React.Component {
         <div className="m-15">
           <div>
             <label htmlFor="auto-update-switch" className="m-0">
-              Auto update
+              自动更新
             </label>
             <Switch
               id="auto-update-switch"
@@ -105,7 +105,7 @@ class OutdatedQueries extends React.Component {
           </div>
           {controller.params.lastUpdatedAt && (
             <div className="m-t-5">
-              Last updated: <TimeAgo date={controller.params.lastUpdatedAt * 1000} />
+              最后更新时间：<TimeAgo date={controller.params.lastUpdatedAt * 1000} />
             </div>
           )}
         </div>
@@ -164,7 +164,7 @@ routes.register(
   "Admin.OutdatedQueries",
   routeWithUserSession({
     path: "/admin/queries/outdated",
-    title: "Outdated Queries",
+    title: "超期的查询",
     render: pageProps => <OutdatedQueriesPage {...pageProps} currentPage="outdated_queries" />,
   })
 );

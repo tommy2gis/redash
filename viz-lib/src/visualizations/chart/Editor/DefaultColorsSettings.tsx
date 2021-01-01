@@ -43,11 +43,11 @@ export default function DefaultColorsSettings({
 
   const columns = [
     {
-      title: "Series",
+      title: "序列",
       dataIndex: "key",
     },
     {
-      title: "Color",
+      title: "颜色",
       dataIndex: "color",
       width: "1%",
       render: (unused: any, item: any) => (
