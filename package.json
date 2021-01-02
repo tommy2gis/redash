@@ -52,6 +52,7 @@
     "axios-auth-refresh": "^3.0.0",
     "bootstrap": "^3.3.7",
     "chart.js": "^2.9.3",
+    "chromedriver": "^87.0.4",
     "classnames": "^2.2.6",
     "d3": "^3.5.17",
     "debug": "^3.1.0",
