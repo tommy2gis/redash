@@ -44,7 +44,7 @@ export default function GroupsSettings({
       dataIndex: "name",
     },
     {
-      title: "Color",
+      title: "颜色",
       dataIndex: "color",
       width: "1%",
       render: (unused: any, item: any) => (
