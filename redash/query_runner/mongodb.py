@@ -133,6 +133,8 @@ class MongoDB(BaseQueryRunner):
             "type": "object",
             "properties": {
                 "connectionString": {"type": "string", "title": "连接字符串"},
+                "username": {"type": "string", "title": "用户名"},
+                "password": {"type": "string", "title": "密码"},
                 "dbName": {"type": "string", "title": "数据库名称"},
                 "replicaSetName": {"type": "string", "title": "副本集名称"},
                 "readPreference": {
@@ -147,6 +149,7 @@ class MongoDB(BaseQueryRunner):
                     "title": "副本集读策略",
                 },
             },
+            "secret": ["password"],
             "required": ["connectionString", "dbName"],
         }
 
@@ -175,6 +178,12 @@ class MongoDB(BaseQueryRunner):
             readPreference = self.configuration.get("readPreference")
             if readPreference:
                 kwargs["readPreference"] = readPreference
+
+        if "username" in self.configuration:
+            kwargs["username"] = self.configuration["username"]
+
+        if "password" in self.configuration:
+            kwargs["password"] = self.configuration["password"]
 
         db_connection = pymongo.MongoClient(
             self.configuration["connectionString"], **kwargs
