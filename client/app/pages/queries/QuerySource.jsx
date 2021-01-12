@@ -344,6 +344,7 @@ function QuerySource(props) {
                   <div className="query-parameters-wrapper">
                     <Parameters
                       editable={queryFlags.canEdit}
+                      sortable={queryFlags.canEdit}
                       disableUrlUpdate={queryFlags.isNew}
                       parameters={parameters}
                       onPendingValuesChange={() => updateParametersDirtyFlag()}

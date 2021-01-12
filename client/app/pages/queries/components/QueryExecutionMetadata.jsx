@@ -1,6 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
+import WarningTwoTone from "@ant-design/icons/WarningTwoTone";
 import TimeAgo from "@/components/TimeAgo";
+import Tooltip from "antd/lib/tooltip";
 import useAddToDashboardDialog from "../hooks/useAddToDashboardDialog";
 import useEmbedDialog from "../hooks/useEmbedDialog";
 import QueryControlDropdown from "@/components/EditVisualizationButton/QueryControlDropdown";
@@ -42,7 +44,19 @@ export default function QueryExecutionMetadata({
       )}
       <span className="m-l-5 m-r-10">
         <span>
-          <strong>{queryResultData.rows.length}</strong> 条记录
+          {queryResultData.truncated === true && (
+            <span className="m-r-5">
+              <Tooltip
+                title={
+                  "Result truncated to " +
+                  queryResultData.rows.length +
+                  " 条记录。当查询结果集超大时，Redash将会截断查询结果集。"
+                }>
+                <WarningTwoTone twoToneColor="#FF9800" />
+              </Tooltip>
+            </span>
+          )}
+          <strong>{queryResultData.rows.length}</strong> {pluralize("row", queryResultData.rows.length)}
         </span>
         <span className="m-l-5">
           {!isQueryExecuting && (
