@@ -228,7 +228,7 @@ const config = {
       }
     ]
   },
-  devtool: isProduction ? "source-map" : "cheap-eval-module-source-map",
+  devtool: 'none',
   stats: {
     children: false,
     modules: false,
