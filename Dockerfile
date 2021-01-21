@@ -86,6 +86,8 @@ ENV PIP_NO_CACHE_DIR=1
 
 #pip国内源
 COPY pip.conf /etc/pip.conf
+# Use legacy resolver to work around broken build due to resolver changes in pip
+ENV PIP_USE_DEPRECATED=legacy-resolver
 
 # We first copy only the requirements file, to avoid rebuilding on every file
 # change.
