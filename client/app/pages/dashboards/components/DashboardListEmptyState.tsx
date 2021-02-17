@@ -4,6 +4,10 @@ import BigMessage from "@/components/BigMessage";
 import NoTaggedObjectsFound from "@/components/NoTaggedObjectsFound";
 import EmptyState, { EmptyStateHelpMessage } from "@/components/empty-state/EmptyState";
 import DynamicComponent from "@/components/DynamicComponent";
+import Link from "@/components/Link";
+import CreateDashboardDialog from "@/components/dashboards/CreateDashboardDialog";
+import { currentUser } from "@/services/auth";
+import HelpTrigger from "@/components/HelpTrigger";
 
 export interface DashboardListEmptyStateProps {
   page: string;
@@ -21,6 +25,20 @@ export default function DashboardListEmptyState({ page, searchTerm, selectedTags
   switch (page) {
     case "favorites":
       return <BigMessage message="显示我关注的报表。" icon="fa-star" />;
+    case "my":
+      const my_msg = currentUser.hasPermission("create_dashboard") ? (
+        <span>
+          <Link.Button type="primary" size="small" onClick={() => CreateDashboardDialog.showModal()}>
+            新建我的第一张报表!
+          </Link.Button>{" "}
+          <HelpTrigger className="f-14" type="DASHBOARDS" showTooltip={false}>
+            需要帮助?
+          </HelpTrigger>
+        </span>
+      ) : (
+        <span>没有发现记录.</span>
+      );
+      return <BigMessage icon="fa-search">{my_msg}</BigMessage>;
     default:
       return (
         <DynamicComponent name="DashboardList.EmptyState">

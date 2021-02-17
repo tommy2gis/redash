@@ -5,6 +5,8 @@ import BigMessage from "@/components/BigMessage";
 import NoTaggedObjectsFound from "@/components/NoTaggedObjectsFound";
 import EmptyState, { EmptyStateHelpMessage } from "@/components/empty-state/EmptyState";
 import DynamicComponent from "@/components/DynamicComponent";
+import { currentUser } from "@/services/auth";
+import HelpTrigger from "@/components/HelpTrigger";
 
 export default function QueriesListEmptyState({ page, searchTerm, selectedTags }) {
   if (searchTerm !== "") {
@@ -19,15 +21,19 @@ export default function QueriesListEmptyState({ page, searchTerm, selectedTags }
     case "archive":
       return <BigMessage message="显示归档的查询。" icon="fa-archive" />;
     case "my":
-      return (
-        <div className="tiled bg-white p-15">
+      const my_msg = currentUser.hasPermission("create_query") ? (
+        <span>
           <Link.Button href="queries/new" type="primary" size="small">
-            新建查询
+            新建我的第一个查询!
           </Link.Button>{" "}
-          显示我的查询，若需帮助{" "}{" "}
-          <Link href="https://redash.io/help/user-guide/querying/writing-queries">查看帮助</Link>.
-        </div>
+          <HelpTrigger className="f-13" type="QUERIES" showTooltip={false}>
+            需要帮助?
+          </HelpTrigger>
+        </span>
+      ) : (
+        <span>没有发现记录.</span>
       );
+      return <BigMessage icon="fa-search">{my_msg}</BigMessage>;
     default:
       return (
         <DynamicComponent name="QueriesList.EmptyState">

@@ -30,6 +30,13 @@ const sidebarMenu = [
     key: "all",
     href: "dashboards",
     title: "所有报表",
+    icon: () => <Sidebar.MenuIcon icon="zmdi zmdi-view-quilt" />,
+  },
+  {
+    key: "my",
+    href: "dashboards/my",
+    title: "我的报表",
+    icon: () => <Sidebar.ProfileImage user={currentUser} />,
   },
   {
     key: "favorites",
@@ -157,6 +164,7 @@ const DashboardListPage = itemsList(
       getResource({ params: { currentPage } }) {
         return {
           all: Dashboard.query.bind(Dashboard),
+          my: Dashboard.myDashboards.bind(Dashboard),
           favorites: Dashboard.favorites.bind(Dashboard),
         }[currentPage];
       },
@@ -181,5 +189,13 @@ routes.register(
     path: "/dashboards/favorites",
     title: "我关注的报表",
     render: pageProps => <DashboardListPage {...pageProps} currentPage="favorites" />,
+  })
+);
+routes.register(
+  "Dashboards.My",
+  routeWithUserSession({
+    path: "/dashboards/my",
+    title: "My Dashboards",
+    render: pageProps => <DashboardListPage {...pageProps} currentPage="my" />,
   })
 );
