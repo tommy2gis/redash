@@ -132,11 +132,11 @@ class MongoDB(BaseQueryRunner):
         return {
             "type": "object",
             "properties": {
-                "connectionString": {"type": "string", "title": "Connection String"},
-                "username": {"type": "string"},
-                "password": {"type": "string"},
-                "dbName": {"type": "string", "title": "Database Name"},
-                "replicaSetName": {"type": "string", "title": "Replica Set Name"},
+                "connectionString": {"type": "string", "title": "连接字符串"},
+                "username": {"type": "string", "title": "用户名"},
+                "password": {"type": "string", "title": "密码"},
+                "dbName": {"type": "string", "title": "数据库名称"},
+                "replicaSetName": {"type": "string", "title": "副本集名称"},
                 "readPreference": {
                     "type": "string",
                     "extendedEnum": [
@@ -146,7 +146,7 @@ class MongoDB(BaseQueryRunner):
                         {"value": "secondaryPreferred", "name": "Secondary Preferred"},
                         {"value": "nearest", "name": "Nearest"},
                     ],
-                    "title": "Replica Set Read Preference",
+                    "title": "副本集读策略",
                 },
             },
             "secret": ["password"],

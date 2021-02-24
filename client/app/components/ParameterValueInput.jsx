@@ -106,7 +106,7 @@ class ParameterValueInput extends React.Component {
         options={map(enumOptionsArray, opt => ({ label: String(opt), value: opt }))}
         showSearch
         showArrow
-        notFoundContent={isEmpty(enumOptionsArray) ? "No options available" : null}
+        notFoundContent={isEmpty(enumOptionsArray) ? "没有可选数据" : null}
         {...multipleValuesProps}
       />
     );

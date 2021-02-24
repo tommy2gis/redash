@@ -145,14 +145,14 @@ class PostgreSQL(BaseSQLQueryRunner):
         return {
             "type": "object",
             "properties": {
-                "user": {"type": "string"},
-                "password": {"type": "string"},
-                "host": {"type": "string", "default": "127.0.0.1"},
-                "port": {"type": "number", "default": 5432},
-                "dbname": {"type": "string", "title": "Database Name"},
+                "user": {"type": "string", "title": "用户"},
+                "password": {"type": "string", "title": "密码"},
+                "host": {"type": "string", "title": "服务器", "default": "127.0.0.1"},
+                "port": {"type": "number", "title": "端口", "default": 5432},
+                "dbname": {"type": "string", "title": "数据库"},
                 "sslmode": {
                     "type": "string",
-                    "title": "SSL Mode",
+                    "title": "SSL模式",
                     "default": "prefer",
                     "extendedEnum": [
                         {"value": "disable", "name": "Disable"},
@@ -163,9 +163,9 @@ class PostgreSQL(BaseSQLQueryRunner):
                         {"value": "verify-full", "name": "Verify Full"},
                     ],
                 },
-                "sslrootcertFile": {"type": "string", "title": "SSL Root Certificate"},
-                "sslcertFile": {"type": "string", "title": "SSL Client Certificate"},
-                "sslkeyFile": {"type": "string", "title": "SSL Client Key"},
+                "sslrootcertFile": {"type": "string", "title": "SSL根证书"},
+                "sslcertFile": {"type": "string", "title": "SSL客户端证书"},
+                "sslkeyFile": {"type": "string", "title": "SSL客户端密钥"},
             },
             "order": ["host", "port", "user", "password"],
             "required": ["dbname"],

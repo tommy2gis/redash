@@ -46,9 +46,9 @@ Step.defaultProps = {
 export function EmptyStateHelpMessage({ helpTriggerType }) {
   return (
     <p>
-      Need more support?{" "}
+      若需要更多支持，{" "}
       <HelpTrigger className="f-14" type={helpTriggerType} showTooltip={false}>
-        See our Help
+        请查看帮助
       </HelpTrigger>
     </p>
   );
@@ -109,7 +109,7 @@ function EmptyState({
           show={isAvailable.dataSource}
           completed={isCompleted.dataSource}
           url="data_sources/new"
-          urlText="Connect a Data Source"
+          urlText="连接一个数据源"
         />
       );
     }
@@ -119,7 +119,7 @@ function EmptyState({
         key="dataSources"
         show={isAvailable.dataSource}
         completed={isCompleted.dataSource}
-        text="Ask an account admin to connect a data source"
+        text="数据源要求提供连接账户信息"
       />
     );
   };
@@ -137,7 +137,7 @@ function EmptyState({
           show={isAvailable.query}
           completed={isCompleted.query}
           url="queries/new"
-          urlText="Create your first Query"
+          urlText="创建一个查询"
         />
       ),
     },
@@ -149,7 +149,7 @@ function EmptyState({
           show={isAvailable.alert}
           completed={isCompleted.alert}
           url="alerts/new"
-          urlText="Create your first Alert"
+          urlText="创建一个提醒"
         />
       ),
     },
@@ -161,7 +161,7 @@ function EmptyState({
           show={isAvailable.dashboard}
           completed={isCompleted.dashboard}
           onClick={showCreateDashboardDialog}
-          urlText="Create your first Dashboard"
+          urlText="创建一张报表"
         />
       ),
     },
@@ -173,7 +173,7 @@ function EmptyState({
           show={isAvailable.inviteUsers}
           completed={isCompleted.inviteUsers}
           url="users/new"
-          urlText="Invite your team members"
+          urlText="邀请团队成员"
         />
       ),
     },
@@ -194,7 +194,7 @@ function EmptyState({
           <img src={imageSource} alt={illustration + " Illustration"} width="75%" />
         </div>
         <div className="empty-state__steps">
-          <h4>Let&apos;s get started</h4>
+          <h4>开始</h4>
           <ol>{stepsItems.map(item => item.node)}</ol>
           {helpMessage}
         </div>

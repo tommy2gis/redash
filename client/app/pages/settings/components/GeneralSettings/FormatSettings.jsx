@@ -11,7 +11,7 @@ export default function FormatSettings(props) {
 
   return (
     <DynamicComponent name="OrganizationSettings.FormatSettings" {...props}>
-      <Form.Item label="Date Format">
+      <Form.Item label="日期格式">
         {loading ? (
           <Skeleton.Input style={{ width: 300 }} active />
         ) : (
@@ -27,7 +27,7 @@ export default function FormatSettings(props) {
           </Select>
         )}
       </Form.Item>
-      <Form.Item label="Time Format">
+      <Form.Item label="时间格式">
         {loading ? (
           <Skeleton.Input style={{ width: 300 }} active />
         ) : (

@@ -22,9 +22,10 @@ export default function MenuButton({ doDelete, canEdit, mute, unmute, muted }) {
 
   const confirmDelete = useCallback(() => {
     Modal.confirm({
-      title: "Delete Alert",
-      content: "Are you sure you want to delete this alert?",
-      okText: "Delete",
+      title: "删除",
+      content: "确定删除提醒吗？",
+      okText: "删除",
+      cancelText: "取消",
       okType: "danger",
       onOk: () => {
         setLoading(true);
@@ -46,13 +47,13 @@ export default function MenuButton({ doDelete, canEdit, mute, unmute, muted }) {
         <Menu>
           <Menu.Item>
             {muted ? (
-              <a onClick={() => execute(unmute)}>Unmute Notifications</a>
+              <a onClick={() => execute(unmute)}>通知有声</a>
             ) : (
-              <a onClick={() => execute(mute)}>Mute Notifications</a>
+              <a onClick={() => execute(mute)}>通知静音</a>
             )}
           </Menu.Item>
           <Menu.Item>
-            <a onClick={confirmDelete}>Delete</a>
+            <a onClick={confirmDelete}>删除</a>
           </Menu.Item>
         </Menu>
       }>

@@ -20,16 +20,16 @@ export default function SAMLSettings(props) {
   return (
     <DynamicComponent name="OrganizationSettings.SAMLSettings" {...props}>
       <h4>SAML</h4>
-      <Form.Item label="SAML Enabled">
+      <Form.Item label="SAML 启用">
         {loading ? (
           <Skeleton title={{ width: 300 }} paragraph={false} active />
         ) : (
           <Radio.Group
             onChange={onChangeEnabledStatus}
             value={values.auth_saml_enabled && (values.auth_saml_type || "dynamic")}>
-            <Radio value={false}>Disabled</Radio>
-            <Radio value={"static"}>Enabled (Static)</Radio>
-            <Radio value={"dynamic"}>Enabled (Dynamic)</Radio>
+            <Radio value={false}>不启用</Radio>
+            <Radio value={"static"}>启用(静态)</Radio>
+            <Radio value={"dynamic"}>启用(动态)</Radio>
           </Radio.Group>
         )}
       </Form.Item>

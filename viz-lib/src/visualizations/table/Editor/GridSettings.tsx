@@ -13,7 +13,7 @@ export default function GridSettings({
     // @ts-expect-error ts-migrate(2745) FIXME: This JSX tag's 'children' prop expects type 'never... Remove this comment to see the full error message
     <Section>
       <Select
-        label="Items per page"
+        label="每页行数"
         data-test="Table.ItemsPerPage"
         defaultValue={options.itemsPerPage}
         onChange={(itemsPerPage: any) => onOptionsChange({ itemsPerPage })}>

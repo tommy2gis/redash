@@ -69,7 +69,7 @@ export default function ColumnsSettings({
               </React.Fragment>
             }
             extra={
-              <Tooltip title="Toggle visibility" mouseEnterDelay={0} mouseLeaveDelay={0}>
+              <Tooltip title="切换显示/隐藏" mouseEnterDelay={0} mouseLeaveDelay={0}>
                 {column.visible ? (
                   <EyeOutlinedIcon
                     data-test={`Table.Column.${column.name}.Visibility`}

@@ -34,9 +34,9 @@ export default function HeatmapColorsSettings({
       {/* @ts-expect-error ts-migrate(2745) FIXME: This JSX tag's 'children' prop expects type 'never... Remove this comment to see the full error message */}
       <Section>
         <Select
-          label="Color Scheme"
+          label="配色方案"
           data-test="Chart.Colors.Heatmap.ColorScheme"
-          placeholder="Choose Color Scheme..."
+          placeholder="请选择配色方案..."
           allowClear
           value={options.colorScheme || undefined}
           onChange={(value: any) => onOptionsChange({ colorScheme: value || null })}>
@@ -56,7 +56,7 @@ export default function HeatmapColorsSettings({
           <Section>
             <ColorPicker
               layout="horizontal"
-              label="Min Color:"
+              label="最小值颜色"
               data-test="Chart.Colors.Heatmap.MinColor"
               interactive
               placement="topLeft"
@@ -71,7 +71,7 @@ export default function HeatmapColorsSettings({
           <Section>
             <ColorPicker
               layout="horizontal"
-              label="Max Color:"
+              label="最大值颜色"
               data-test="Chart.Colors.Heatmap.MaxColor"
               interactive
               placement="topRight"

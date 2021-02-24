@@ -24,7 +24,7 @@ export default function DataLabelsSettings({
             data-test="Chart.DataLabels.ShowDataLabels"
             defaultChecked={options.showDataLabels}
             onChange={event => onOptionsChange({ showDataLabels: event.target.checked })}>
-            Show Data Labels
+            显示标注
           </Checkbox>
         </Section>
       )}
@@ -34,7 +34,7 @@ export default function DataLabelsSettings({
         <Input
           label={
             <React.Fragment>
-              Number Values Format
+              数字格式
               <ContextHelp.NumberFormatSpecs />
             </React.Fragment>
           }
@@ -49,7 +49,7 @@ export default function DataLabelsSettings({
         <Input
           label={
             <React.Fragment>
-              Percent Values Format
+              百分比格式
               <ContextHelp.NumberFormatSpecs />
             </React.Fragment>
           }
@@ -64,7 +64,7 @@ export default function DataLabelsSettings({
         <Input
           label={
             <React.Fragment>
-              Date/Time Values Format
+              日期时间格式
               <ContextHelp.DateTimeFormatSpecs />
             </React.Fragment>
           }
@@ -79,7 +79,7 @@ export default function DataLabelsSettings({
         <Input
           label={
             <React.Fragment>
-              Data Labels
+              标注格式
               {/* @ts-expect-error ts-migrate(2746) FIXME: This JSX tag's 'children' prop expects a single ch... Remove this comment to see the full error message */}
               <ContextHelp placement="topRight" arrowPointAtCenter>
                 <div style={{ paddingBottom: 5 }}>Use special names to access additional properties:</div>
@@ -102,7 +102,7 @@ export default function DataLabelsSettings({
                   <code>{"{{ @@size }}"}</code> bubble size;
                 </div>
                 <div style={{ paddingTop: 5 }}>
-                  Also, all query result columns can be referenced
+                  所有查询结果列都可关联使用
                   <br />
                   using
                   <code style={{ whiteSpace: "nowrap" }}>{"{{ column_name }}"}</code> syntax.

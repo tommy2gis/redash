@@ -54,11 +54,11 @@ export default function PieColorsSettings({
 
   const columns = [
     {
-      title: "Values",
+      title: "值",
       dataIndex: "key",
     },
     {
-      title: "Color",
+      title: "颜色",
       dataIndex: "color",
       width: "1%",
       render: (unused: any, item: any) => (

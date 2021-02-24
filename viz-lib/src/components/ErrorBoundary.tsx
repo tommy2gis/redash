@@ -26,7 +26,7 @@ export function ErrorMessage({ children }: ErrorMessageProps) {
 }
 
 ErrorMessage.defaultProps = {
-  children: "Something went wrong.",
+  children: "系统出错。",
 };
 
 type OwnErrorBoundaryProps = {

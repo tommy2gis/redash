@@ -15,7 +15,7 @@ export interface SankeyDataType {
 
 export default {
   type: "SANKEY",
-  name: "Sankey",
+  name: "桑基图(Sankey)",
   getOptions: (options: {}) => ({
     ...options,
   }),

@@ -4,7 +4,7 @@ const DEFAULT_OPTIONS = {};
 
 export default {
   type: "DETAILS",
-  name: "Details View",
+  name: "<记录明细显示>",
   getOptions: (options: any) => ({
     ...DEFAULT_OPTIONS,
     ...options

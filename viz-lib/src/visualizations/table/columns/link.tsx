@@ -23,7 +23,7 @@ function Editor({ column, onChange }: Props) {
       {/* @ts-expect-error ts-migrate(2745) FIXME: This JSX tag's 'children' prop expects type 'never... Remove this comment to see the full error message */}
       <Section>
         <Input
-          label="URL template"
+          label="URL模板"
           data-test="Table.ColumnEditor.Link.UrlTemplate"
           defaultValue={column.linkUrlTemplate}
           onChange={(event: any) => onChangeDebounced({ linkUrlTemplate: event.target.value })}
@@ -33,7 +33,7 @@ function Editor({ column, onChange }: Props) {
       {/* @ts-expect-error ts-migrate(2745) FIXME: This JSX tag's 'children' prop expects type 'never... Remove this comment to see the full error message */}
       <Section>
         <Input
-          label="Text template"
+          label="文本模板"
           data-test="Table.ColumnEditor.Link.TextTemplate"
           defaultValue={column.linkTextTemplate}
           onChange={(event: any) => onChangeDebounced({ linkTextTemplate: event.target.value })}
@@ -43,7 +43,7 @@ function Editor({ column, onChange }: Props) {
       {/* @ts-expect-error ts-migrate(2745) FIXME: This JSX tag's 'children' prop expects type 'never... Remove this comment to see the full error message */}
       <Section>
         <Input
-          label="Title template"
+          label="标题模板"
           data-test="Table.ColumnEditor.Link.TitleTemplate"
           defaultValue={column.linkTitleTemplate}
           onChange={(event: any) => onChangeDebounced({ linkTitleTemplate: event.target.value })}
@@ -56,7 +56,7 @@ function Editor({ column, onChange }: Props) {
           data-test="Table.ColumnEditor.Link.OpenInNewTab"
           checked={column.linkOpenInNewTab}
           onChange={event => onChange({ linkOpenInNewTab: event.target.checked })}>
-          Open in new tab
+          在新标签页打开
         </Checkbox>
       </Section>
 
@@ -69,12 +69,12 @@ function Editor({ column, onChange }: Props) {
           // @ts-expect-error ts-migrate(2322) FIXME: Type 'Element' is not assignable to type 'null | u... Remove this comment to see the full error message
           icon={<span style={{ cursor: "default" }}>Format specs {ContextHelp.defaultIcon}</span>}>
           <div>
-            All columns can be referenced using <code>{"{{ column_name }}"}</code> syntax.
+          所有列都可以关联使用，请按 <code>{"{{ column_name }}"}</code> 表达形式。.
           </div>
           <div>
-            Use <code>{"{{ @ }}"}</code> to reference current (this) column.
+          使用 <code>{"{{ @ }}"}</code> 关联当前列。
           </div>
-          <div>This syntax is applicable to URL, Text and Title options.</div>
+          <div>该表达形式也适用于URL、文本和标题设置。</div>
         </ContextHelp>
       </Section>
     </React.Fragment>
@@ -124,5 +124,5 @@ export default function initLinkColumn(column: any) {
   return LinkColumn;
 }
 
-initLinkColumn.friendlyName = "Link";
+initLinkColumn.friendlyName = "链接";
 initLinkColumn.Editor = Editor;

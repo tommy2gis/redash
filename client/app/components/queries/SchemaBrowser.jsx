@@ -230,12 +230,12 @@ export default function SchemaBrowser({
       <div className="schema-control">
         <Input
           className="m-r-5"
-          placeholder="Search schema..."
+          placeholder="搜索数据表..."
           disabled={schema.length === 0}
           onChange={event => handleFilterChange(event.target.value)}
         />
 
-        <Tooltip title="Refresh Schema">
+        <Tooltip title="刷新数据表">
           <Button onClick={() => refreshSchema(true)}>
             <i className={cx("zmdi zmdi-refresh", { "zmdi-hc-spin": isLoading })} />
           </Button>

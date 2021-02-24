@@ -177,21 +177,21 @@ export class ParameterMappingInput extends React.Component {
     return (
       <Radio.Group value={this.props.mapping.type} onChange={e => this.updateSourceType(e.target.value)}>
         <Radio className="radio" value={MappingType.DashboardAddNew} data-test="NewDashboardParameterOption">
-          New dashboard parameter
+          新建报表参数
         </Radio>
         <Radio className="radio" value={MappingType.DashboardMapToExisting} disabled={noExisting}>
-          Existing dashboard parameter{" "}
+          已有报表参数{" "}
           {noExisting ? (
-            <Tooltip title="There are no dashboard parameters corresponding to this data type">
+            <Tooltip title="报表参数数据类型不匹配">
               <QuestionCircleFilledIcon />
             </Tooltip>
           ) : null}
         </Radio>
         <Radio className="radio" value={MappingType.WidgetLevel} data-test="WidgetParameterOption">
-          Widget parameter
+          部件参数
         </Radio>
         <Radio className="radio" value={MappingType.StaticValue} data-test="StaticValueOption">
-          Static value
+          静态值
         </Radio>
       </Radio.Group>
     );
@@ -229,9 +229,9 @@ export class ParameterMappingInput extends React.Component {
     const { mapping } = this.props;
     switch (mapping.type) {
       case MappingType.DashboardAddNew:
-        return ["Key", "Enter a new parameter keyword", this.renderDashboardAddNew()];
+        return ["Key", "请输入参数名称", this.renderDashboardAddNew()];
       case MappingType.DashboardMapToExisting:
-        return ["Key", "Select from a list of existing parameters", this.renderDashboardMapToExisting()];
+        return ["Key", "请选择参数", this.renderDashboardMapToExisting()];
       case MappingType.StaticValue:
         return ["Value", null, this.renderStaticValue()];
       default:
@@ -245,7 +245,7 @@ export class ParameterMappingInput extends React.Component {
 
     return (
       <Form layout="horizontal">
-        <Form.Item label="Source" {...this.formItemProps}>
+        <Form.Item label="来源" {...this.formItemProps}>
           {this.renderMappingTypeSelector()}
         </Form.Item>
         <Form.Item
@@ -288,9 +288,9 @@ class MappingEditor extends React.Component {
 
     if (mapping.type === MappingType.DashboardAddNew) {
       if (isEmpty(mapping.mapTo)) {
-        inputError = "Keyword must have a value";
+        inputError = "代码不能为空";
       } else if (includes(this.props.existingParamNames, mapping.mapTo)) {
-        inputError = "A parameter with this name already exists";
+        inputError = "同名参数已存在";
       }
     }
 
@@ -319,7 +319,7 @@ class MappingEditor extends React.Component {
     return (
       <div className="parameter-mapping-editor" data-test="EditParamMappingPopover">
         <header>
-          Edit Source and Value <HelpTrigger type="VALUE_SOURCE_OPTIONS" />
+          编辑来源和值 <HelpTrigger type="VALUE_SOURCE_OPTIONS" />
         </header>
         <ParameterMappingInput
           mapping={mapping}
@@ -328,9 +328,9 @@ class MappingEditor extends React.Component {
           inputError={inputError}
         />
         <footer>
-          <Button onClick={this.hide}>Cancel</Button>
+          <Button onClick={this.hide}>取消</Button>
           <Button onClick={this.save} disabled={!!inputError} type="primary">
-            OK
+            确定
           </Button>
         </footer>
       </div>
@@ -439,7 +439,7 @@ class TitleEditor extends React.Component {
     const { mapping } = this.props;
     if (mapping.type === MappingType.StaticValue) {
       return (
-        <Tooltip placement="right" title="Titles for static values don't appear in widgets">
+        <Tooltip placement="right" title="静态值标题不显示在部件里">
           <i className="fa fa-eye-slash" />
         </Tooltip>
       );
@@ -538,13 +538,13 @@ export class ParameterMappingListInput extends React.Component {
       case MappingType.DashboardMapToExisting:
         return (
           <Fragment>
-            Dashboard <Tag className="tag">{mapTo}</Tag>
+            报表参数 <Tag className="tag">{mapTo}</Tag>
           </Fragment>
         );
       case MappingType.WidgetLevel:
-        return "Widget parameter";
+        return "部件参数";
       case MappingType.StaticValue:
-        return "Static value";
+        return "静态值";
       default:
         return ""; // won't happen (typescript-ftw)
     }
@@ -570,7 +570,7 @@ export class ParameterMappingListInput extends React.Component {
       <div className="parameters-mapping-list">
         <Table dataSource={dataSource} size="middle" pagination={false} rowKey={(record, idx) => `row${idx}`}>
           <Table.Column
-            title="Title"
+            title="名称"
             dataIndex="mapping"
             key="title"
             render={mapping => (
@@ -582,20 +582,20 @@ export class ParameterMappingListInput extends React.Component {
             )}
           />
           <Table.Column
-            title="Keyword"
+            title="代码"
             dataIndex="mapping"
             key="keyword"
             className="keyword"
             render={mapping => <code>{`{{ ${mapping.name} }}`}</code>}
           />
           <Table.Column
-            title="Default Value"
+            title="默认值"
             dataIndex="mapping"
             key="value"
             render={mapping => this.constructor.getDefaultValue(mapping, this.props.existingParams)}
           />
           <Table.Column
-            title="Value Source"
+            title="来源"
             dataIndex="mapping"
             key="source"
             render={mapping => {

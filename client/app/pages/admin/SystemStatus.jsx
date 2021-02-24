@@ -86,7 +86,7 @@ routes.register(
   "Admin.SystemStatus",
   routeWithUserSession({
     path: "/admin/status",
-    title: "System Status",
+    title: "系统运行状态",
     render: pageProps => <SystemStatus {...pageProps} />,
   })
 );

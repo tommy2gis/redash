@@ -2,13 +2,13 @@ import moment from "moment";
 import { clientConfig } from "@/services/auth";
 
 export const IntervalEnum = {
-  NEVER: "Never",
-  SECONDS: "second",
-  MINUTES: "minute",
-  HOURS: "hour",
-  DAYS: "day",
-  WEEKS: "week",
-  MILLISECONDS: "millisecond",
+  NEVER: "不自动刷新",
+  SECONDS: "秒",
+  MINUTES: "分钟",
+  HOURS: "小时",
+  DAYS: "天",
+  WEEKS: "周",
+  MILLISECONDS: "毫秒",
 };
 
 export const AbbreviatedTimeUnits = {
@@ -82,7 +82,7 @@ export function secondsToInterval(count) {
 
 export function pluralize(text, count) {
   const should = count !== 1;
-  return text + (should ? "s" : "");
+  return text + (should ? "" : "");          //英文复数(should ? "s" : "")
 }
 
 export function durationHumanize(durationInSeconds, options = {}) {

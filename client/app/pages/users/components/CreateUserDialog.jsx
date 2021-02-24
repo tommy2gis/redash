@@ -7,7 +7,7 @@ import { wrap as wrapDialog, DialogPropType } from "@/components/DialogWrapper";
 import recordEvent from "@/services/recordEvent";
 
 const formFields = [
-  { required: true, name: "name", title: "Name", type: "text", autoFocus: true },
+  { required: true, name: "name", title: "姓名", type: "text", autoFocus: true },
   { required: true, name: "email", title: "Email", type: "email" },
 ];
 
@@ -22,10 +22,10 @@ function CreateUserDialog({ dialog }) {
   return (
     <Modal
       {...dialog.props}
-      title="Create a New User"
+      title="新建用户"
       footer={[
         <Button key="cancel" {...dialog.props.cancelButtonProps} onClick={dialog.dismiss}>
-          Cancel
+          取消
         </Button>,
         <Button
           key="submit"
@@ -34,7 +34,7 @@ function CreateUserDialog({ dialog }) {
           type="primary"
           form="userForm"
           data-test="SaveUserButton">
-          Create
+          创建
         </Button>,
       ]}
       wrapProps={{

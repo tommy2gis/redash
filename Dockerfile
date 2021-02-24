@@ -27,11 +27,16 @@ FROM python:3.7-slim
 EXPOSE 5000
 
 # Controls whether to install extra dependencies needed for all data sources.
-ARG skip_ds_deps
+ARG skip_ds_deps=false
 # Controls whether to install dev dependencies.
 ARG skip_dev_deps
 
 RUN useradd --create-home redash
+
+# Ubuntu 阿里云镜像
+RUN  sed -i s@/archive.ubuntu.com/@/mirrors.aliyun.com/@g /etc/apt/sources.list
+RUN  apt-get clean
+RUN  apt-get update
 
 # Ubuntu packages
 RUN apt-get update && \
@@ -65,13 +70,13 @@ RUN apt-get update && \
   apt-get clean && \
   rm -rf /var/lib/apt/lists/*
 
-ARG databricks_odbc_driver_url=https://databricks.com/wp-content/uploads/2.6.10.1010-2/SimbaSparkODBC-2.6.10.1010-2-Debian-64bit.zip
-ADD $databricks_odbc_driver_url /tmp/simba_odbc.zip
-RUN unzip /tmp/simba_odbc.zip -d /tmp/ \
-  && dpkg -i /tmp/SimbaSparkODBC-*/*.deb \
-  && echo "[Simba]\nDriver = /opt/simba/spark/lib/64/libsparkodbc_sb64.so" >> /etc/odbcinst.ini \
-  && rm /tmp/simba_odbc.zip \
-  && rm -rf /tmp/SimbaSparkODBC*
+#ARG databricks_odbc_driver_url=https://databricks.com/wp-content/uploads/2.6.10.1010-2/SimbaSparkODBC-2.6.10.1010-2-Debian-64bit.zip
+#ADD $databricks_odbc_driver_url /tmp/simba_odbc.zip
+#RUN unzip /tmp/simba_odbc.zip -d /tmp/ \
+#  && dpkg -i /tmp/SimbaSparkODBC-*/*.deb \
+#  && echo "[Simba]\nDriver = /opt/simba/spark/lib/64/libsparkodbc_sb64.so" >> /etc/odbcinst.ini \
+#  && rm /tmp/simba_odbc.zip \
+#  && rm -rf /tmp/SimbaSparkODBC*
 
 WORKDIR /app
 
@@ -79,6 +84,8 @@ WORKDIR /app
 ENV PIP_DISABLE_PIP_VERSION_CHECK=1
 ENV PIP_NO_CACHE_DIR=1
 
+#pip国内源
+COPY pip.conf /etc/pip.conf
 # Use legacy resolver to work around broken build due to resolver changes in pip
 ENV PIP_USE_DEPRECATED=legacy-resolver
 

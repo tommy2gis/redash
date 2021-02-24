@@ -18,35 +18,35 @@ const IFRAME_URL_UPDATE_MESSAGE = "iframe_url";
 
 export const TYPES = mapValues(
   {
-    HOME: ["", "Help"],
-    VALUE_SOURCE_OPTIONS: ["/user-guide/querying/query-parameters#Value-Source-Options", "Guide: Value Source Options"],
-    SHARE_DASHBOARD: ["/user-guide/dashboards/sharing-dashboards", "Guide: Sharing and Embedding Dashboards"],
-    AUTHENTICATION_OPTIONS: ["/user-guide/users/authentication-options", "Guide: Authentication Options"],
-    USAGE_DATA_SHARING: ["/open-source/admin-guide/usage-data", "Help: Anonymous Usage Data Sharing"],
-    DS_ATHENA: ["/data-sources/amazon-athena-setup", "Guide: Help Setting up Amazon Athena"],
-    DS_BIGQUERY: ["/data-sources/bigquery-setup", "Guide: Help Setting up BigQuery"],
-    DS_URL: ["/data-sources/querying-urls", "Guide: Help Setting up URL"],
-    DS_MONGODB: ["/data-sources/mongodb-setup", "Guide: Help Setting up MongoDB"],
+    HOME: ["", "帮助"],
+    VALUE_SOURCE_OPTIONS: ["/user-guide/querying/query-parameters#Value-Source-Options", "目录：参数待选值"],
+    SHARE_DASHBOARD: ["/user-guide/dashboards/sharing-dashboards", "目录：共享和嵌入报表"],
+    AUTHENTICATION_OPTIONS: ["/user-guide/users/authentication-options", "目录：权限认证"],
+    USAGE_DATA_SHARING: ["/open-source/admin-guide/usage-data", "帮助：匿名共享使用统计数据"],
+    DS_ATHENA: ["/data-sources/amazon-athena-setup", "目录：配置Amazon Athena"],
+    DS_BIGQUERY: ["/data-sources/bigquery-setup", "目录：配置BigQuery"],
+    DS_URL: ["/data-sources/querying-urls", "目录：配置URL网络数据接口"],
+    DS_MONGODB: ["/data-sources/mongodb-setup", "目录：如何设置MongoDB"],
     DS_GOOGLE_SPREADSHEETS: [
       "/data-sources/querying-a-google-spreadsheet",
-      "Guide: Help Setting up Google Spreadsheets",
+      "目录：如何设置Google Spreadsheets",
     ],
-    DS_GOOGLE_ANALYTICS: ["/data-sources/google-analytics-setup", "Guide: Help Setting up Google Analytics"],
-    DS_AXIBASETSD: ["/data-sources/axibase-time-series-database", "Guide: Help Setting up Axibase Time Series"],
-    DS_RESULTS: ["/user-guide/querying/query-results-data-source", "Guide: Help Setting up Query Results"],
-    ALERT_SETUP: ["/user-guide/alerts/setting-up-an-alert", "Guide: Setting Up a New Alert"],
-    MAIL_CONFIG: ["/open-source/setup/#Mail-Configuration", "Guide: Mail Configuration"],
-    ALERT_NOTIF_TEMPLATE_GUIDE: ["/user-guide/alerts/custom-alert-notifications", "Guide: Custom Alerts Notifications"],
-    FAVORITES: ["/user-guide/querying/favorites-tagging/#Favorites", "Guide: Favorites"],
+    DS_GOOGLE_ANALYTICS: ["/data-sources/google-analytics-setup", "目录：如何设置Google Analytics"],
+    DS_AXIBASETSD: ["/data-sources/axibase-time-series-database", "目录：如何设置Axibase时间系列数据库"],
+    DS_RESULTS: ["/user-guide/querying/query-results-data-source", "目录：如何设置查询结果运算数据源"],
+    ALERT_SETUP: ["/user-guide/alerts/setting-up-an-alert", "目录：如何设置提醒"],
+    MAIL_CONFIG: ["/open-source/setup/#Mail-Configuration", "目录：配置邮件服务器"],
+    ALERT_NOTIF_TEMPLATE_GUIDE: ["/user-guide/alerts/custom-alert-notifications", "目录：自定义提醒通知"],
+    FAVORITES: ["/user-guide/querying/favorites-tagging/#Favorites", "目录：关注报表或视图"],
     MANAGE_PERMISSIONS: [
       "/user-guide/querying/writing-queries#Managing-Query-Permissions",
-      "Guide: Managing Query Permissions",
+      "目录：设置查询权限",
     ],
-    NUMBER_FORMAT_SPECS: ["/user-guide/visualizations/formatting-numbers", "Formatting Numbers"],
-    GETTING_STARTED: ["/user-guide/getting-started", "Guide: Getting Started"],
-    DASHBOARDS: ["/user-guide/dashboards", "Guide: Dashboards"],
-    QUERIES: ["/user-guide/querying", "Guide: Queries"],
-    ALERTS: ["/user-guide/alerts", "Guide: Alerts"],
+    NUMBER_FORMAT_SPECS: ["/user-guide/visualizations/formatting-numbers", "格式化数字"],
+    GETTING_STARTED: ["/user-guide/getting-started", "目录：开始"],
+    DASHBOARDS: ["/user-guide/dashboards", "目录：报表"],
+    QUERIES: ["/help/user-guide/querying", "目录：查询"],
+    ALERTS: ["/user-guide/alerts", "目录：提醒"],
   },
   ([url, title]) => [DOMAIN + HELP_PATH + url, title]
 );
@@ -231,9 +231,9 @@ export function helpTriggerWithTypes(types, allowedDomains = [], drawerClassName
                   <br />
                   {/* eslint-disable-next-line react/jsx-no-target-blank */}
                   <Link href={this.state.error} target="_blank" rel="noopener">
-                    Click here
+                    点击这里
                   </Link>{" "}
-                  to open the page in a new window.
+                  在新窗口打开更多信息。
                 </BigMessage>
               )}
             </div>

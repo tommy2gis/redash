@@ -21,7 +21,7 @@ export default function Editor({
       {/* @ts-expect-error ts-migrate(2745) FIXME: This JSX tag's 'children' prop expects type 'never... Remove this comment to see the full error message */}
       <Section>
         <Input
-          label="X Axis Label"
+          label="X轴标签"
           data-test="BoxPlot.XAxisLabel"
           value={options.xAxisLabel}
           onChange={(event: any) => onXAxisLabelChanged(event.target.value)}
@@ -31,7 +31,7 @@ export default function Editor({
       {/* @ts-expect-error ts-migrate(2745) FIXME: This JSX tag's 'children' prop expects type 'never... Remove this comment to see the full error message */}
       <Section>
         <Input
-          label="Y Axis Label"
+          label="Y轴标签"
           data-test="BoxPlot.YAxisLabel"
           value={options.yAxisLabel}
           onChange={(event: any) => onYAxisLabelChanged(event.target.value)}

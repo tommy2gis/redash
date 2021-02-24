@@ -50,7 +50,7 @@ export default function QueryExecutionMetadata({
                 title={
                   "Result truncated to " +
                   queryResultData.rows.length +
-                  " rows. Databricks may truncate query results that are unstably large."
+                  " 条记录。当查询结果集超大时，Redash将会截断查询结果集。"
                 }>
                 <WarningTwoTone twoToneColor="#FF9800" />
               </Tooltip>
@@ -62,10 +62,10 @@ export default function QueryExecutionMetadata({
           {!isQueryExecuting && (
             <React.Fragment>
               <strong>{durationHumanize(queryResultData.runtime)}</strong>
-              <span className="hidden-xs"> runtime</span>
+              <span className="hidden-xs"> 耗时</span>
             </React.Fragment>
           )}
-          {isQueryExecuting && <span>Running&hellip;</span>}
+          {isQueryExecuting && <span>运行中&hellip;</span>}
         </span>
         {queryResultData.metadata.data_scanned && (
           <span className="m-l-5">
@@ -76,7 +76,7 @@ export default function QueryExecutionMetadata({
       </span>
       <div>
         <span className="m-r-10">
-          <span className="hidden-xs">Refreshed </span>
+          <span className="hidden-xs">刷新时间：</span>
           <strong>
             <TimeAgo date={queryResultData.retrievedAt} placeholder="-" />
           </strong>

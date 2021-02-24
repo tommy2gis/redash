@@ -27,7 +27,7 @@ function ApiKeyDialog({ dialog, ...props }) {
       })
       .catch(() => {
         setUpdatingApiKey(false);
-        notification.error("Failed to update API key");
+        notification.error("更新API key失败。");
       });
   }, [query]);
 
@@ -40,7 +40,7 @@ function ApiKeyDialog({ dialog, ...props }) {
   );
 
   return (
-    <Modal {...dialog.props} width={600} footer={<Button onClick={() => dialog.close(query)}>Close</Button>}>
+    <Modal {...dialog.props} width={600} footer={<Button onClick={() => dialog.close(query)}>关闭</Button>}>
       <div className="query-api-key-dialog-wrapper">
         <h5>API Key</h5>
         <div className="m-b-20">
@@ -48,19 +48,19 @@ function ApiKeyDialog({ dialog, ...props }) {
             <Input readOnly value={query.api_key} />
             {policy.canEdit(query) && (
               <Button disabled={updatingApiKey} loading={updatingApiKey} onClick={regenerateQueryApiKey}>
-                Regenerate
+                重新创建
               </Button>
             )}
           </Input.Group>
         </div>
 
-        <h5>Example API Calls:</h5>
+        <h5>API调用示例：</h5>
         <div className="m-b-10">
-          <label>Results in CSV format:</label>
+          <label>结果用CSV格式输出：</label>
           <CodeBlock copyable>{csvUrl}</CodeBlock>
         </div>
         <div>
-          <label>Results in JSON format:</label>
+          <label>结果用JSON格式输出：</label>
           <CodeBlock copyable>{jsonUrl}</CodeBlock>
         </div>
       </div>
