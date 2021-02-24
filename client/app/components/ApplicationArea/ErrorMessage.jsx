@@ -9,17 +9,17 @@ import { ErrorMessageDetails } from "@/components/ApplicationArea/ErrorMessageDe
 function getErrorMessageByStatus(status, defaultMessage) {
   switch (status) {
     case 404:
-      return "网页不存在。";
+      return "It seems like the page you're looking for cannot be found.";
     case 401:
     case 403:
-      return "没有权限。";
+      return "It seems like you don’t have permission to see this page.";
     default:
       return defaultMessage;
   }
 }
 
 function getErrorMessage(error) {
-  const message = "系统出错，请刷新重试或者联系系统管理员！";
+  const message = "It seems like we encountered an error. Try refreshing this page or contact your administrator.";
   if (isObject(error)) {
     // HTTP errors
     if (error.isAxiosError && isObject(error.response)) {

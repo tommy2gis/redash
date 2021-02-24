@@ -16,7 +16,7 @@ const SortableBodyRow = sortableElement((props: any) => <tr {...props} />);
 function getTableColumns(options: any, updateSeriesOption: any, debouncedUpdateSeriesOption: any) {
   const result = [
     {
-      title: "顺序",
+      title: "Order",
       dataIndex: "zIndex",
       render: (unused: any, item: any) => (
         <span className="series-settings-order">
@@ -26,7 +26,7 @@ function getTableColumns(options: any, updateSeriesOption: any, debouncedUpdateS
       ),
     },
     {
-      title: "标题",
+      title: "Label",
       dataIndex: "name",
       render: (unused: any, item: any) => (
         <Input
@@ -42,7 +42,7 @@ function getTableColumns(options: any, updateSeriesOption: any, debouncedUpdateS
   if (!includes(["pie", "heatmap"], options.globalSeriesType)) {
     if (!options.swappedAxes) {
       result.push({
-        title: "Y轴",
+        title: "Y Axis",
         dataIndex: "yAxis",
         render: (unused, item) => (
           <Radio.Group
@@ -50,10 +50,10 @@ function getTableColumns(options: any, updateSeriesOption: any, debouncedUpdateS
             value={item.yAxis === 1 ? 1 : 0}
             onChange={event => updateSeriesOption(item.key, "yAxis", event.target.value)}>
             <Radio value={0} data-test={`Chart.Series.${item.key}.UseLeftAxis`}>
-              左侧
+              left
             </Radio>
             <Radio value={1} data-test={`Chart.Series.${item.key}.UseRightAxis`}>
-              右侧
+              right
             </Radio>
           </Radio.Group>
         ),
@@ -61,7 +61,7 @@ function getTableColumns(options: any, updateSeriesOption: any, debouncedUpdateS
     }
 
     result.push({
-      title: "类型",
+      title: "Type",
       dataIndex: "type",
       render: (unused, item) => (
         <ChartTypeSelect

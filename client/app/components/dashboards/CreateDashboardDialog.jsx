@@ -37,9 +37,9 @@ function CreateDashboardDialog({ dialog }) {
     <Modal
       {...dialog.props}
       {...(isCreateDashboardEnabled ? {} : { footer: null })}
-      title="新建报表"
-      okText="保存"
-      cancelText="取消"
+      title="New Dashboard"
+      okText="Save"
+      cancelText="Close"
       okButtonProps={{
         disabled: !isValid || saveInProgress,
         loading: saveInProgress,
@@ -59,7 +59,7 @@ function CreateDashboardDialog({ dialog }) {
           defaultValue={name}
           onChange={handleNameChange}
           onPressEnter={save}
-          placeholder="报表名称"
+          placeholder="Dashboard Name"
           disabled={saveInProgress}
           autoFocus
         />

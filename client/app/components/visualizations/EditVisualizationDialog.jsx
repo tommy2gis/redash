@@ -1,4 +1,4 @@
-import { isEqual, extend, map, findIndex, filter, pick, omit } from "lodash";
+import { isEqual, extend, map, sortBy, findIndex, filter, pick, omit } from "lodash";
 import React, { useState, useMemo, useRef, useEffect } from "react";
 import PropTypes from "prop-types";
 import Modal from "antd/lib/modal";
@@ -40,11 +40,11 @@ function saveVisualization(visualization) {
 
   return Visualization.save(visualization)
     .then(result => {
-      notification.success("视图保存成功！");
+      notification.success("Visualization saved");
       return result;
     })
     .catch(error => {
-      notification.error("视图未能保存。");
+      notification.error("Visualization could not be saved");
       return Promise.reject(error);
     });
 }
@@ -53,10 +53,10 @@ function confirmDialogClose(isDirty) {
   return new Promise((resolve, reject) => {
     if (isDirty) {
       Modal.confirm({
-        title: "视图编辑",
-        content: "确定不保存退出吗?",
-        okText: "确定",
-        cancelText: "取消",
+        title: "Visualization Editor",
+        content: "Are you sure you want to close the editor without saving?",
+        okText: "Yes",
+        cancelText: "No",
         onOk: () => resolve(),
         onCancel: () => reject(),
       });
@@ -153,16 +153,15 @@ function EditVisualizationDialog({ dialog, visualization, query, queryResult }) 
   // When editing existing visualization chart type selector is disabled, so add only existing visualization's
   // descriptor there (to properly render the component). For new visualizations show all types except of deprecated
   const availableVisualizations = isNew
-    ? filter(registeredVisualizations, vis => !vis.isDeprecated)
+    ? filter(sortBy(registeredVisualizations, ["name"]), vis => !vis.isDeprecated)
     : pick(registeredVisualizations, [type]);
 
   return (
     <Modal
       {...dialog.props}
       wrapClassName="ant-modal-fullscreen"
-      title="视图编辑"
-      okText="保存"
-      cancelText="取消"
+      title="Visualization Editor"
+      okText="Save"
       okButtonProps={{
         loading: saveInProgress,
         disabled: saveInProgress,
@@ -173,7 +172,7 @@ function EditVisualizationDialog({ dialog, visualization, query, queryResult }) 
       <div className="edit-visualization-dialog">
         <div className="visualization-settings">
           <div className="m-b-15">
-            <label htmlFor="visualization-type">视图类型</label>
+            <label htmlFor="visualization-type">Visualization Type</label>
             <Select
               data-test="VisualizationType"
               id="visualization-type"
@@ -189,7 +188,7 @@ function EditVisualizationDialog({ dialog, visualization, query, queryResult }) 
             </Select>
           </div>
           <div className="m-b-15">
-            <label htmlFor="visualization-name">视图名称</label>
+            <label htmlFor="visualization-name">Visualization Name</label>
             <Input
               data-test="VisualizationName"
               id="visualization-name"
@@ -210,7 +209,7 @@ function EditVisualizationDialog({ dialog, visualization, query, queryResult }) 
         </div>
         <div className="visualization-preview">
           <label htmlFor="visualization-preview" className="invisible hidden-xs">
-            预览
+            Preview
           </label>
           <Filters filters={filters} onChange={setFilters} />
           <div className="scrollbox" data-test="VisualizationPreview">

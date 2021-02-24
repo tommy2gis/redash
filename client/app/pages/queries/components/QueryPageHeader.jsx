@@ -90,7 +90,7 @@ export default function QueryPageHeader({
             isEnabled: !queryFlags.isNew && queryFlags.canFork && !isDuplicating,
             title: (
               <React.Fragment>
-                复制
+                Fork
                 <i className="fa fa-external-link m-l-5" />
               </React.Fragment>
             ),
@@ -100,31 +100,31 @@ export default function QueryPageHeader({
         {
           archive: {
             isAvailable: !queryFlags.isNew && queryFlags.canEdit && !queryFlags.isArchived,
-            title: "归档",
+            title: "Archive",
             onClick: archiveQuery,
           },
           managePermissions: {
             isAvailable:
               !queryFlags.isNew && queryFlags.canEdit && !queryFlags.isArchived && clientConfig.showPermissionsControl,
-            title: "权限管理",
+            title: "Manage Permissions",
             onClick: openPermissionsEditorDialog,
           },
           publish: {
             isAvailable:
               !isDesktop && queryFlags.isDraft && !queryFlags.isArchived && !queryFlags.isNew && queryFlags.canEdit,
-            title: "发布",
+            title: "Publish",
             onClick: publishQuery,
           },
           unpublish: {
             isAvailable: !clientConfig.disablePublish && !queryFlags.isNew && queryFlags.canEdit && !queryFlags.isDraft,
-            title: "草稿",
+            title: "Unpublish",
             onClick: unpublishQuery,
           },
         },
         {
           showAPIKey: {
             isAvailable: !clientConfig.disablePublicUrls && !queryFlags.isNew,
-            title: "显示 API Key",
+            title: "Show API Key",
             onClick: openApiKeyDialog,
           },
         },
@@ -173,7 +173,7 @@ export default function QueryPageHeader({
         {headerExtra}
         {isDesktop && queryFlags.isDraft && !queryFlags.isArchived && !queryFlags.isNew && queryFlags.canEdit && (
           <Button className="m-r-5" onClick={publishQuery}>
-            <i className="fa fa-paper-plane m-r-5" /> 发布
+            <i className="fa fa-paper-plane m-r-5" /> Publish
           </Button>
         )}
 
@@ -182,7 +182,7 @@ export default function QueryPageHeader({
             {!sourceMode && queryFlags.canEdit && (
               <Link.Button className="m-r-5" href={query.getUrl(true, selectedVisualization)}>
                 <i className="fa fa-pencil-square-o" aria-hidden="true" />
-                <span className="m-l-5">编辑查询</span>
+                <span className="m-l-5">Edit Source</span>
               </Link.Button>
             )}
             {sourceMode && (
@@ -191,7 +191,7 @@ export default function QueryPageHeader({
                 href={query.getUrl(false, selectedVisualization)}
                 data-test="QueryPageShowResultOnly">
                 <i className="fa fa-table" aria-hidden="true" />
-                <span className="m-l-5">仅显示结果</span>
+                <span className="m-l-5">Show Results Only</span>
               </Link.Button>
             )}
           </span>

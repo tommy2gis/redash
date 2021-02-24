@@ -14,7 +14,7 @@ class Sqlite(BaseSQLQueryRunner):
     def configuration_schema(cls):
         return {
             "type": "object",
-            "properties": {"dbpath": {"type": "string", "title": "数据库路径"}},
+            "properties": {"dbpath": {"type": "string", "title": "Database Path"}},
             "required": ["dbpath"],
         }
 

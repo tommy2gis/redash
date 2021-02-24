@@ -1,4 +1,4 @@
-import { isString, isNumber, isObject, isFinite, each, map, extend, uniq, filter, first } from "lodash";
+import { isString, isObject, isFinite, each, map, extend, uniq, filter, first } from "lodash";
 import chroma from "chroma-js";
 import { createNumberFormatter as createFormatter } from "@/lib/value-format";
 
@@ -54,9 +54,6 @@ export function getValueForFeature(feature: any, data: any, targetField: any) {
   const code = feature.properties[targetField];
   if (isString(code) && isObject(data[code])) {
     return data[code].value;
-  }
-  if (isNumber(code) && isObject(data[code.toString()])) {
-    return data[code.toString()].value;
   }
   return undefined;
 }

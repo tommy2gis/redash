@@ -2,7 +2,7 @@ import settingsMenu from "./settingsMenu";
 
 const dataSourcesItem = {
   permission: "admin",
-  title: "数据源",
+  title: "Data Sources",
   path: "data_sources",
 };
 

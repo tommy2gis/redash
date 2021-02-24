@@ -14,13 +14,13 @@ export default function Layout({ activeTab, children }) {
         <div className="bg-white tiled">
           <Menu selectedKeys={[activeTab]} selectable={false} mode="horizontal">
             <Menu.Item key="system_status">
-              <Link href="admin/status">系统状态</Link>
+              <Link href="admin/status">System Status</Link>
             </Menu.Item>
             <Menu.Item key="jobs">
-              <Link href="admin/queries/jobs">任务队列状态</Link>
+              <Link href="admin/queries/jobs">RQ Status</Link>
             </Menu.Item>
             <Menu.Item key="outdated_queries">
-              <Link href="admin/queries/outdated">超期的查询</Link>
+              <Link href="admin/queries/outdated">Outdated Queries</Link>
             </Menu.Item>
           </Menu>
           {children}

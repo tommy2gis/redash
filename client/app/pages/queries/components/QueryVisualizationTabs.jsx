@@ -17,7 +17,7 @@ function EmptyState({ title, message, refreshButton }) {
     <div className="query-results-empty-state">
       <div className="empty-state-content">
         <div>
-          <img src="static/images/illustrations/no-query-results.svg" alt="查询结果没有记录" />
+          <img src="static/images/illustrations/no-query-results.svg" alt="No Query Results Illustration" />
         </div>
         <h3>{title}</h3>
         <div className="m-b-20">{message}</div>
@@ -42,10 +42,9 @@ function TabWithDeleteButton({ visualizationName, canDelete, onDelete, ...props 
     e => {
       e.stopPropagation();
       Modal.confirm({
-        title: "删除视图",
-        content: "确定删除查询视图？",
-        okText: "删除",
-        cancelText: "取消",
+        title: "Delete Visualization",
+        content: "Are you sure you want to delete this visualization?",
+        okText: "Delete",
         okType: "danger",
         onOk: onDelete,
         maskClosable: true,
@@ -77,7 +76,7 @@ TabWithDeleteButton.defaultProps = { canDelete: false, onDelete: () => {} };
 const defaultVisualizations = [
   {
     type: "TABLE",
-    name: "表格",
+    name: "Table",
     id: null,
     options: {},
   },
@@ -113,7 +112,7 @@ export default function QueryVisualizationTabs({
         type="link"
         onClick={() => onAddVisualization()}>
         <i className="fa fa-plus" />
-        <span className="m-l-5 hidden-xs">新增视图</span>
+        <span className="m-l-5 hidden-xs">Add Visualization</span>
       </Button>
     );
   }
@@ -155,11 +154,11 @@ export default function QueryVisualizationTabs({
             />
           ) : (
             <EmptyState
-              title="查询结果没有记录"
+              title="Query has no result"
               message={
                 canRefresh
-                  ? "请执行或刷新查询。"
-                  : "没有权限执行或刷新查询。"
+                  ? "Execute/Refresh the query to show results."
+                  : "You do not have a permission to execute/refresh this query."
               }
               refreshButton={refreshButton}
             />

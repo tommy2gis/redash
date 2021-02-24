@@ -85,7 +85,7 @@ export default function DesktopNavbar() {
           <Menu.Item key="dashboards" className={activeState.dashboards ? "navbar-active-item" : null}>
             <Link href="dashboards">
               <DesktopOutlinedIcon />
-              <span className="desktop-navbar-label">报表</span>
+              <span className="desktop-navbar-label">Dashboards</span>
             </Link>
           </Menu.Item>
         )}
@@ -93,7 +93,7 @@ export default function DesktopNavbar() {
           <Menu.Item key="queries" className={activeState.queries ? "navbar-active-item" : null}>
             <Link href="queries">
               <CodeOutlinedIcon />
-              <span className="desktop-navbar-label">查询</span>
+              <span className="desktop-navbar-label">Queries</span>
             </Link>
           </Menu.Item>
         )}
@@ -101,7 +101,7 @@ export default function DesktopNavbar() {
           <Menu.Item key="alerts" className={activeState.alerts ? "navbar-active-item" : null}>
             <Link href="alerts">
               <AlertOutlinedIcon />
-              <span className="desktop-navbar-label">提醒</span>
+              <span className="desktop-navbar-label">Alerts</span>
             </Link>
           </Menu.Item>
         )}
@@ -116,27 +116,27 @@ export default function DesktopNavbar() {
             title={
               <React.Fragment>
                 <PlusOutlinedIcon />
-                <span className="desktop-navbar-label">新建</span>
+                <span className="desktop-navbar-label">Create</span>
               </React.Fragment>
             }>
             {canCreateQuery && (
               <Menu.Item key="new-query">
                 <Link href="queries/new" data-test="CreateQueryMenuItem">
-                  新建查询
+                  New Query
                 </Link>
               </Menu.Item>
             )}
             {canCreateDashboard && (
               <Menu.Item key="new-dashboard">
                 <a data-test="CreateDashboardMenuItem" onMouseUp={() => CreateDashboardDialog.showModal()}>
-                  新建报表
+                  New Dashboard
                 </a>
               </Menu.Item>
             )}
             {canCreateAlert && (
               <Menu.Item key="new-alert">
                 <Link data-test="CreateAlertMenuItem" href="alerts/new">
-                  新建提醒
+                  New Alert
                 </Link>
               </Menu.Item>
             )}
@@ -148,14 +148,14 @@ export default function DesktopNavbar() {
         <Menu.Item key="help">
           <HelpTrigger showTooltip={false} type="HOME">
             <QuestionCircleOutlinedIcon />
-            <span className="desktop-navbar-label">帮助</span>
+            <span className="desktop-navbar-label">Help</span>
           </HelpTrigger>
         </Menu.Item>
         {firstSettingsTab && (
           <Menu.Item key="settings" className={activeState.dataSources ? "navbar-active-item" : null}>
             <Link href={firstSettingsTab.path} data-test="SettingsLink">
               <SettingOutlinedIcon />
-              <span className="desktop-navbar-label">设置</span>
+              <span className="desktop-navbar-label">Settings</span>
             </Link>
           </Menu.Item>
         )}
@@ -171,17 +171,17 @@ export default function DesktopNavbar() {
             </span>
           }>
           <Menu.Item key="profile">
-            <Link href="users/me">个人设置</Link>
+            <Link href="users/me">Profile</Link>
           </Menu.Item>
           {currentUser.hasPermission("super_admin") && (
             <Menu.Item key="status">
-              <Link href="admin/status">系统状态</Link>
+              <Link href="admin/status">System Status</Link>
             </Menu.Item>
           )}
           <Menu.Divider />
           <Menu.Item key="logout">
             <a data-test="LogOutButton" onClick={() => Auth.logout()}>
-              退出
+              Log out
             </a>
           </Menu.Item>
           <Menu.Divider />

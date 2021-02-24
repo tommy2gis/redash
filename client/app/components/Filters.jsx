@@ -113,13 +113,13 @@ function Filters({ filters, onChange }) {
                     {filter.multiple && [
                       <Select.Option key={NONE_VALUES} data-test="ClearOption">
                         <i className="fa fa-square-o m-r-5" />
-                        清除
+                        Clear
                       </Select.Option>,
                       <Select.Option key={ALL_VALUES} data-test="SelectAllOption">
                         <i className="fa fa-check-square-o m-r-5" />
-                        全选
+                        Select All
                       </Select.Option>,
-                      <Select.OptGroup key="Values" label="值：">
+                      <Select.OptGroup key="Values" title="Values">
                         {options}
                       </Select.OptGroup>,
                     ]}

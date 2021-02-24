@@ -26,22 +26,17 @@ function VisualizationSelect({ query, visualization, onChange }) {
     return null;
   }
 
-  const groups = {"BOXPLOT":"箱线图","CHART":"图表","CHOROPLETH":"地理分布图",
-    "COHORT":"同期群分析","COUNTER":"计数器","DETAILS":"记录明细显示","FUNNEL":"漏斗分析",
-    "MAP":"地理标记","PIVOT":"旋转表格","SANKEY":"桑基图","SUNBURST_SEQUENCE":"旭辉图",
-    "TABLE":"表格","WORD_CLOUD":"词云图"};
-
   return (
     <div>
       <div className="form-group">
-        <label htmlFor="choose-visualization">选择视图</label>
+        <label htmlFor="choose-visualization">Choose Visualization</label>
         <Select
           id="choose-visualization"
           className="w-100"
           value={visualization ? visualization.id : undefined}
           onChange={handleChange}>
           {map(visualizationGroups, (visualizations, groupKey) => (
-            <Select.OptGroup key={groupKey} label={groups[groupKey]}>
+            <Select.OptGroup key={groupKey} label={groupKey}>
               {map(visualizations, visualization => (
                 <Select.Option key={`${visualization.id}`} value={visualization.id}>
                   {visualization.name}
@@ -108,7 +103,7 @@ function AddWidgetDialog({ dialog, dashboard }) {
 
   const saveWidget = useCallback(() => {
     dialog.close({ visualization: selectedVisualization, parameterMappings }).catch(() => {
-      notification.error("部件未能添加！");
+      notification.error("Widget could not be added");
     });
   }, [dialog, selectedVisualization, parameterMappings]);
 
@@ -117,14 +112,13 @@ function AddWidgetDialog({ dialog, dashboard }) {
   return (
     <Modal
       {...dialog.props}
-      title="添加部件"
+      title="Add Widget"
       onOk={saveWidget}
       okButtonProps={{
         ...dialog.props.okButtonProps,
         disabled: !selectedQuery || dialog.props.okButtonProps.disabled,
       }}
-      okText="添加至报表"
-      cancelText="取消"
+      okText="Add to Dashboard"
       width={700}>
       <div data-test="AddWidgetDialog">
         <QuerySelector onChange={query => selectQuery(query ? query.id : null)} />
@@ -139,7 +133,7 @@ function AddWidgetDialog({ dialog, dashboard }) {
 
         {parameterMappings.length > 0 && [
           <label key="parameters-title" htmlFor="parameter-mappings">
-            参数
+            Parameters
           </label>,
           <ParameterMappingListInput
             key="parameters-list"

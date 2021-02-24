@@ -45,11 +45,11 @@ class AlertsList extends React.Component {
         </div>
       ),
       {
-        title: "名称",
+        title: "Name",
         field: "name",
       }
     ),
-    Columns.custom((text, item) => item.user.name, { title: "创建人", width: "1%" }),
+    Columns.custom((text, item) => item.user.name, { title: "Created By", width: "1%" }),
     Columns.custom.sortable(
       (text, alert) => (
         <div>
@@ -57,14 +57,14 @@ class AlertsList extends React.Component {
         </div>
       ),
       {
-        title: "状态",
+        title: "State",
         field: "state",
         width: "1%",
         className: "text-nowrap",
       }
     ),
-    Columns.timeAgo.sortable({ title: "最后更新时间", field: "updated_at", width: "1%" }),
-    Columns.dateTime.sortable({ title: "创建时间", field: "created_at", width: "1%" }),
+    Columns.timeAgo.sortable({ title: "Last Updated At", field: "updated_at", width: "1%" }),
+    Columns.dateTime.sortable({ title: "Created At", field: "created_at", width: "1%" }),
   ];
 
   render() {
@@ -79,7 +79,7 @@ class AlertsList extends React.Component {
               currentUser.hasPermission("list_alerts") ? (
                 <Link.Button block type="primary" href="alerts/new">
                   <i className="fa fa-plus m-r-5" />
-                  新建提醒
+                  New Alert
                 </Link.Button>
               ) : null
             }
@@ -90,7 +90,7 @@ class AlertsList extends React.Component {
                 <EmptyState
                   icon="fa fa-bell-o"
                   illustration="alert"
-                  description="接收事件通知"
+                  description="Get notified on certain events"
                   helpMessage={<EmptyStateHelpMessage helpTriggerType="ALERTS" />}
                   showAlertStep
                 />
@@ -141,7 +141,7 @@ routes.register(
   "Alerts.List",
   routeWithUserSession({
     path: "/alerts",
-    title: "提醒",
+    title: "Alerts",
     render: pageProps => <AlertsListPage {...pageProps} currentPage="alerts" />,
   })
 );

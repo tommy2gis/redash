@@ -91,7 +91,7 @@ export default class QueryBasedParameterInput extends React.Component {
           options={map(options, ({ value, name }) => ({ label: String(name), value }))}
           showSearch
           showArrow
-          notFoundContent={isEmpty(options) ? "没有可选数据" : null}
+          notFoundContent={isEmpty(options) ? "No options available" : null}
           {...otherProps}
         />
       </span>

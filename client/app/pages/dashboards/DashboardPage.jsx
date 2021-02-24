@@ -1,4 +1,4 @@
-import { has, isEmpty, map } from "lodash";
+import { isEmpty, map } from "lodash";
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import cx from "classnames";
@@ -32,7 +32,7 @@ function DashboardSettings({ dashboardConfiguration }) {
         checked={!!dashboard.dashboard_filters_enabled}
         onChange={({ target }) => updateDashboard({ dashboard_filters_enabled: target.checked })}
         data-test="DashboardFiltersCheckbox">
-        使用报表级别过滤
+        Use Dashboard Level Filters
       </Checkbox>
     </div>
   );
@@ -49,15 +49,16 @@ function AddWidgetContainer({ dashboardConfiguration, className, ...props }) {
       <h2>
         <i className="zmdi zmdi-widgets" />
         <span className="hidden-xs hidden-sm">
-          独立的查询视图部件或文本框，可以连续放置到报表上。
+          Widgets are individual query visualizations or text boxes you can place on your dashboard in various
+          arrangements.
         </span>
       </h2>
       <div>
         <Button className="m-r-15" onClick={showAddTextboxDialog} data-test="AddTextboxButton">
-          新增文本框
+          Add Textbox
         </Button>
         <Button type="primary" onClick={showAddWidgetDialog} data-test="AddWidgetButton">
-          添加部件
+          Add Widget
         </Button>
       </div>
     </div>
@@ -94,9 +95,6 @@ function DashboardComponent(props) {
     updateDashboard({ options: { globalParamOrder: paramOrder } });
   };
 
-  const hideHeader = has(location.search, "hide_header");
-  const hideParametersUI = has(location.search, "hide_parameters");
-
   useEffect(() => {
     if (pageContainer) {
       const unobserve = resizeObserver(pageContainer, () => {
@@ -120,7 +118,6 @@ function DashboardComponent(props) {
 
   return (
     <div className="container" ref={setPageContainer} data-test={`DashboardId${dashboard.id}Container`}>
-      {!hideHeader && (
       <DashboardHeader
         dashboardConfiguration={dashboardConfiguration}
         headerExtra={
@@ -131,8 +128,7 @@ function DashboardComponent(props) {
           />
         }
       />
-      )}
-      {!hideParametersUI && !isEmpty(globalParameters) && (
+      {!isEmpty(globalParameters) && (
         <div className="dashboard-parameters m-b-10 p-15 bg-white tiled" data-test="DashboardParameters">
           <Parameters
             parameters={globalParameters}
@@ -142,7 +138,7 @@ function DashboardComponent(props) {
           />
         </div>
       )}
-      {!hideParametersUI && !isEmpty(filters) && (
+      {!isEmpty(filters) && (
         <div className="m-b-10 p-15 bg-white tiled" data-test="DashboardFilters">
           <Filters filters={filters} onChange={setFilters} />
         </div>

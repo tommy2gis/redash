@@ -16,10 +16,10 @@ class SaveQueryError extends Error {
 class SaveQueryConflictError extends SaveQueryError {
   constructor() {
     super(
-      "变更未能保存",
+      "Changes not saved",
       <React.Fragment>
-        <div className="m-b-5">查询已被其它用户改变。</div>
-        <div>请自行复制保存变更，重新加载后再维护。</div>
+        <div className="m-b-5">It seems like the query has been modified by another user.</div>
+        <div>Please copy/backup your changes and reload this page.</div>
       </React.Fragment>
     );
   }
@@ -28,15 +28,14 @@ class SaveQueryConflictError extends SaveQueryError {
 function confirmOverwrite() {
   return new Promise((resolve, reject) => {
     Modal.confirm({
-      title: "覆盖查询",
+      title: "Overwrite Query",
       content: (
         <React.Fragment>
-          <div className="m-b-5">查询已被其它用户改变。</div>
-          <div>确定要覆盖查询吗？</div>
+          <div className="m-b-5">It seems like the query has been modified by another user.</div>
+          <div>Are you sure you want to overwrite the query with your version?</div>
         </React.Fragment>
       ),
-      okText: "覆盖",
-      cancelText: "取消",
+      okText: "Overwrite",
       okType: "danger",
       onOk: () => {
         resolve();
@@ -68,7 +67,7 @@ function doSaveQuery(data, { canOverwrite = false } = {}) {
       }
       return Promise.reject(new SaveQueryConflictError());
     }
-    return Promise.reject(new SaveQueryError("查询未能保存。"));
+    return Promise.reject(new SaveQueryError("Query could not be saved"));
   });
 }
 
@@ -76,7 +75,7 @@ export default function useUpdateQuery(query, onChange) {
   const handleChange = useImmutableCallback(onChange);
 
   return useCallback(
-    (data = null, { successMessage = "查询保存成功！" } = {}) => {
+    (data = null, { successMessage = "Query saved" } = {}) => {
       if (isObject(data)) {
         // Don't save new query with partial data
         if (query.isNew()) {

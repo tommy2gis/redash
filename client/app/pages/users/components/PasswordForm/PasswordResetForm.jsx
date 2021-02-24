@@ -25,7 +25,7 @@ export default function PasswordResetForm(props) {
   return (
     <DynamicComponent name="UserProfile.PasswordResetForm" {...props}>
       <Button className="w-100 m-t-10" onClick={sendPasswordReset} loading={loading}>
-        发送密码重置邮件
+        Send Password Reset Email
       </Button>
       <PasswordLinkAlert user={user} passwordLink={passwordLink} afterClose={() => setPasswordLink(null)} />
     </DynamicComponent>

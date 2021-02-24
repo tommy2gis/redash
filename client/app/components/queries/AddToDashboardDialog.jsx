@@ -50,7 +50,7 @@ function AddToDashboardDialog({ dialog, visualization }) {
           .toString(36)
           .substr(2, 10)}`;
         notification.success(
-          "部件已添加至报表！",
+          "Widget added to dashboard",
           <React.Fragment>
             <Link href={`${dashboard.url}`} onClick={() => notification.close(key)}>
               {dashboard.name}
@@ -61,7 +61,7 @@ function AddToDashboardDialog({ dialog, visualization }) {
         );
       })
       .catch(() => {
-        notification.error("部件添加不成功。");
+        notification.error("Widget not added.");
       })
       .finally(() => {
         setSaveInProgress(false);
@@ -73,13 +73,11 @@ function AddToDashboardDialog({ dialog, visualization }) {
   return (
     <Modal
       {...dialog.props}
-      title="添加至报表"
-      okText="确定"
-      cancelText="取消"
+      title="Add to Dashboard"
       okButtonProps={{ disabled: !selectedDashboard || saveInProgress, loading: saveInProgress }}
       cancelButtonProps={{ disabled: saveInProgress }}
       onOk={addWidgetToDashboard}>
-      <label htmlFor="add-to-dashboard-dialog-dashboard">请选择要将查询添加至的报表：</label>
+      <label htmlFor="add-to-dashboard-dialog-dashboard">Choose the dashboard to add this query to:</label>
 
       {!selectedDashboard && (
         <Input
@@ -87,7 +85,7 @@ function AddToDashboardDialog({ dialog, visualization }) {
           className="w-100"
           autoComplete="off"
           autoFocus
-          placeholder="按名称搜索报表"
+          placeholder="Search a dashboard by name"
           value={searchTerm}
           onChange={event => setSearchTerm(event.target.value)}
           suffix={

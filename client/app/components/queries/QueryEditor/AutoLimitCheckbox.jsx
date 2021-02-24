@@ -12,9 +12,9 @@ export default function AutoLimitCheckbox({ available, checked, onChange }) {
 
   let tooltipMessage = null;
   if (!available) {
-    tooltipMessage = "该类型数据源不可限制返回结果数。";
+    tooltipMessage = "Auto limiting is not available for this Data Source type.";
   } else {
-    tooltipMessage = "限制返回结果集为前1000行。";
+    tooltipMessage = "Auto limit results to first 1000 rows.";
   }
 
   return (
@@ -24,7 +24,7 @@ export default function AutoLimitCheckbox({ available, checked, onChange }) {
         disabled={!available}
         onClick={handleClick}
         checked={available && checked}>
-        返回前1000行记录
+        LIMIT 1000
       </Checkbox>
     </Tooltip>
   );

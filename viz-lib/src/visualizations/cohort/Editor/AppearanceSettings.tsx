@@ -15,7 +15,7 @@ export default function AppearanceSettings({
       <Section>
         <Input
           layout="horizontal"
-          label="时间标题"
+          label="Time Column Title"
           defaultValue={options.timeColumnTitle}
           onChange={(e: any) => debouncedOnOptionsChange({ timeColumnTitle: e.target.value })}
         />
@@ -24,7 +24,7 @@ export default function AppearanceSettings({
       <Section>
         <Input
           layout="horizontal"
-          label="统计值标题"
+          label="People Column Title"
           defaultValue={options.peopleColumnTitle}
           onChange={(e: any) => debouncedOnOptionsChange({ peopleColumnTitle: e.target.value })}
         />
@@ -35,7 +35,7 @@ export default function AppearanceSettings({
           layout="horizontal"
           label={
             <React.Fragment>
-              层级标题格式
+              Stage Column Title
               <ContextHelp placement="topRight" arrowPointAtCenter>
                 {/* @ts-expect-error ts-migrate(2322) FIXME: Type 'Element' is not assignable to type 'null | u... Remove this comment to see the full error message */}
                 <div>
@@ -55,7 +55,7 @@ export default function AppearanceSettings({
           layout="horizontal"
           label={
             <React.Fragment>
-              数字格式
+              Number Values Format
               <ContextHelp.NumberFormatSpecs />
             </React.Fragment>
           }
@@ -69,7 +69,7 @@ export default function AppearanceSettings({
           layout="horizontal"
           label={
             <React.Fragment>
-              百分比格式
+              Percent Values Format
               <ContextHelp.NumberFormatSpecs />
             </React.Fragment>
           }
@@ -82,7 +82,7 @@ export default function AppearanceSettings({
       <Section>
         <Input
           layout="horizontal"
-          label="无值提示符"
+          label="No Value Placeholder"
           defaultValue={options.noValuePlaceholder}
           onChange={(e: any) => debouncedOnOptionsChange({ noValuePlaceholder: e.target.value })}
         />
@@ -93,7 +93,7 @@ export default function AppearanceSettings({
         <Checkbox
           defaultChecked={options.showTooltips}
           onChange={event => onOptionsChange({ showTooltips: event.target.checked })}>
-          显示提示信息
+          Show Tooltips
         </Checkbox>
       </Section>
       {/* @ts-expect-error ts-migrate(2745) FIXME: This JSX tag's 'children' prop expects type 'never... Remove this comment to see the full error message */}
@@ -101,7 +101,7 @@ export default function AppearanceSettings({
         <Checkbox
           defaultChecked={options.percentValues}
           onChange={event => onOptionsChange({ percentValues: event.target.checked })}>
-          转换为百分比
+          Normalize Values to Percentage
         </Checkbox>
       </Section>
     </React.Fragment>

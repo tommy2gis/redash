@@ -86,7 +86,7 @@ function SelectItemsDialog({
   const save = useCallback(() => {
     dialog.close(selectedItems).catch(error => {
       if (error) {
-        notification.error("选择的条目保存失败。");
+        notification.error("Failed to save some of selected items.");
       }
     });
   }, [dialog, selectedItems]);
@@ -103,14 +103,14 @@ function SelectItemsDialog({
             {extraFooterContent}
           </span>
           <Button {...dialog.props.cancelButtonProps} onClick={dialog.dismiss}>
-            取消
+            Cancel
           </Button>
           <Button
             {...dialog.props.okButtonProps}
             onClick={save}
             disabled={selectedItems.length === 0 || dialog.props.okButtonProps.disabled}
             type="primary">
-            保存
+            Save
             {showCount && !isEmpty(selectedItems) ? ` (${size(selectedItems)})` : null}
           </Button>
         </div>
@@ -130,7 +130,7 @@ function SelectItemsDialog({
         <div className="flex-fill scrollbox">
           {isLoading && <LoadingState className="" />}
           {!isLoading && !hasResults && (
-            <BigMessage icon="fa-search" message="没有匹配的搜索结果。" className="" />
+            <BigMessage icon="fa-search" message="No items match your search." className="" />
           )}
           {!isLoading && hasResults && (
             <ItemsList
@@ -178,9 +178,9 @@ SelectItemsDialog.propTypes = {
 };
 
 SelectItemsDialog.defaultProps = {
-  dialogTitle: "添加",
-  inputPlaceholder: "搜索...",
-  selectedItemsTitle: "选取的条目",
+  dialogTitle: "Add Items",
+  inputPlaceholder: "Search...",
+  selectedItemsTitle: "Selected items",
   itemKey: item => item.id,
   renderItem: () => "",
   renderStagedItem: null, // hidden by default

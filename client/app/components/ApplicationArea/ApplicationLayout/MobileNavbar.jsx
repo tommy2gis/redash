@@ -31,42 +31,42 @@ export default function MobileNavbar({ getPopupContainer }) {
             <Menu mode="vertical" theme="dark" selectable={false} className="mobile-navbar-menu">
               {currentUser.hasPermission("list_dashboards") && (
                 <Menu.Item key="dashboards">
-                  <Link href="dashboards">报表</Link>
+                  <Link href="dashboards">Dashboards</Link>
                 </Menu.Item>
               )}
               {currentUser.hasPermission("view_query") && (
                 <Menu.Item key="queries">
-                  <Link href="queries">查询</Link>
+                  <Link href="queries">Queries</Link>
                 </Menu.Item>
               )}
               {currentUser.hasPermission("list_alerts") && (
                 <Menu.Item key="alerts">
-                  <Link href="alerts">提醒</Link>
+                  <Link href="alerts">Alerts</Link>
                 </Menu.Item>
               )}
               <Menu.Item key="profile">
-                <Link href="users/me">个人设置</Link>
+                <Link href="users/me">Edit Profile</Link>
               </Menu.Item>
               <Menu.Divider />
               {firstSettingsTab && (
                 <Menu.Item key="settings">
-                  <Link href={firstSettingsTab.path}>设置</Link>
+                  <Link href={firstSettingsTab.path}>Settings</Link>
                 </Menu.Item>
               )}
               {currentUser.hasPermission("super_admin") && (
                 <Menu.Item key="status">
-                  <Link href="admin/status">系统状态</Link>
+                  <Link href="admin/status">System Status</Link>
                 </Menu.Item>
               )}
               {currentUser.hasPermission("super_admin") && <Menu.Divider />}
               <Menu.Item key="help">
                 {/* eslint-disable-next-line react/jsx-no-target-blank */}
                 <Link href="https://redash.io/help" target="_blank" rel="noopener">
-                帮助
+                  Help
                 </Link>
               </Menu.Item>
               <Menu.Item key="logout" onClick={() => Auth.logout()}>
-                退出
+                Log out
               </Menu.Item>
             </Menu>
           }>

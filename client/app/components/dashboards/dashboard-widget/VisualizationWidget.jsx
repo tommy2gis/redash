@@ -32,39 +32,39 @@ function visualizationWidgetMenuOptions({ widget, canEditDashboard, onParameters
     <Menu.Item key="download_csv" disabled={isQueryResultEmpty}>
       {!isQueryResultEmpty ? (
         <Link href={downloadLink("csv")} download={downloadName("csv")} target="_self">
-          另存为CSV文件
+          Download as CSV File
         </Link>
       ) : (
-        "另存为CSV文件"
+        "Download as CSV File"
       )}
     </Menu.Item>,
     <Menu.Item key="download_tsv" disabled={isQueryResultEmpty}>
       {!isQueryResultEmpty ? (
         <Link href={downloadLink("tsv")} download={downloadName("tsv")} target="_self">
-          另存为TSV文件
+          Download as TSV File
         </Link>
       ) : (
-        "另存为TSV文件"
+        "Download as TSV File"
       )}
     </Menu.Item>,
     <Menu.Item key="download_excel" disabled={isQueryResultEmpty}>
       {!isQueryResultEmpty ? (
         <Link href={downloadLink("xlsx")} download={downloadName("xlsx")} target="_self">
-          另存为Excel文件
+          Download as Excel File
         </Link>
       ) : (
-        "另存为Excel文件"
+        "Download as Excel File"
       )}
     </Menu.Item>,
     (canViewQuery || canEditParameters) && <Menu.Divider key="divider" />,
     canViewQuery && (
       <Menu.Item key="view_query">
-        <Link href={widget.getQuery().getUrl(true, widget.visualization.id)}>查看查询定义</Link>
+        <Link href={widget.getQuery().getUrl(true, widget.visualization.id)}>View Query</Link>
       </Menu.Item>
     ),
     canEditParameters && (
       <Menu.Item key="edit_parameters" onClick={onParametersEdit}>
-        编辑参数
+        Edit Parameters
       </Menu.Item>
     ),
   ]);
@@ -274,7 +274,7 @@ class VisualizationWidget extends React.Component {
           <div className="body-row-auto scrollbox">
             {widgetQueryResult.getError() && (
               <div className="alert alert-danger m-5">
-                查询运行错误： <strong>{widgetQueryResult.getError()}</strong>
+                Error running query: <strong>{widgetQueryResult.getError()}</strong>
               </div>
             )}
           </div>

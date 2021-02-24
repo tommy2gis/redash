@@ -13,7 +13,7 @@ export function PreviewCard({ imageUrl, roundedImage, title, body, children, cla
         width="32"
         height="32"
         className={classNames({ "profile__image--settings": roundedImage }, "m-r-5")}
-        alt="图标"
+        alt="Logo/Avatar"
       />
       <div className="flex-fill">
         <div>{title}</div>

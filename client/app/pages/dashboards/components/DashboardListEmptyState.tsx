@@ -17,26 +17,26 @@ export interface DashboardListEmptyStateProps {
 
 export default function DashboardListEmptyState({ page, searchTerm, selectedTags }: DashboardListEmptyStateProps) {
   if (searchTerm !== "") {
-    return <BigMessage message="没有查询到任何记录。" icon="fa-search" />;
+    return <BigMessage message="Sorry, we couldn't find anything." icon="fa-search" />;
   }
   if (selectedTags.length > 0) {
     return <NoTaggedObjectsFound objectType="dashboards" tags={selectedTags} />;
   }
   switch (page) {
     case "favorites":
-      return <BigMessage message="显示我关注的报表。" icon="fa-star" />;
+      return <BigMessage message="Mark dashboards as Favorite to list them here." icon="fa-star" />;
     case "my":
       const my_msg = currentUser.hasPermission("create_dashboard") ? (
         <span>
           <Link.Button type="primary" size="small" onClick={() => CreateDashboardDialog.showModal()}>
-            新建我的第一张报表!
+            Create your first dashboard!
           </Link.Button>{" "}
           <HelpTrigger className="f-14" type="DASHBOARDS" showTooltip={false}>
-            需要帮助?
+            Need help?
           </HelpTrigger>
         </span>
       ) : (
-        <span>没有发现记录.</span>
+        <span>Sorry, we couldn't find anything.</span>
       );
       return <BigMessage icon="fa-search">{my_msg}</BigMessage>;
     default:
@@ -44,7 +44,7 @@ export default function DashboardListEmptyState({ page, searchTerm, selectedTags
         <DynamicComponent name="DashboardList.EmptyState">
           <EmptyState
             icon="zmdi zmdi-view-quilt"
-            description="看见大数据"
+            description="See the big picture"
             illustration="dashboard"
             helpMessage={<EmptyStateHelpMessage helpTriggerType="DASHBOARDS" />}
             showDashboardStep

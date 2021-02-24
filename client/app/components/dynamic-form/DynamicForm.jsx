@@ -30,9 +30,9 @@ const fieldRules = ({ type, required, minLength }) => {
   const emailTypeRule = type === "email";
 
   return [
-    requiredRule && { required, message: "必填项不能为空！" },
-    minLengthRule && { min: minLength, message: "内容太短！" },
-    emailTypeRule && { type: "email", message: "不是合法的电子邮箱格式！" },
+    requiredRule && { required, message: "This field is required." },
+    minLengthRule && { min: minLength, message: "This field is too short." },
+    emailTypeRule && { type: "email", message: "This field must be a valid email." },
   ].filter(rule => rule);
 };
 
@@ -73,30 +73,6 @@ function DynamicFormFields({ fields, feedbackIcons, form }) {
       };
     }
 
-/* 
-    renderUpload(field, props) {
-      const { getFieldDecorator, getFieldValue } = this.props.form;
-      const { name, initialValue } = field;
-  
-      const fileOptions = {
-        rules: fieldRules(field),
-        initialValue,
-        getValueFromEvent: this.base64File.bind(this, name),
-      };
-  
-      const disabled = getFieldValue(name) !== undefined && getFieldValue(name) !== initialValue;
-  
-      const upload = (
-        <Upload {...props} beforeUpload={() => false}>
-          <Button disabled={disabled}>
-            <Icon type="upload" /> 点击上载
-          </Button>
-        </Upload>
-      );
-  
-      return getFieldDecorator(name, fileOptions)(upload);
-    }
- */        
     return (
       <React.Fragment key={name}>
         <Form.Item {...formItemProps}>
@@ -224,7 +200,7 @@ export default function DynamicForm({
             block
             className="extra-options-button"
             onClick={() => setShowExtraFields(currentShowExtraFields => !currentShowExtraFields)}>
-            附加参数
+            Additional Settings
             <i className={cx("fa m-l-5", { "fa-caret-up": showExtraFields, "fa-caret-down": !showExtraFields })} />
           </Button>
           <Collapse collapsed={!showExtraFields} className="extra-options-content">
@@ -260,6 +236,6 @@ DynamicForm.defaultProps = {
   feedbackIcons: false,
   hideSubmitButton: false,
   defaultShowExtraFields: false,
-  saveText: "保存",
+  saveText: "Save",
   onSubmit: () => {},
 };

@@ -35,21 +35,21 @@ class SqlServer(BaseSQLQueryRunner):
         return {
             "type": "object",
             "properties": {
-                "user": {"type": "string", "title": "用户"},
-                "password": {"type": "string", "title": "密码"},
-                "server": {"type": "string", "title": "服务器", "default": "127.0.0.1"},
-                "port": {"type": "number", "title": "端口", "default": 1433},
+                "user": {"type": "string"},
+                "password": {"type": "string"},
+                "server": {"type": "string", "default": "127.0.0.1"},
+                "port": {"type": "number", "default": 1433},
                 "tds_version": {
                     "type": "string",
                     "default": "7.0",
-                    "title": "TDS版本",
+                    "title": "TDS Version",
                 },
                 "charset": {
                     "type": "string",
                     "default": "UTF-8",
-                    "title": "字符集",
+                    "title": "Character Set",
                 },
-                "db": {"type": "string", "title": "数据库"},
+                "db": {"type": "string", "title": "Database Name"},
             },
             "required": ["db"],
             "secret": ["password"],

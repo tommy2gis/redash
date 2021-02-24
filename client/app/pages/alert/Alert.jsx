@@ -27,7 +27,7 @@ const defaultNameBuilder = template("<%= query.name %>: <%= options.column %> <%
 
 export function getDefaultName(alert) {
   if (!alert.query) {
-    return "新提醒";
+    return "New Alert";
   }
   return defaultNameBuilder(alert);
 }
@@ -83,8 +83,8 @@ class Alert extends React.Component {
             if (!canEdit) {
               this.setState({ mode: MODES.VIEW });
               notification.warn(
-                "不能编辑提醒",
-                "没有权限编辑提醒，当前处于只读模式。",
+                "You cannot edit this alert",
+                "You do not have sufficient permissions to edit this alert, and have been redirected to the view-only page.",
                 { duration: 0 }
               );
             }
@@ -113,12 +113,12 @@ class Alert extends React.Component {
 
     return AlertService.save(alert)
       .then(alert => {
-        notification.success("保存成功！");
+        notification.success("Saved.");
         navigateTo(`alerts/${alert.id}`, true);
         this.setState({ alert, mode: MODES.VIEW });
       })
       .catch(() => {
-        notification.error("保存失败。");
+        notification.error("Failed saving alert.");
       });
   };
 
@@ -169,11 +169,11 @@ class Alert extends React.Component {
     const { alert } = this.state;
     return AlertService.delete(alert)
       .then(() => {
-        notification.success("提醒删除成功！");
+        notification.success("Alert deleted successfully.");
         navigateTo("alerts");
       })
       .catch(() => {
-        notification.error("提醒删除失败。");
+        notification.error("Failed deleting alert.");
       });
   };
 
@@ -182,10 +182,10 @@ class Alert extends React.Component {
     return AlertService.mute(alert)
       .then(() => {
         this.setAlertOptions({ muted: true });
-        notification.warn("通知设为静音！");
+        notification.warn("Notifications have been muted.");
       })
       .catch(() => {
-        notification.error("通知静音设置失败。");
+        notification.error("Failed muting notifications.");
       });
   };
 
@@ -194,10 +194,10 @@ class Alert extends React.Component {
     return AlertService.unmute(alert)
       .then(() => {
         this.setAlertOptions({ muted: false });
-        notification.success("通知恢复有声！");
+        notification.success("Notifications have been restored.");
       })
       .catch(() => {
-        notification.error("通知恢复失败。");
+        notification.error("Failed restoring notifications.");
       });
   };
 
@@ -257,7 +257,7 @@ routes.register(
   "Alerts.New",
   routeWithUserSession({
     path: "/alerts/new",
-    title: "新建提醒",
+    title: "New Alert",
     render: pageProps => <Alert {...pageProps} mode={MODES.NEW} />,
   })
 );
@@ -265,7 +265,7 @@ routes.register(
   "Alerts.View",
   routeWithUserSession({
     path: "/alerts/:alertId",
-    title: "提醒",
+    title: "Alert",
     render: pageProps => <Alert {...pageProps} mode={MODES.VIEW} />,
   })
 );
@@ -273,7 +273,7 @@ routes.register(
   "Alerts.Edit",
   routeWithUserSession({
     path: "/alerts/:alertId/edit",
-    title: "提醒",
+    title: "Alert",
     render: pageProps => <Alert {...pageProps} mode={MODES.EDIT} />,
   })
 );

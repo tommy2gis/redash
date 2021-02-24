@@ -91,7 +91,7 @@ export default function StyleSettings({
       {/* @ts-expect-error ts-migrate(2745) FIXME: This JSX tag's 'children' prop expects type 'never... Remove this comment to see the full error message */}
       <Section>
         <Select
-          label="地图来源"
+          label="Map Tiles"
           data-test="Map.Editor.Tiles"
           value={options.mapTileUrl}
           onChange={(mapTileUrl: any) => onOptionsChange({ mapTileUrl })}>
@@ -106,7 +106,7 @@ export default function StyleSettings({
       </Section>
 
       {/* @ts-expect-error ts-migrate(2745) FIXME: This JSX tag's 'children' prop expects type 'never... Remove this comment to see the full error message */}
-      <Section.Title>标记</Section.Title>
+      <Section.Title>Markers</Section.Title>
 
       {/* @ts-expect-error ts-migrate(2745) FIXME: This JSX tag's 'children' prop expects type 'never... Remove this comment to see the full error message */}
       <Section>
@@ -114,7 +114,7 @@ export default function StyleSettings({
           data-test="Map.Editor.ClusterMarkers"
           defaultChecked={options.clusterMarkers}
           onChange={event => onOptionsChange({ clusterMarkers: event.target.checked })}>
-          聚类标记
+          Cluster Markers
         </Checkbox>
       </Section>
 
@@ -125,12 +125,14 @@ export default function StyleSettings({
           disabled={!isCustomMarkersStyleAllowed}
           defaultChecked={options.customizeMarkers}
           onChange={event => onOptionsChange({ customizeMarkers: event.target.checked })}>
-          自定义样式
+          Override default style
         </Checkbox>
         {!isCustomMarkersStyleAllowed && (
           // @ts-expect-error ts-migrate(2746) FIXME: This JSX tag's 'children' prop expects a single ch... Remove this comment to see the full error message
           <ContextHelp placement="topLeft" arrowPointAtCenter>
-            若选择了分组取值，标记自定义样式不能使用。
+            Custom marker styles are not available
+            <br />
+            when <b>Group By</b> column selected.
           </ContextHelp>
         )}
       </Section>
@@ -141,38 +143,38 @@ export default function StyleSettings({
           <Section>
             <Select
               layout="horizontal"
-              label="形状"
+              label="Shape"
               data-test="Map.Editor.MarkerShape"
               value={options.iconShape}
               onChange={(iconShape: any) => onOptionsChange({ iconShape })}>
               {/* @ts-expect-error ts-migrate(2339) FIXME: Property 'Option' does not exist on type '({ class... Remove this comment to see the full error message */}
               <Select.Option key="marker" data-test="Map.Editor.MarkerShape.marker">
-                标记 + 图标
+                Marker + Icon
               {/* @ts-expect-error ts-migrate(2339) FIXME: Property 'Option' does not exist on type '({ class... Remove this comment to see the full error message */}
               </Select.Option>
               {/* @ts-expect-error ts-migrate(2339) FIXME: Property 'Option' does not exist on type '({ class... Remove this comment to see the full error message */}
               <Select.Option key="doughnut" data-test="Map.Editor.MarkerShape.doughnut">
-                圆圈
+                Circle
               {/* @ts-expect-error ts-migrate(2339) FIXME: Property 'Option' does not exist on type '({ class... Remove this comment to see the full error message */}
               </Select.Option>
               {/* @ts-expect-error ts-migrate(2339) FIXME: Property 'Option' does not exist on type '({ class... Remove this comment to see the full error message */}
               <Select.Option key="circle-dot" data-test="Map.Editor.MarkerShape.circle-dot">
-                圆点
+                Circle Dot
               {/* @ts-expect-error ts-migrate(2339) FIXME: Property 'Option' does not exist on type '({ class... Remove this comment to see the full error message */}
               </Select.Option>
               {/* @ts-expect-error ts-migrate(2339) FIXME: Property 'Option' does not exist on type '({ class... Remove this comment to see the full error message */}
               <Select.Option key="circle" data-test="Map.Editor.MarkerShape.circle">
-                圆圈 + 图标
+                Circle + Icon
               {/* @ts-expect-error ts-migrate(2339) FIXME: Property 'Option' does not exist on type '({ class... Remove this comment to see the full error message */}
               </Select.Option>
               {/* @ts-expect-error ts-migrate(2339) FIXME: Property 'Option' does not exist on type '({ class... Remove this comment to see the full error message */}
               <Select.Option key="rectangle-dot" data-test="Map.Editor.MarkerShape.rectangle-dot">
-                方点
+                Square Dot
               {/* @ts-expect-error ts-migrate(2339) FIXME: Property 'Option' does not exist on type '({ class... Remove this comment to see the full error message */}
               </Select.Option>
               {/* @ts-expect-error ts-migrate(2339) FIXME: Property 'Option' does not exist on type '({ class... Remove this comment to see the full error message */}
               <Select.Option key="rectangle" data-test="Map.Editor.MarkerShape.rectangle">
-                方框 + 图标
+                Square + Icon
               {/* @ts-expect-error ts-migrate(2339) FIXME: Property 'Option' does not exist on type '({ class... Remove this comment to see the full error message */}
               </Select.Option>
             </Select>
@@ -185,19 +187,19 @@ export default function StyleSettings({
                 layout="horizontal"
                 label={
                   <React.Fragment>
-                    图标
+                    Icon
                     {/* @ts-expect-error ts-migrate(2746) FIXME: This JSX tag's 'children' prop expects a single ch... Remove this comment to see the full error message */}
                     <ContextHelp placement="topLeft" arrowPointAtCenter>
                       <div style={{ marginBottom: 5 }}>
-                        从图标库{" "}
+                        Enter an icon name from{" "}
                         <a href="https://fontawesome.com/v4.7.0/icons/" target="_blank" rel="noopener noreferrer">
                           Font-Awesome 4.7
-                        </a>中选择输入图标名称
+                        </a>
                       </div>
                       <div style={{ marginBottom: 5 }}>
-                        例如：<code>check</code>, <code>times-circle</code>, <code>flag</code>
+                        Examples: <code>check</code>, <code>times-circle</code>, <code>flag</code>
                       </div>
-                      <div>留空自动删除。</div>
+                      <div>Leave blank to remove.</div>
                     </ContextHelp>
                   </React.Fragment>
                 }
@@ -213,7 +215,7 @@ export default function StyleSettings({
             <Section>
               <ColorPicker
                 layout="horizontal"
-                label="图标颜色"
+                label="Icon Color"
                 interactive
                 presetColors={CustomColorPalette}
                 placement="topRight"
@@ -231,7 +233,7 @@ export default function StyleSettings({
             <Section>
               <ColorPicker
                 layout="horizontal"
-                label="背景颜色"
+                label="Background Color"
                 interactive
                 presetColors={CustomColorPalette}
                 placement="topRight"
@@ -249,7 +251,7 @@ export default function StyleSettings({
             <Section>
               <ColorPicker
                 layout="horizontal"
-                label="边框颜色"
+                label="Border Color"
                 interactive
                 presetColors={CustomColorPalette}
                 placement="topRight"

@@ -31,10 +31,10 @@ function getSearchColumns(columns: any, { limit = Infinity, renderColumn = (col:
   const firstColumns = map(columns.slice(0, limit), col => renderColumn(col));
   const restColumns = map(columns.slice(limit), col => col.title);
   if (restColumns.length > 0) {
-    return [...joinColumns(firstColumns), ` 和其 ${restColumns.length} 项内容`];
+    return [...joinColumns(firstColumns), ` and ${restColumns.length} others`];
   }
   if (firstColumns.length > 1) {
-    return [...joinColumns(initial(firstColumns)), ` 和 `, last(firstColumns)];
+    return [...joinColumns(initial(firstColumns)), ` and `, last(firstColumns)];
   }
   return firstColumns;
 }
@@ -48,7 +48,7 @@ function SearchInputInfoIcon({
       placement="topRight"
       content={
         <div className="table-visualization-search-info-content">
-          搜索 {getSearchColumns(searchColumns, { renderColumn: col => <code key={col.name}>{col.title}</code> })}
+          Search {getSearchColumns(searchColumns, { renderColumn: col => <code key={col.name}>{col.title}</code> })}
         </div>
       }>
       <InfoCircleFilledIcon className="table-visualization-search-info-icon" />
@@ -72,7 +72,7 @@ function SearchInput({ searchColumns, ...props }: SearchInputProps) {
   return (
     <Input.Search
       {...props}
-      placeholder={`搜索 ${getSearchColumns(searchColumns, { limit: searchColumnsLimit }).join("")}...`}
+      placeholder={`Search ${getSearchColumns(searchColumns, { limit: searchColumnsLimit }).join("")}...`}
       suffix={searchColumns.length > searchColumnsLimit ? <SearchInputInfoIcon searchColumns={searchColumns} /> : null}
     />
   );
@@ -127,6 +127,7 @@ export default function Renderer({
         className="table-fixed-header"
         data-percy="show-scrollbars"
         data-test="TableVisualization"
+        // @ts-expect-error ts-migrate(2322) FIXME: Type '{ key: any; dataIndex: string; align: any; s... Remove this comment to see the full error message
         columns={tableColumns}
         dataSource={preparedRows}
         pagination={{

@@ -17,8 +17,8 @@ function QuerySnippetDialog({ querySnippet, dialog, readOnly }) {
 
       dialog
         .close(querySnippetId ? { id: querySnippetId, ...values } : values)
-        .then(() => successCallback("保存成功！."))
-        .catch(() => errorCallback("保存失败！"));
+        .then(() => successCallback("Saved."))
+        .catch(() => errorCallback("Failed saving snippet."));
     },
     [dialog, querySnippet]
   );
@@ -26,18 +26,18 @@ function QuerySnippetDialog({ querySnippet, dialog, readOnly }) {
   const isEditing = !!get(querySnippet, "id");
 
   const formFields = [
-    { name: "trigger", title: "代码", type: "text", required: true, autoFocus: !isEditing },
-    { name: "description", title: "描述", type: "text" },
-    { name: "snippet", title: "查询脚本", type: "ace", required: true },
+    { name: "trigger", title: "Trigger", type: "text", required: true, autoFocus: !isEditing },
+    { name: "description", title: "Description", type: "text" },
+    { name: "snippet", title: "Snippet", type: "ace", required: true },
   ].map(field => ({ ...field, readOnly, initialValue: get(querySnippet, field.name, "") }));
 
   return (
     <Modal
       {...dialog.props}
-      title={isEditing ? querySnippet.trigger : "新建查询脚本"}
+      title={isEditing ? querySnippet.trigger : "Create Query Snippet"}
       footer={[
         <Button key="cancel" {...dialog.props.cancelButtonProps} onClick={dialog.dismiss}>
-          {readOnly ? "关闭" : "取消"}
+          {readOnly ? "Close" : "Cancel"}
         </Button>,
         !readOnly && (
           <Button
@@ -48,7 +48,7 @@ function QuerySnippetDialog({ querySnippet, dialog, readOnly }) {
             type="primary"
             form="querySnippetForm"
             data-test="SaveQuerySnippetButton">
-            {isEditing ? "保存" : "创建"}
+            {isEditing ? "Save" : "Create"}
           </Button>
         ),
       ]}

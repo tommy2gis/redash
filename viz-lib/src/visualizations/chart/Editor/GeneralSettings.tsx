@@ -132,7 +132,7 @@ export default function GeneralSettings({
       <Section>
         <ChartTypeSelect
           // @ts-expect-error ts-migrate(2322) FIXME: Type '{ label: string; "data-test": string; defaul... Remove this comment to see the full error message
-          label="图表类型"
+          label="Chart Type"
           data-test="Chart.GlobalSeriesType"
           defaultValue={options.globalSeriesType}
           onChange={handleGlobalSeriesTypeChange}
@@ -147,7 +147,7 @@ export default function GeneralSettings({
             defaultChecked={options.swappedAxes}
             checked={options.swappedAxes}
             onChange={handleAxesSwapping}>
-            水平图表(Horizontal Chart)
+            Horizontal Chart
           </Checkbox>
         </Section>
       )}
@@ -173,7 +173,7 @@ export default function GeneralSettings({
           {/* @ts-expect-error ts-migrate(2745) FIXME: This JSX tag's 'children' prop expects type 'never... Remove this comment to see the full error message */}
           <Section>
             <InputNumber
-              label="气泡尺寸系数"
+              label="Bubble Size Coefficient"
               data-test="Chart.BubbleCoefficient"
               defaultValue={options.coefficient}
               onChange={(value: any) => onOptionsChange({ coefficient: toNumber(value) })}
@@ -183,18 +183,18 @@ export default function GeneralSettings({
           {/* @ts-expect-error ts-migrate(2745) FIXME: This JSX tag's 'children' prop expects type 'never... Remove this comment to see the full error message */}
           <Section>
             <Select
-              label="气泡尺寸比例"
+              label="Bubble Size Proportional To"
               data-test="Chart.SizeMode"
               defaultValue={options.sizemode}
               onChange={(mode: any) => onOptionsChange({ sizemode: mode })}>
               {/* @ts-expect-error ts-migrate(2339) FIXME: Property 'Option' does not exist on type '({ class... Remove this comment to see the full error message */}
               <Select.Option value="area" data-test="Chart.SizeMode.Area">
-                面积
+                Area
               {/* @ts-expect-error ts-migrate(2339) FIXME: Property 'Option' does not exist on type '({ class... Remove this comment to see the full error message */}
               </Select.Option>
               {/* @ts-expect-error ts-migrate(2339) FIXME: Property 'Option' does not exist on type '({ class... Remove this comment to see the full error message */}
               <Select.Option value="diameter" data-test="Chart.SizeMode.Diameter">
-                直径
+                Diameter
               {/* @ts-expect-error ts-migrate(2339) FIXME: Property 'Option' does not exist on type '({ class... Remove this comment to see the full error message */}
               </Select.Option>
             </Select>
@@ -206,18 +206,18 @@ export default function GeneralSettings({
         // @ts-expect-error ts-migrate(2745) FIXME: This JSX tag's 'children' prop expects type 'never... Remove this comment to see the full error message
         <Section>
           <Select
-            label="方向"
+            label="Direction"
             data-test="Chart.PieDirection"
             defaultValue={options.direction.type}
             onChange={(type: any) => onOptionsChange({ direction: { type } })}>
             {/* @ts-expect-error ts-migrate(2339) FIXME: Property 'Option' does not exist on type '({ class... Remove this comment to see the full error message */}
             <Select.Option value="counterclockwise" data-test="Chart.PieDirection.Counterclockwise">
-              逆时针
+              Counterclockwise
             {/* @ts-expect-error ts-migrate(2339) FIXME: Property 'Option' does not exist on type '({ class... Remove this comment to see the full error message */}
             </Select.Option>
             {/* @ts-expect-error ts-migrate(2339) FIXME: Property 'Option' does not exist on type '({ class... Remove this comment to see the full error message */}
             <Select.Option value="clockwise" data-test="Chart.PieDirection.Clockwise">
-              顺时针
+              Clockwise
             {/* @ts-expect-error ts-migrate(2339) FIXME: Property 'Option' does not exist on type '({ class... Remove this comment to see the full error message */}
             </Select.Option>
           </Select>
@@ -229,23 +229,23 @@ export default function GeneralSettings({
           {/* @ts-expect-error ts-migrate(2745) FIXME: This JSX tag's 'children' prop expects type 'never... Remove this comment to see the full error message */}
           <Section>
             <Select
-              label="图例放置"
+              label="Legend Placement"
               data-test="Chart.LegendPlacement"
               value={options.legend.enabled ? options.legend.placement : "hidden"}
               onChange={handleLegendPlacementChange}>
               {/* @ts-expect-error ts-migrate(2339) FIXME: Property 'Option' does not exist on type '({ class... Remove this comment to see the full error message */}
               <Select.Option value="hidden" data-test="Chart.LegendPlacement.HideLegend">
-                不显示图例
+                Hide legend
               {/* @ts-expect-error ts-migrate(2339) FIXME: Property 'Option' does not exist on type '({ class... Remove this comment to see the full error message */}
               </Select.Option>
               {/* @ts-expect-error ts-migrate(2339) FIXME: Property 'Option' does not exist on type '({ class... Remove this comment to see the full error message */}
               <Select.Option value="auto" data-test="Chart.LegendPlacement.Auto">
-                右侧
+                Right
               {/* @ts-expect-error ts-migrate(2339) FIXME: Property 'Option' does not exist on type '({ class... Remove this comment to see the full error message */}
               </Select.Option>
               {/* @ts-expect-error ts-migrate(2339) FIXME: Property 'Option' does not exist on type '({ class... Remove this comment to see the full error message */}
               <Select.Option value="below" data-test="Chart.LegendPlacement.Below">
-                底部
+                Bottom
               {/* @ts-expect-error ts-migrate(2339) FIXME: Property 'Option' does not exist on type '({ class... Remove this comment to see the full error message */}
               </Select.Option>
             </Select>
@@ -255,18 +255,18 @@ export default function GeneralSettings({
             // @ts-expect-error ts-migrate(2745) FIXME: This JSX tag's 'children' prop expects type 'never... Remove this comment to see the full error message
             <Section>
               <Select
-                label="图例顺序"
+                label="Legend Items Order"
                 data-test="Chart.LegendItemsOrder"
                 value={options.legend.traceorder}
                 onChange={(traceorder: any) => onOptionsChange({ legend: { traceorder } })}>
                 {/* @ts-expect-error ts-migrate(2339) FIXME: Property 'Option' does not exist on type '({ class... Remove this comment to see the full error message */}
                 <Select.Option value="normal" data-test="Chart.LegendItemsOrder.Normal">
-                  正常
+                  Normal
                 {/* @ts-expect-error ts-migrate(2339) FIXME: Property 'Option' does not exist on type '({ class... Remove this comment to see the full error message */}
                 </Select.Option>
                 {/* @ts-expect-error ts-migrate(2339) FIXME: Property 'Option' does not exist on type '({ class... Remove this comment to see the full error message */}
                 <Select.Option value="reversed" data-test="Chart.LegendItemsOrder.Reversed">
-                  倒序
+                  Reversed
                 {/* @ts-expect-error ts-migrate(2339) FIXME: Property 'Option' does not exist on type '({ class... Remove this comment to see the full error message */}
                 </Select.Option>
               </Select>
@@ -282,7 +282,7 @@ export default function GeneralSettings({
             data-test="Chart.ShowPoints"
             defaultChecked={options.showpoints}
             onChange={event => onOptionsChange({ showpoints: event.target.checked })}>
-            显示全部点
+            Show All Points
           </Checkbox>
         </Section>
       )}
@@ -291,19 +291,19 @@ export default function GeneralSettings({
         // @ts-expect-error ts-migrate(2745) FIXME: This JSX tag's 'children' prop expects type 'never... Remove this comment to see the full error message
         <Section>
           <Select
-            label="数据堆叠"
+            label="Stacking"
             data-test="Chart.Stacking"
             defaultValue={options.series.stacking}
             disabled={!includes(["line", "area", "column"], options.globalSeriesType)}
             onChange={(stacking: any) => onOptionsChange({ series: { stacking } })}>
             {/* @ts-expect-error ts-migrate(2339) FIXME: Property 'Option' does not exist on type '({ class... Remove this comment to see the full error message */}
             <Select.Option value={null} data-test="Chart.Stacking.Disabled">
-              不堆叠
+              Disabled
             {/* @ts-expect-error ts-migrate(2339) FIXME: Property 'Option' does not exist on type '({ class... Remove this comment to see the full error message */}
             </Select.Option>
             {/* @ts-expect-error ts-migrate(2339) FIXME: Property 'Option' does not exist on type '({ class... Remove this comment to see the full error message */}
             <Select.Option value="stack" data-test="Chart.Stacking.Stack">
-              堆叠
+              Stack
             {/* @ts-expect-error ts-migrate(2339) FIXME: Property 'Option' does not exist on type '({ class... Remove this comment to see the full error message */}
             </Select.Option>
           </Select>
@@ -317,7 +317,7 @@ export default function GeneralSettings({
             data-test="Chart.NormalizeValues"
             defaultChecked={options.series.percentValues}
             onChange={event => onOptionsChange({ series: { percentValues: event.target.checked } })}>
-            转换为百分比
+            Normalize values to percentage
           </Checkbox>
         </Section>
       )}
@@ -326,18 +326,18 @@ export default function GeneralSettings({
         // @ts-expect-error ts-migrate(2745) FIXME: This JSX tag's 'children' prop expects type 'never... Remove this comment to see the full error message
         <Section>
           <Select
-            label="无值或空值"
+            label="Missing and NULL values"
             data-test="Chart.MissingValues"
             defaultValue={options.missingValuesAsZero ? 1 : 0}
             onChange={(value: any) => onOptionsChange({ missingValuesAsZero: !!value })}>
             {/* @ts-expect-error ts-migrate(2339) FIXME: Property 'Option' does not exist on type '({ class... Remove this comment to see the full error message */}
             <Select.Option value={0} data-test="Chart.MissingValues.Keep">
-              不显示
+              Do not display in chart
             {/* @ts-expect-error ts-migrate(2339) FIXME: Property 'Option' does not exist on type '({ class... Remove this comment to see the full error message */}
             </Select.Option>
             {/* @ts-expect-error ts-migrate(2339) FIXME: Property 'Option' does not exist on type '({ class... Remove this comment to see the full error message */}
             <Select.Option value={1} data-test="Chart.MissingValues.Zero">
-              转化为0显示
+              Convert to 0 and display in chart
             {/* @ts-expect-error ts-migrate(2339) FIXME: Property 'Option' does not exist on type '({ class... Remove this comment to see the full error message */}
             </Select.Option>
           </Select>

@@ -40,17 +40,17 @@ function UsersListActions({ user, enableUser, disableUser, deleteUser }) {
   if (user.is_invitation_pending) {
     return (
       <Button type="danger" className="w-100" onClick={event => deleteUser(event, user)}>
-        删除
+        Delete
       </Button>
     );
   }
   return user.is_disabled ? (
     <Button type="primary" className="w-100" onClick={event => enableUser(event, user)}>
-      启用
+      Enable
     </Button>
   ) : (
     <Button className="w-100" onClick={event => disableUser(event, user)}>
-      停用
+      Disable
     </Button>
   );
 }
@@ -75,24 +75,24 @@ class UsersList extends React.Component {
     {
       key: "active",
       href: "users",
-      title: "活动的用户",
+      title: "Active Users",
     },
     {
       key: "pending",
       href: "users/pending",
-      title: "邀请的用户",
+      title: "Pending Invitations",
     },
     {
       key: "disabled",
       href: "users/disabled",
-      title: "停用的用户",
+      title: "Disabled Users",
       isAvailable: () => policy.canCreateUser(),
     },
   ];
 
   listColumns = [
     Columns.custom.sortable((text, user) => <UserPreviewCard user={user} withLink />, {
-      title: "名称",
+      title: "Name",
       field: "name",
       width: null,
     }),
@@ -104,18 +104,18 @@ class UsersList extends React.Component {
           </Link>
         )),
       {
-        title: "角色",
+        title: "Groups",
         field: "groups",
       }
     ),
     Columns.timeAgo.sortable({
-      title: "创建时间",
+      title: "Joined",
       field: "created_at",
       className: "text-nowrap",
       width: "1%",
     }),
     Columns.timeAgo.sortable({
-      title: "激活时间",
+      title: "Last Active At",
       field: "active_at",
       className: "text-nowrap",
       width: "1%",
@@ -145,16 +145,14 @@ class UsersList extends React.Component {
   createUser = values =>
     User.create(values)
       .then(user => {
-        notification.success("保存成功！");
+        notification.success("Saved.");
         if (user.invite_link) {
           Modal.warning({
-            title: "邮件未能发送。",
-            okText: "确定",
-            cancelText: "取消",
+            title: "Email not sent!",
             content: (
               <React.Fragment>
                 <p>
-                  由于系统没有配置电子邮件服务器，邀请用户自行激活账户的电子邮件未能自动发送；请复制下列激活链接地址给<b>{user.name}</b>，自行点击激活:
+                  The mail server is not configured, please send the following link to <b>{user.name}</b>:
                 </p>
                 <InputWithCopy value={absoluteUrl(user.invite_link)} readOnly />
               </React.Fragment>
@@ -163,7 +161,7 @@ class UsersList extends React.Component {
         }
       })
       .catch(error => {
-        const message = find([get(error, "response.data.message"), get(error, "message"), "保存失败。"], isString);
+        const message = find([get(error, "response.data.message"), get(error, "message"), "Failed saving."], isString);
         return Promise.reject(new Error(message));
       });
 
@@ -200,7 +198,7 @@ class UsersList extends React.Component {
       <div className="m-b-15">
         <Button type="primary" disabled={!policy.isCreateUserEnabled()} onClick={this.showCreateUserDialog}>
           <i className="fa fa-plus m-r-5" />
-          新建用户
+          New User
         </Button>
         <DynamicComponent name="UsersListExtra" />
       </div>
@@ -251,7 +249,7 @@ const UsersListPage = wrapSettingsTab(
   "Users.List",
   {
     permission: "list_users",
-    title: "用户",
+    title: "Users",
     path: "users",
     isActive: path => path.startsWith("/users") && path !== "/users/me",
     order: 2,
@@ -287,7 +285,7 @@ routes.register(
   "Users.New",
   routeWithUserSession({
     path: "/users/new",
-    title: "用户",
+    title: "Users",
     render: pageProps => <UsersListPage {...pageProps} currentPage="active" isNewUserPage />,
   })
 );
@@ -295,7 +293,7 @@ routes.register(
   "Users.List",
   routeWithUserSession({
     path: "/users",
-    title: "活动的用户",
+    title: "Users",
     render: pageProps => <UsersListPage {...pageProps} currentPage="active" />,
   })
 );
@@ -303,7 +301,7 @@ routes.register(
   "Users.Pending",
   routeWithUserSession({
     path: "/users/pending",
-    title: "邀请的用户",
+    title: "Pending Invitations",
     render: pageProps => <UsersListPage {...pageProps} currentPage="pending" />,
   })
 );
@@ -311,7 +309,7 @@ routes.register(
   "Users.Disabled",
   routeWithUserSession({
     path: "/users/disabled",
-    title: "停用的用户",
+    title: "Disabled Users",
     render: pageProps => <UsersListPage {...pageProps} currentPage="disabled" />,
   })
 );

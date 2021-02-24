@@ -33,7 +33,7 @@ export default function GeneralSettings({
       {/* @ts-expect-error ts-migrate(2745) FIXME: This JSX tag's 'children' prop expects type 'never... Remove this comment to see the full error message */}
       <Section>
         <Select
-          label="地图"
+          label="Map"
           data-test="Choropleth.Editor.MapType"
           defaultValue={options.mapType}
           onChange={handleMapChange}>
@@ -52,7 +52,7 @@ export default function GeneralSettings({
         <Grid.Row gutter={15}>
           <Grid.Col span={12}>
             <Select
-              label="地理区域取值"
+              label="Key Column"
               className="w-100"
               data-test="Choropleth.Editor.KeyColumn"
               disabled={data.columns.length === 0}
@@ -69,7 +69,7 @@ export default function GeneralSettings({
           </Grid.Col>
           <Grid.Col span={12}>
             <Select
-              label="地图对应字段"
+              label="Target Field"
               className="w-100"
               data-test="Choropleth.Editor.TargetField"
               disabled={isLoadingGeoJson || targetFields.length === 0}
@@ -91,7 +91,7 @@ export default function GeneralSettings({
       {/* @ts-expect-error ts-migrate(2745) FIXME: This JSX tag's 'children' prop expects type 'never... Remove this comment to see the full error message */}
       <Section>
         <Select
-          label="数据取值"
+          label="Value Column"
           data-test="Choropleth.Editor.ValueColumn"
           disabled={data.columns.length === 0}
           defaultValue={options.valueColumn}

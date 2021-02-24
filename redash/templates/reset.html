@@ -1,6 +1,6 @@
 {% extends "layouts/signed_out.html" %}
 
-{% block title %}密码重置{% endblock %}
+{% block title %}Password Reset{% endblock %}
 
 {% block content %}
 <div class="fixed-width-page">
@@ -15,10 +15,10 @@
     <form role="form" method="post" name="invite">
       <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
       <div class="form-group">
-        <label for="password">请输入新密码：</label>
+        <label for="password">Enter your new password:</label>
         <input type="password" class="form-control" id="password" name="password" placeholder="Password">
       </div>
-      <button type="submit" class="btn btn-primary btn-block m-t-25">更换密码</button>
+      <button type="submit" class="btn btn-primary btn-block m-t-25">Change my password</button>
     </form>
   </div>
 </div>

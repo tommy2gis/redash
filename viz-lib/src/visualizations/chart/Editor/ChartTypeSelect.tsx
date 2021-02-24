@@ -4,14 +4,14 @@ import { Select } from "@/components/visualizations/editor";
 import { visualizationsSettings } from "@/visualizations/visualizationsSettings";
 
 const allChartTypes = [
-  { type: "line", name: "线形图(Line)", icon: "line-chart" },
-  { type: "column", name: "条形图(Bar)", icon: "bar-chart" },
-  { type: "area", name: "面积图(Area)", icon: "area-chart" },
-  { type: "pie", name: "饼形图(Pie)", icon: "pie-chart" },
-  { type: "scatter", name: "散点图(Scatter)", icon: "circle-o" },
-  { type: "bubble", name: "气泡图(Bubble)", icon: "circle-o" },
-  { type: "heatmap", name: "热力图(Heatmap)", icon: "th" },
-  { type: "box", name: "箱线图(Box)", icon: "square-o" },
+  { type: "line", name: "Line", icon: "line-chart" },
+  { type: "column", name: "Bar", icon: "bar-chart" },
+  { type: "area", name: "Area", icon: "area-chart" },
+  { type: "pie", name: "Pie", icon: "pie-chart" },
+  { type: "scatter", name: "Scatter", icon: "circle-o" },
+  { type: "bubble", name: "Bubble", icon: "circle-o" },
+  { type: "heatmap", name: "Heatmap", icon: "th" },
+  { type: "box", name: "Box", icon: "square-o" },
 ];
 
 type OwnProps = {
@@ -25,7 +25,7 @@ export default function ChartTypeSelect({ hiddenChartTypes, ...props }: Props) {
     const result = [...allChartTypes];
 
     if (visualizationsSettings.allowCustomJSVisualizations) {
-      result.push({ type: "custom", name: "自定义(Custom)", icon: "code" });
+      result.push({ type: "custom", name: "Custom", icon: "code" });
     }
 
     if (hiddenChartTypes.length > 0) {

@@ -62,15 +62,16 @@ class CreateSourceDialog extends React.Component {
       this.props
         .onCreate(selectedType, values)
         .then(data => {
-          successCallback("保存成功！");
+          successCallback("Saved.");
           this.props.dialog.close({ success: true, data });
         })
         .catch(error => {
           this.setState({ savingSource: false, currentStep: StepEnum.CONFIGURE_IT });
-          errorCallback(get(error, "response.data.message", "保存失败。"));
+          errorCallback(get(error, "response.data.message", "Failed saving."));
         });
     }
   };
+
   renderTypeSelector() {
     const { types } = this.props;
     const { searchText } = this.state;
@@ -80,7 +81,7 @@ class CreateSourceDialog extends React.Component {
     return (
       <div className="m-t-10">
         <Search
-          placeholder="搜索..."
+          placeholder="Search..."
           onChange={e => this.setState({ searchText: e.target.value })}
           autoFocus
           data-test="SearchSource"
@@ -110,16 +111,16 @@ class CreateSourceDialog extends React.Component {
         <div className="text-right">
           {HELP_TRIGGER_TYPES[helpTriggerType] && (
             <HelpTrigger className="f-13" type={helpTriggerType}>
-              设置说明 <i className="fa fa-question-circle" />
+              Setup Instructions <i className="fa fa-question-circle" />
             </HelpTrigger>
           )}
         </div>
         <DynamicForm id="sourceForm" fields={fields} onSubmit={this.createSource} feedbackIcons hideSubmitButton />
         {selectedType.type === "databricks" && (
           <small>
-            可以通过JDBC/ODBC的方式使用Databricks数据源。{" "}
+            By using the Databricks Data Source you agree to the Databricks JDBC/ODBC{" "}
             <Link href="https://databricks.com/spark/odbc-driver-download" target="_blank" rel="noopener noreferrer">
-              Databricks ODBC 驱动程序下载
+              Driver Download Terms and Conditions
             </Link>
             .
           </small>
@@ -150,20 +151,20 @@ class CreateSourceDialog extends React.Component {
     return (
       <Modal
         {...dialog.props}
-        title={`创建 ${sourceType}`}
+        title={`Create a New ${sourceType}`}
         footer={
           currentStep === StepEnum.SELECT_TYPE
             ? [
                 <Button key="cancel" onClick={() => dialog.dismiss()} data-test="CreateSourceCancelButton">
-                  取消
+                  Cancel
                 </Button>,
                 <Button key="submit" type="primary" disabled>
-                  创建
+                  Create
                 </Button>,
               ]
             : [
                 <Button key="previous" onClick={this.resetType}>
-                  上一步
+                  Previous
                 </Button>,
                 <Button
                   key="submit"
@@ -172,19 +173,19 @@ class CreateSourceDialog extends React.Component {
                   type="primary"
                   loading={savingSource}
                   data-test="CreateSourceSaveButton">
-                  创建
+                  Create
                 </Button>,
               ]
         }>
         <div data-test="CreateSourceDialog">
           <Steps className="hidden-xs m-b-10" size="small" current={currentStep} progressDot>
             {currentStep === StepEnum.CONFIGURE_IT ? (
-              <Step title={<a>类型选择</a>} className="clickable" onClick={this.resetType} />
+              <Step title={<a>Type Selection</a>} className="clickable" onClick={this.resetType} />
             ) : (
-              <Step title="类型" />
+              <Step title="Type Selection" />
             )}
-            <Step title="配置" />
-            <Step title="完成" />
+            <Step title="Configuration" />
+            <Step title="Done" />
           </Steps>
           {currentStep === StepEnum.SELECT_TYPE && this.renderTypeSelector()}
           {currentStep !== StepEnum.SELECT_TYPE && this.renderForm()}

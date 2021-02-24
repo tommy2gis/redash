@@ -26,12 +26,13 @@ export function DataSourcesListComponent({ dataSources, onClickCreate }) {
 
   return isEmpty(dataSources) ? (
     <div className="text-center">
-      还没有任何数据源。
+      There are no data sources yet.
       {policy.isCreateDataSourceEnabled() && (
         <div className="m-t-5">
           <a className="clickable" onClick={onClickCreate} data-test="CreateDataSourceLink">
-            请点击新建
+            Click here
           </a>{" "}
+          to add one.
         </div>
       )}
     </div>
@@ -106,7 +107,7 @@ class DataSourcesList extends React.Component {
     recordEvent("view", "page", "data_sources/new");
     this.newDataSourceDialog = CreateSourceDialog.showModal({
       types: reject(this.state.dataSourceTypes, "deprecated"),
-      sourceType: "数据源",
+      sourceType: "Data Source",
       imageFolder: IMG_ROOT,
       helpTriggerPrefix: "DS_",
       onCreate: this.createDataSource,
@@ -138,7 +139,7 @@ class DataSourcesList extends React.Component {
         <div className="m-b-15">
           <Button {...newDataSourceProps}>
             <i className="fa fa-plus m-r-5" />
-            新建数据源
+            New Data Source
           </Button>
           <DynamicComponent name="DataSourcesListExtra" />
         </div>
@@ -160,7 +161,7 @@ const DataSourcesListPage = wrapSettingsTab(
   "DataSources.List",
   {
     permission: "admin",
-    title: "数据源",
+    title: "Data Sources",
     path: "data_sources",
     order: 1,
   },
@@ -171,7 +172,7 @@ routes.register(
   "DataSources.List",
   routeWithUserSession({
     path: "/data_sources",
-    title: "数据源",
+    title: "Data Sources",
     render: pageProps => <DataSourcesListPage {...pageProps} />,
   })
 );
@@ -179,7 +180,7 @@ routes.register(
   "DataSources.New",
   routeWithUserSession({
     path: "/data_sources/new",
-    title: "数据源",
+    title: "Data Sources",
     render: pageProps => <DataSourcesListPage {...pageProps} isNewDataSourcePage />,
   })
 );

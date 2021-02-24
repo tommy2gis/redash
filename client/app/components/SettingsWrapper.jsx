@@ -13,7 +13,7 @@ function wrapSettingsTab(id, options, WrappedComponent) {
     return (
       <div className="settings-screen">
         <div className="container">
-          <PageHeader title="设置" />
+          <PageHeader title="Settings" />
           <div className="bg-white tiled">
             <Menu selectedKeys={[activeItem && activeItem.title]} selectable={false} mode="horizontal">
               {settingsMenu.getAvailableItems().map(item => (

@@ -11,7 +11,7 @@ export default function FeatureFlagsSettings(props) {
 
   return (
     <DynamicComponent name="OrganizationSettings.FeatureFlagsSettings" {...props}>
-      <Form.Item label="特征">
+      <Form.Item label="Feature Flags">
         {loading ? (
           <>
             <Row>
@@ -26,7 +26,7 @@ export default function FeatureFlagsSettings(props) {
                   name="feature_show_permissions_control"
                   checked={values.feature_show_permissions_control}
                   onChange={e => onChange({ feature_show_permissions_control: e.target.checked })}>
-                  启用查询报表支持多拥有者模式
+                  Enable experimental multiple owners support
                 </Checkbox>
               </Row>
             </DynamicComponent>
@@ -35,7 +35,7 @@ export default function FeatureFlagsSettings(props) {
                 name="send_email_on_failed_scheduled_queries"
                 checked={values.send_email_on_failed_scheduled_queries}
                 onChange={e => onChange({ send_email_on_failed_scheduled_queries: e.target.checked })}>
-                查询后台执行调度失败时，邮件通知创建人
+                Email query owners when scheduled queries fail
               </Checkbox>
             </Row>
             <Row>
@@ -43,7 +43,7 @@ export default function FeatureFlagsSettings(props) {
                 name="multi_byte_search_enabled"
                 checked={values.multi_byte_search_enabled}
                 onChange={e => onChange({ multi_byte_search_enabled: e.target.checked })}>
-                查询报表支持多字节语言检索(中、日、韩文，速度较慢) 
+                Enable multi-byte (Chinese, Japanese, and Korean) search for query names and descriptions (slower)
               </Checkbox>
             </Row>
           </>

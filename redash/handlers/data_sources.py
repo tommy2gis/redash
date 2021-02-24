@@ -80,7 +80,7 @@ class DataSourceResource(BaseResource):
             if req["name"] in str(e):
                 abort(
                     400,
-                    message="同名数据源 {} 已经存在。".format(
+                    message="Data source with the name {} already exists.".format(
                         req["name"]
                     ),
                 )
@@ -170,7 +170,7 @@ class DataSourceListResource(BaseResource):
             if req["name"] in str(e):
                 abort(
                     400,
-                    message="同名数据源 {} 已经存在。".format(
+                    message="Data source with the name {} already exists.".format(
                         req["name"]
                     ),
                 )

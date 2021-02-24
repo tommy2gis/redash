@@ -176,10 +176,6 @@ function QuerySource(props) {
     [query, queryFlags.canExecute, areParametersDirty, isQueryExecuting, isDirty, selectedText, executeQuery]
   );
 
-  const doUploadQuery =  useCallback(file => {
-    setQuery(extend(query.clone(), { query: file }));
-  }, [query, setQuery]);
-
   const [isQuerySaving, setIsQuerySaving] = useState(false);
 
   const doSaveQuery = useCallback(() => {
@@ -242,7 +238,7 @@ function QuerySource(props) {
                   isEditable={queryFlags.canEdit}
                   markdown
                   ignoreBlanks={false}
-                  placeholder="添加描述"
+                  placeholder="Add description"
                   value={query.description}
                   onDone={updateQueryDescription}
                   multiline
@@ -275,14 +271,14 @@ function QuerySource(props) {
 
                     <QueryEditor.Controls
                       addParameterButtonProps={{
-                        title: "新增参数",
+                        title: "Add New Parameter",
                         shortcut: "mod+p",
                         onClick: openAddNewParameterDialog,
                       }}
                       formatButtonProps={{
                         title: isFormatQueryAvailable
-                          ? "格式化查询脚本"
-                          : "当前数据源不支持格式化",
+                          ? "Format Query"
+                          : "Query formatting is not supported for your Data Source syntax",
                         disabled: !dataSource || !isFormatQueryAvailable,
                         shortcut: isFormatQueryAvailable ? "mod+shift+f" : null,
                         onClick: formatQuery,
@@ -291,7 +287,7 @@ function QuerySource(props) {
                         queryFlags.canEdit && {
                           text: (
                             <React.Fragment>
-                              <span className="hidden-xs">保存</span>
+                              <span className="hidden-xs">Save</span>
                               {isDirty && !isQuerySaving ? "*" : null}
                             </React.Fragment>
                           ),
@@ -301,14 +297,11 @@ function QuerySource(props) {
                         }
                       }
                       executeButtonProps={{
-                        disabled:  !queryFlags.isFileSource && !queryFlags.canExecute || isQueryExecuting || areParametersDirty,
+                        disabled: !queryFlags.canExecute || isQueryExecuting || areParametersDirty,
                         shortcut: "mod+enter, alt+enter, ctrl+enter, shift+enter",
-                        onClick: queryFlags.isFileSource && query.query === '' ? doUploadQuery : doExecuteQuery,
-                        title: queryFlags.isFileSource && query.query === '' ? query.name : '',
+                        onClick: doExecuteQuery,
                         text: (
-                          <span className="hidden-xs">
-                            {queryFlags.isFileSource && query.query ==='' ? "文件上载" : selectedText === null ? "执行" : "执行选中脚本"}
-                          </span>
+                          <span className="hidden-xs">{selectedText === null ? "Execute" : "Execute Selected"}</span>
                         ),
                       }}
                       autocompleteToggleProps={{
@@ -325,7 +318,6 @@ function QuerySource(props) {
                         dataSource
                           ? {
                               disabled: !queryFlags.canEdit,
-                              type: dataSource.type,
                               value: dataSource.id,
                               onChange: handleDataSourceChange,
                               options: map(dataSources, ds => ({ value: ds.id, label: ds.name })),
@@ -402,7 +394,7 @@ function QuerySource(props) {
                           loading={isQueryExecuting}
                           onClick={doExecuteQuery}>
                           {!isQueryExecuting && <i className="zmdi zmdi-refresh m-r-5" aria-hidden="true" />}
-                          立即刷新
+                          Refresh Now
                         </Button>
                       }
                     />

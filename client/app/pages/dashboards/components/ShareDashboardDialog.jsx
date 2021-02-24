@@ -41,9 +41,9 @@ class ShareDashboardDialog extends React.Component {
   static get headerContent() {
     return (
       <React.Fragment>
-        共享报表
+        Share Dashboard
         <div className="modal-header-desc">
-          报表将发布至一个公共网址，请将网址发送给所有要共享的人。<HelpTrigger type="SHARE_DASHBOARD" />
+          Allow public access to this dashboard with a secret address. <HelpTrigger type="SHARE_DASHBOARD" />
         </div>
       </React.Fragment>
     );
@@ -60,7 +60,7 @@ class ShareDashboardDialog extends React.Component {
         dashboard.public_url = data.public_url;
       })
       .catch(() => {
-        notification.error("打开报表共享失败。");
+        notification.error("Failed to turn on sharing for this dashboard");
       })
       .finally(() => {
         this.setState({ saving: false });
@@ -78,7 +78,7 @@ class ShareDashboardDialog extends React.Component {
         delete dashboard.public_url;
       })
       .catch(() => {
-        notification.error("关闭报表共享失败。");
+        notification.error("Failed to turn off sharing for this dashboard");
       })
       .finally(() => {
         this.setState({ saving: false });
@@ -102,12 +102,12 @@ class ShareDashboardDialog extends React.Component {
           {!this.props.hasOnlySafeQueries && (
             <Form.Item>
               <Alert
-                message="不能共享包含文本参数类型的报表，请改为其它参数类型。"
+                message="For your security, sharing is currently not supported for dashboards containing queries with text parameters. Consider changing the text parameters in your query to a different type."
                 type="error"
               />
             </Form.Item>
           )}
-          <Form.Item label="允许所有人查看" {...this.formItemProps}>
+          <Form.Item label="Allow public access" {...this.formItemProps}>
             <Switch
               checked={dashboard.publicAccessEnabled}
               onChange={this.onChange}
@@ -117,7 +117,7 @@ class ShareDashboardDialog extends React.Component {
             />
           </Form.Item>
           {dashboard.public_url && (
-            <Form.Item label="私密网址" {...this.formItemProps}>
+            <Form.Item label="Secret address" {...this.formItemProps}>
               <InputWithCopy value={dashboard.public_url} data-test="SecretAddress" />
             </Form.Item>
           )}

@@ -40,11 +40,11 @@ export default function GroupsSettings({
 
   const columns = [
     {
-      title: "分组",
+      title: "Group",
       dataIndex: "name",
     },
     {
-      title: "颜色",
+      title: "Color",
       dataIndex: "color",
       width: "1%",
       render: (unused: any, item: any) => (

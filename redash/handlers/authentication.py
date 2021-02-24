@@ -210,9 +210,9 @@ def login(org_slug=None):
                 login_user(user, remember=remember)
                 return redirect(next_path)
             else:
-                flash("电子邮箱或密码不正确。")
+                flash("Wrong email or password.")
         except NoResultFound:
-            flash("电子邮箱或密码不正确。")
+            flash("Wrong email or password.")
 
     google_auth_url = get_google_auth_url(next_path)
 

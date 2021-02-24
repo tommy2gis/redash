@@ -15,7 +15,7 @@ class Email(BaseDestination):
                 "subject_template": {
                     "type": "string",
                     "default": settings.ALERTS_DEFAULT_MAIL_SUBJECT_TEMPLATE,
-                    "title": "主题模板",
+                    "title": "Subject Template",
                 },
             },
             "required": ["addresses"],
@@ -32,14 +32,14 @@ class Email(BaseDestination):
         ]
 
         if not recipients:
-            logging.warning("没有给定电子邮箱，发送已忽略。")
+            logging.warning("No emails given. Skipping send.")
 
         if alert.custom_body:
             html = alert.custom_body
         else:
             html = """
-            查看<a href="{host}/alerts/{alert_id}">提醒</a> / 
-            查看<a href="{host}/queries/{query_id}">查询</a> </br>.
+            Check <a href="{host}/alerts/{alert_id}">alert</a> / check
+            <a href="{host}/queries/{query_id}">query</a> </br>.
             """.format(
                 host=host, alert_id=alert.id, query_id=query.id
             )
@@ -58,7 +58,7 @@ class Email(BaseDestination):
             message = Message(recipients=recipients, subject=subject, html=html)
             mail.send(message)
         except Exception:
-            logging.exception("邮件发送错误。")
+            logging.exception("Mail send error.")
 
 
 register(Email)

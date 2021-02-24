@@ -25,7 +25,8 @@ function DeprecatedEmbedFeatureAlert() {
       type="warning"
       message={
         <>
-          你已设置参数 <code>ALLOW_PARAMETERS_IN_EMBEDS</code>，但该特征暂时不可用。{" "}
+          You have enabled <code>ALLOW_PARAMETERS_IN_EMBEDS</code>. This setting is now deprecated and should be turned
+          off. Parameters in embeds are supported by default.{" "}
           <Link
             href="https://discuss.redash.io/t/support-for-parameters-in-embedded-visualizations/3337"
             target="_blank"
@@ -52,9 +53,10 @@ function EmailNotVerifiedAlert() {
       type="warning"
       message={
         <>
-          电子邮箱校验邮件已发送，请查收并点击邮件里的链接，已确认邮箱输入正确。{" "}
+          We have sent an email with a confirmation link to your email address. Please follow the link to verify your
+          email address.{" "}
           <a className="clickable" onClick={verifyEmail}>
-            重新发送邮件
+            Resend email
           </a>
           .
         </>
@@ -75,8 +77,8 @@ export default function Home() {
         {includes(messages, "email-not-verified") && <EmailNotVerifiedAlert />}
         <DynamicComponent name="Home.EmptyState">
           <EmptyState
-            header="欢迎使用Redash 👋"
-            description="连接任何数据源，轻松看见和分享数据。"
+            header="Welcome to Redash 👋"
+            description="Connect to any data source, easily visualize and share your data"
             illustration="dashboard"
             helpMessage={<EmptyStateHelpMessage helpTriggerType="GETTING_STARTED" />}
             showDashboardStep

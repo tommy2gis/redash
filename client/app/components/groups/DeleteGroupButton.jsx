@@ -9,14 +9,14 @@ import Group from "@/services/group";
 
 function deleteGroup(event, group, onGroupDeleted) {
   Modal.confirm({
-    title: "删除角色",
-    content: "确定删除角色？",
-    okText: "确定",
+    title: "Delete Group",
+    content: "Are you sure you want to delete this group?",
+    okText: "Yes",
     okType: "danger",
-    cancelText: "取消",
+    cancelText: "No",
     onOk: () => {
       Group.delete(group).then(() => {
-        notification.success("角色删除成功。");
+        notification.success("Group deleted successfully.");
         onGroupDeleted();
       });
     },

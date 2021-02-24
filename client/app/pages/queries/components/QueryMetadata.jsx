@@ -19,7 +19,7 @@ export default function QueryMetadata({ query, dataSource, layout, onEditSchedul
             {query.user.name}
           </strong>
           <span className="query-metadata-value">
-            创建时间{" "}
+            created{" "}
             <strong>
               <TimeAgo date={query.created_at} />
             </strong>
@@ -33,7 +33,7 @@ export default function QueryMetadata({ query, dataSource, layout, onEditSchedul
             {query.last_modified_by.name}
           </strong>
           <span className="query-metadata-value">
-            更新时间{" "}
+            updated{" "}
             <strong>
               <TimeAgo date={query.updated_at} />
             </strong>
@@ -43,7 +43,7 @@ export default function QueryMetadata({ query, dataSource, layout, onEditSchedul
       <div className="query-metadata-space" />
       {has(dataSource, "name") && has(dataSource, "type") && (
         <div className="query-metadata-item">
-          数据源：
+          Data Source:
           <img src={`${IMG_ROOT}/${dataSource.type}.png`} width="20" alt={dataSource.type} />
           <div className="query-metadata-property">
             <div className="query-metadata-label">{dataSource.name}</div>
@@ -54,7 +54,7 @@ export default function QueryMetadata({ query, dataSource, layout, onEditSchedul
         <div className="query-metadata-property">
           <span className="query-metadata-label">
             <span className="zmdi zmdi-refresh m-r-5" />
-            自动刷新
+            Refresh Schedule
           </span>
           <span className="query-metadata-value">
             <SchedulePhrase

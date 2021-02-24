@@ -10,7 +10,7 @@ export default function PlotlySettings(props) {
 
   return (
     <DynamicComponent name="OrganizationSettings.PlotlySettings" {...props}>
-      <Form.Item label="图表视图(Chart)">
+      <Form.Item label="Chart Visualization">
         {loading ? (
           <Skeleton title={{ width: 300 }} paragraph={false} active />
         ) : (
@@ -18,7 +18,7 @@ export default function PlotlySettings(props) {
             name="hide_plotly_mode_bar"
             checked={values.hide_plotly_mode_bar}
             onChange={e => onChange({ hide_plotly_mode_bar: e.target.checked })}>
-            隐藏绘图模式栏
+            Hide Plotly mode bar
           </Checkbox>
         )}
       </Form.Item>

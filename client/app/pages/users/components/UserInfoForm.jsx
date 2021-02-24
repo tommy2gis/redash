@@ -28,7 +28,7 @@ export default function UserInfoForm(props) {
 
       User.save(data)
         .then(user => {
-          successCallback("保存成功。");
+          successCallback("Saved.");
           handleChange(User.convertUserInfo(user));
         })
         .catch(error => {
@@ -44,33 +44,33 @@ export default function UserInfoForm(props) {
         [
           {
             name: "name",
-            title: "名称",
+            title: "Name",
             type: "text",
             initialValue: user.name,
           },
           {
             name: "email",
-            title: "电子邮箱",
+            title: "Email",
             type: "email",
             initialValue: user.email,
           },
           !user.isDisabled && currentUser.id !== user.id
             ? {
                 name: "group_ids",
-                title: "角色",
+                title: "Groups",
                 type: "select",
                 mode: "multiple",
                 options: map(allGroups, group => ({ name: group.name, value: group.id })),
                 initialValue: map(groups, group => group.id),
                 loading: isLoadingGroups,
-                placeholder: isLoadingGroups ? "加载中..." : "",
+                placeholder: isLoadingGroups ? "Loading..." : "",
               }
             : {
                 name: "group_ids",
-                title: "角色",
+                title: "Groups",
                 type: "content",
                 required: false,
-                content: isLoadingGroups ? "加载中..." : <UserGroups data-test="Groups" groups={groups} />,
+                content: isLoadingGroups ? "Loading..." : <UserGroups data-test="Groups" groups={groups} />,
               },
         ],
         field => ({ readOnly: user.isDisabled, required: true, ...field })

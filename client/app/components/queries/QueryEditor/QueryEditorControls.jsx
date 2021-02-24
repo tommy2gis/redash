@@ -114,7 +114,7 @@ export default function EditorControl({
           </Button>
         </ButtonTooltip>
       )}
-      {executeButtonProps !== false && executeButtonProps.title === '' && (
+      {executeButtonProps !== false && (
         <ButtonTooltip title={executeButtonProps.title} shortcut={executeButtonProps.shortcut}>
           <Button
             className="query-editor-controls-button m-l-5"
@@ -164,7 +164,6 @@ EditorControl.propTypes = {
     PropTypes.bool, // `false` to hide
     PropTypes.shape({
       disabled: PropTypes.bool,
-      type: PropTypes.string,
       value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
       options: PropTypes.arrayOf(
         PropTypes.shape({

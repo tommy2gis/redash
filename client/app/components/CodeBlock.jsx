@@ -41,10 +41,10 @@ export default class CodeBlock extends React.Component {
       if (!success) {
         throw new Error();
       }
-      this.setState({ copied: "复制成功！" });
+      this.setState({ copied: "Copied!" });
     } catch (err) {
       this.setState({
-        copied: "复制失败。",
+        copied: "Copy failed",
       });
     }
 
@@ -59,7 +59,7 @@ export default class CodeBlock extends React.Component {
     const { copyable, children, ...props } = this.props;
 
     const copyButton = (
-      <Tooltip title={this.state.copied || "复制"}>
+      <Tooltip title={this.state.copied || "Copy"}>
         <Button icon={<CopyOutlinedIcon />} type="dashed" size="small" onClick={this.copy} />
       </Tooltip>
     );

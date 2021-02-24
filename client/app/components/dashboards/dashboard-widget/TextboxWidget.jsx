@@ -22,7 +22,7 @@ function TextboxWidget(props) {
 
   const TextboxMenuOptions = [
     <Menu.Item key="edit" onClick={editTextBox}>
-      编辑
+      Edit
     </Menu.Item>,
   ];
 

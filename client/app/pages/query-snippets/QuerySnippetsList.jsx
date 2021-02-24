@@ -41,23 +41,23 @@ class QuerySnippetsList extends React.Component {
         </div>
       ),
       {
-        title: "代码",
+        title: "Trigger",
         field: "trigger",
         className: "text-nowrap",
       }
     ),
     Columns.custom.sortable(text => text, {
-      title: "描述",
+      title: "Description",
       field: "description",
       className: "text-nowrap",
     }),
     Columns.custom(snippet => <code className="snippet-content">{snippet}</code>, {
-      title: "脚本",
+      title: "Snippet",
       field: "snippet",
     }),
-    Columns.avatar({ field: "user", className: "p-l-0 p-r-0" }, name => `创建人 ${name}`),
+    Columns.avatar({ field: "user", className: "p-l-0 p-r-0" }, name => `Created by ${name}`),
     Columns.date.sortable({
-      title: "创建时间",
+      title: "Created At",
       field: "created_at",
       className: "text-nowrap",
       width: "1%",
@@ -66,7 +66,7 @@ class QuerySnippetsList extends React.Component {
       (text, querySnippet) =>
         canEditQuerySnippet(querySnippet) && (
           <Button type="danger" className="w-100" onClick={e => this.deleteQuerySnippet(e, querySnippet)}>
-            删除
+            Delete
           </Button>
         ),
       {
@@ -102,19 +102,19 @@ class QuerySnippetsList extends React.Component {
 
   deleteQuerySnippet = (event, querySnippet) => {
     Modal.confirm({
-      title: "删除常用查询脚本",
-      content: "确定要删除常用查询脚本吗？",
-      okText: "确定",
+      title: "Delete Query Snippet",
+      content: "Are you sure you want to delete this query snippet?",
+      okText: "Yes",
       okType: "danger",
-      cancelText: "取消",
+      cancelText: "No",
       onOk: () => {
         QuerySnippet.delete(querySnippet)
           .then(() => {
-            notification.success("常用查询脚本删除成功！");
+            notification.success("Query snippet deleted successfully.");
             this.props.controller.update();
           })
           .catch(() => {
-            notification.error("常用查询脚本删除失败。");
+            notification.error("Failed deleting query snippet.");
           });
       },
     });
@@ -148,19 +148,20 @@ class QuerySnippetsList extends React.Component {
             onClick={() => this.showSnippetDialog()}
             disabled={!policy.isCreateQuerySnippetEnabled()}>
             <i className="fa fa-plus m-r-5" />
-            新建常用查询脚本
+            New Query Snippet
           </Button>
         </div>
 
         {!controller.isLoaded && <LoadingState className="" />}
         {controller.isLoaded && controller.isEmpty && (
           <div className="text-center">
-            还没有创建常用查询脚本，点击
+            There are no query snippets yet.
             {policy.isCreateQuerySnippetEnabled() && (
               <div className="m-t-5">
                 <a className="clickable" onClick={() => this.showSnippetDialog()}>
-                  新建常用查询脚本
+                  Click here
                 </a>{" "}
+                to add one.
               </div>
             )}
           </div>
@@ -194,7 +195,7 @@ const QuerySnippetsListPage = wrapSettingsTab(
   "QuerySnippets.List",
   {
     permission: "create_query",
-    title: "常用查询脚本",
+    title: "Query Snippets",
     path: "query_snippets",
     order: 5,
   },
@@ -218,7 +219,7 @@ routes.register(
   "QuerySnippets.List",
   routeWithUserSession({
     path: "/query_snippets",
-    title: "常用查询脚本",
+    title: "Query Snippets",
     render: pageProps => <QuerySnippetsListPage {...pageProps} currentPage="query_snippets" />,
   })
 );
@@ -226,7 +227,7 @@ routes.register(
   "QuerySnippets.NewOrEdit",
   routeWithUserSession({
     path: "/query_snippets/:querySnippetId",
-    title: "常用查询脚本",
+    title: "Query Snippets",
     render: pageProps => <QuerySnippetsListPage {...pageProps} currentPage="query_snippets" isNewOrEditPage />,
   })
 );

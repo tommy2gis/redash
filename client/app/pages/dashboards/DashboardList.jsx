@@ -29,19 +29,19 @@ const sidebarMenu = [
   {
     key: "all",
     href: "dashboards",
-    title: "所有报表",
+    title: "All Dashboards",
     icon: () => <Sidebar.MenuIcon icon="zmdi zmdi-view-quilt" />,
   },
   {
     key: "my",
     href: "dashboards/my",
-    title: "我的报表",
+    title: "My Dashboards",
     icon: () => <Sidebar.ProfileImage user={currentUser} />,
   },
   {
     key: "favorites",
     href: "dashboards/favorites",
-    title: "关注的报表",
+    title: "Favorites",
     icon: () => <Sidebar.MenuIcon icon="fa fa-star" />,
   },
 ];
@@ -63,14 +63,14 @@ const listColumns = [
       </React.Fragment>
     ),
     {
-      title: "名称",
+      title: "Name",
       field: "name",
       width: null,
     }
   ),
-  Columns.custom((text, item) => item.user.name, { title: "创建人", width: "1%" }),
+  Columns.custom((text, item) => item.user.name, { title: "Created By", width: "1%" }),
   Columns.dateTime.sortable({
-    title: "创建时间",
+    title: "Created At",
     field: "created_at",
     width: "1%",
   }),
@@ -97,7 +97,7 @@ function DashboardList({ controller }) {
             currentUser.hasPermission("create_dashboard") ? (
               <Button block type="primary" onClick={() => CreateDashboardDialog.showModal()}>
                 <i className="fa fa-plus m-r-5" />
-                新建报表
+                New Dashboard
               </Button>
             ) : null
           }
@@ -105,7 +105,7 @@ function DashboardList({ controller }) {
         <Layout>
           <Layout.Sidebar className="m-b-0">
             <Sidebar.SearchInput
-              placeholder="搜索报表..."
+              placeholder="Search Dashboards..."
               value={controller.searchTerm}
               onChange={controller.updateSearch}
             />
@@ -179,7 +179,7 @@ routes.register(
   "Dashboards.List",
   routeWithUserSession({
     path: "/dashboards",
-    title: "报表",
+    title: "Dashboards",
     render: pageProps => <DashboardListPage {...pageProps} currentPage="all" />,
   })
 );
@@ -187,7 +187,7 @@ routes.register(
   "Dashboards.Favorites",
   routeWithUserSession({
     path: "/dashboards/favorites",
-    title: "我关注的报表",
+    title: "Favorite Dashboards",
     render: pageProps => <DashboardListPage {...pageProps} currentPage="favorites" />,
   })
 );

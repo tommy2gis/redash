@@ -30,7 +30,7 @@ class StatsdRecordingJobDecorator(rq_job):  # noqa
     queue_class = RedashQueue
 
 
-job = partial(StatsdRecordingJobDecorator, connection=rq_redis_connection, failure_ttl=settings.JOB_DEFAULT_FAILURE_TTL)
+job = partial(StatsdRecordingJobDecorator, connection=rq_redis_connection)
 
 
 class CurrentJobFilter(logging.Filter):

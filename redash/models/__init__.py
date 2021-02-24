@@ -539,7 +539,7 @@ class Query(ChangeTrackingMixin, TimestampMixin, BelongsToOrgMixin, db.Model):
         db.session.add(
             Visualization(
                 query_rel=query,
-                name="表格",
+                name="Table",
                 description="",
                 type="TABLE",
                 options="{}",
@@ -678,7 +678,7 @@ class Query(ChangeTrackingMixin, TimestampMixin, BelongsToOrgMixin, db.Model):
                 db.session.commit()
 
                 message = (
-                    "如果不能确定查询 %d 超时原因 %s，自动刷新将会停用。"
+                    "Could not determine if query %d is outdated due to %s. The schedule for this query has been disabled."
                     % (query.id, repr(e))
                 )
                 logging.info(message)
@@ -804,7 +804,7 @@ class Query(ChangeTrackingMixin, TimestampMixin, BelongsToOrgMixin, db.Model):
 
         # Query.create will add default TABLE visualization, so use constructor to create bare copy of query
         forked_query = Query(
-            name="副本(#{}){}".format(self.id, self.name), user=user, **kwargs
+            name="Copy of (#{}) {}".format(self.id, self.name), user=user, **kwargs
         )
 
         for v in sorted(self.visualizations, key=lambda v: v.id):

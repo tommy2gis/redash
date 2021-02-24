@@ -6,15 +6,15 @@ import "@/redash-font/style.less";
 import recordEvent from "@/services/recordEvent";
 
 export default function AutocompleteToggle({ available, enabled, onToggle }) {
-  let tooltipMessage = "启用自动填充";
+  let tooltipMessage = "Live Autocomplete Enabled";
   let icon = "icon-flash";
   if (!enabled) {
-    tooltipMessage = "禁用自动填充";
+    tooltipMessage = "Live Autocomplete Disabled";
     icon = "icon-flash-off";
   }
 
   if (!available) {
-    tooltipMessage = "自动填充已禁用 (按 Ctrl+空格 键启用)";
+    tooltipMessage = "Live Autocomplete Not Available (Use Ctrl+Space to Trigger)";
     icon = "icon-flash-off";
   }
 

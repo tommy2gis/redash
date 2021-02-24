@@ -93,16 +93,16 @@ class Jobs extends React.Component {
     return (
       <Layout activeTab="jobs">
         <div className="p-15">
-          {error && <Alert type="error" message="加载状态失败，请刷新重试。" />}
+          {error && <Alert type="error" message="Failed loading status. Please refresh." />}
 
           {!error && (
             <React.Fragment>
               <Grid.Row gutter={15} className="m-b-15">
                 <Grid.Col span={8}>
-                  <CounterCard title="正在执行的任务" value={overallCounters.started} loading={isLoading} />
+                  <CounterCard title="Started Jobs" value={overallCounters.started} loading={isLoading} />
                 </Grid.Col>
                 <Grid.Col span={8}>
-                  <CounterCard title="正在排队的任务" value={overallCounters.queued} loading={isLoading} />
+                  <CounterCard title="Queued Jobs" value={overallCounters.queued} loading={isLoading} />
                 </Grid.Col>
               </Grid.Row>
 
@@ -132,7 +132,7 @@ routes.register(
   "Admin.Jobs",
   routeWithUserSession({
     path: "/admin/queries/jobs",
-    title: "任务队列状态",
+    title: "RQ Status",
     render: pageProps => <Jobs {...pageProps} />,
   })
 );

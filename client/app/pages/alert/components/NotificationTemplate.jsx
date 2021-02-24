@@ -44,10 +44,8 @@ function NotificationTemplate({ alert, query, columnNames, resultValues, subject
       setShowPreview(false);
     } else {
       Modal.confirm({
-        title: "确定继续吗？",
-        content: "切换默认模板将会丢弃你自定义的模板。",
-        okText: "确定",
-        cancelText: "取消",
+        title: "Are you sure?",
+        content: "Switching to default template will discard your custom template.",
         onOk: () => {
           setSubject(null);
           setBody(null);
@@ -68,18 +66,18 @@ function NotificationTemplate({ alert, query, columnNames, resultValues, subject
         optionLabelProp="label"
         dropdownMatchSelectWidth={false}
         style={{ width: "fit-content" }}>
-        <Select.Option value={0} label="使用默认模板">
-          默认模板
+        <Select.Option value={0} label="Use default template">
+          Default template
         </Select.Option>
-        <Select.Option value={1} label="使用自定义模板">
-          自定义模板
+        <Select.Option value={1} label="Use custom template">
+          Custom template
         </Select.Option>
       </Select>
       {!!enabled && (
         <div className="alert-custom-template" data-test="AlertCustomTemplate">
           <div className="d-flex align-items-center">
-            <h5 className="flex-fill">主题 / 内容</h5>
-            预览{" "}
+            <h5 className="flex-fill">Subject / Body</h5>
+            Preview{" "}
             <Switch size="small" className="alert-template-preview" value={showPreview} onChange={setShowPreview} />
           </div>
           <Input
@@ -96,7 +94,7 @@ function NotificationTemplate({ alert, query, columnNames, resultValues, subject
             data-test="CustomBody"
           />
           <HelpTrigger type="ALERT_NOTIF_TEMPLATE_GUIDE" className="f-13">
-            <i className="fa fa-question-circle" /> 格式化指南
+            <i className="fa fa-question-circle" /> Formatting guide
           </HelpTrigger>
         </div>
       )}

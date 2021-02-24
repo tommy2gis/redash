@@ -61,11 +61,11 @@ class Mysql(BaseSQLQueryRunner):
         schema = {
             "type": "object",
             "properties": {
-                "host": {"type": "string", "title": "服务器", "default": "127.0.0.1"},
-                "user": {"type": "string", "title": "用户"},
-                "passwd": {"type": "string", "title": "密码"},
-                "db": {"type": "string", "title": "数据库"},
-                "port": {"type": "number", "title": "端口", "default": 3306},
+                "host": {"type": "string", "default": "127.0.0.1"},
+                "user": {"type": "string"},
+                "passwd": {"type": "string", "title": "Password"},
+                "db": {"type": "string", "title": "Database name"},
+                "port": {"type": "number", "default": 3306},
             },
             "order": ["host", "port", "user", "passwd", "db"],
             "required": ["db"],
@@ -75,18 +75,18 @@ class Mysql(BaseSQLQueryRunner):
         if show_ssl_settings:
             schema["properties"].update(
                 {
-                    "use_ssl": {"type": "boolean", "title": "使用 SSL"},
+                    "use_ssl": {"type": "boolean", "title": "Use SSL"},
                     "ssl_cacert": {
                         "type": "string",
-                        "title": "服务器证书文件路径 (SSL)",
+                        "title": "Path to CA certificate file to verify peer against (SSL)",
                     },
                     "ssl_cert": {
                         "type": "string",
-                        "title": "客户端证书文件路径 (SSL)",
+                        "title": "Path to client certificate file (SSL)",
                     },
                     "ssl_key": {
                         "type": "string",
-                        "title": "私钥文件路径 (SSL)",
+                        "title": "Path to private key file (SSL)",
                     },
                 }
             )
@@ -267,12 +267,12 @@ class RDSMySQL(Mysql):
         return {
             "type": "object",
             "properties": {
-                "host": {"type": "string", "title": "服务器"},
-                "user": {"type": "string", "title": "用户"},
-                "passwd": {"type": "string", "title": "密码"},
-                "db": {"type": "string", "title": "数据库"},
-                "port": {"type": "number", "title": "端口", "default": 3306},
-                "use_ssl": {"type": "boolean", "title": "使用SSL"},
+                "host": {"type": "string"},
+                "user": {"type": "string"},
+                "passwd": {"type": "string", "title": "Password"},
+                "db": {"type": "string", "title": "Database name"},
+                "port": {"type": "number", "default": 3306},
+                "use_ssl": {"type": "boolean", "title": "Use SSL"},
             },
             "order": ["host", "port", "user", "passwd", "db"],
             "required": ["db", "user", "passwd", "host"],

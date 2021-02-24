@@ -75,7 +75,7 @@ function VisualizationEmbedFooter({
           apiKey={apiKey}
           disabled={!queryResults || !queryResults.getData || !queryResults.getData()}
           embed>
-          <FileOutlinedIcon /> 另存为CSV文件
+          <FileOutlinedIcon /> Download as CSV File
         </QueryResultsLink>
       </Menu.Item>
       <Menu.Item>
@@ -86,7 +86,7 @@ function VisualizationEmbedFooter({
           apiKey={apiKey}
           disabled={!queryResults || !queryResults.getData || !queryResults.getData()}
           embed>
-          <FileOutlinedIcon /> 另存为TSV文件
+          <FileOutlinedIcon /> Download as TSV File
         </QueryResultsLink>
       </Menu.Item>
       <Menu.Item>
@@ -97,7 +97,7 @@ function VisualizationEmbedFooter({
           apiKey={apiKey}
           disabled={!queryResults || !queryResults.getData || !queryResults.getData()}
           embed>
-          <FileExcelOutlinedIcon /> 另存为Excel文件
+          <FileExcelOutlinedIcon /> Download as Excel File
         </QueryResultsLink>
       </Menu.Item>
     </Menu>
@@ -118,7 +118,7 @@ function VisualizationEmbedFooter({
       )}
       {queryUrl && (
         <span className="hidden-print">
-          <Tooltip title="打开">
+          <Tooltip title="Open in Redash">
             <Link.Button className="icon-button" href={queryUrl} target="_blank">
               <i className="fa fa-external-link" />
             </Link.Button>
@@ -126,7 +126,7 @@ function VisualizationEmbedFooter({
           {!query.hasParameters() && (
             <Dropdown overlay={downloadMenu} disabled={!queryResults} trigger={["click"]} placement="topLeft">
               <Button loading={!queryResults && !!refreshStartedAt} className="m-l-5">
-                另存…
+                Download Dataset
                 <i className="fa fa-caret-up m-l-5" />
               </Button>
             </Dropdown>
@@ -216,7 +216,7 @@ function VisualizationEmbed({ queryId, visualizationId, apiKey, onError }) {
   if (!visualization) {
     // call error handler async, otherwise it will destroy the component on render phase
     setTimeout(() => {
-      onError(new Error("视图不存在。"));
+      onError(new Error("Visualization does not exist"));
     }, 10);
     return null;
   }

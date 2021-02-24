@@ -37,7 +37,7 @@ function TextboxDialog({ dialog, isNew, ...props }) {
 
   const saveWidget = useCallback(() => {
     dialog.close(text).catch(() => {
-      notification.error(isNew ? "部件将不会新增。" : "部件将不会保存。");
+      notification.error(isNew ? "Widget could not be added" : "Widget could not be saved");
     });
   }, [dialog, isNew, text]);
 
@@ -45,10 +45,9 @@ function TextboxDialog({ dialog, isNew, ...props }) {
     const originalText = props.text;
     if (text !== originalText) {
       Modal.confirm({
-        title: "退出编辑?",
-        content: "更改内容将不会保存，确定退出吗?",
-        okText: "不保存退出",
-        cancelText: "取消",
+        title: "Quit editing?",
+        content: "Changes you made so far will not be saved. Are you sure?",
+        okText: "Yes, quit",
         okType: "danger",
         onOk: () => dialog.dismiss(),
         maskClosable: true,
@@ -63,11 +62,10 @@ function TextboxDialog({ dialog, isNew, ...props }) {
   return (
     <Modal
       {...dialog.props}
-      title={isNew ? "新增文本" : "编辑文本"}
+      title={isNew ? "Add Textbox" : "Edit Textbox"}
       onOk={saveWidget}
-      okText={isNew ? "添加至报表" : "保存"}
-      cancelText="取消"
       onCancel={confirmDialogDismiss}
+      okText={isNew ? "Add to Dashboard" : "Save"}
       width={500}
       wrapProps={{ "data-test": "TextboxDialog" }}>
       <div className="textbox-dialog">
@@ -77,26 +75,22 @@ function TextboxDialog({ dialog, isNew, ...props }) {
           value={text}
           onChange={handleInputChange}
           autoFocus
-          placeholder="请输入文本"
+          placeholder="This is where you write some text"
         />
         <small>
-          支持基本的{" "}
+          Supports basic{" "}
           <Link
             target="_blank"
             rel="noopener noreferrer"
             href="https://www.markdownguide.org/cheat-sheet/#basic-syntax">
-            <Tooltip title="在新窗口打开Markdown标记指南">Markdown标记(英文)</Tooltip>
+            <Tooltip title="Markdown guide opens in new window">Markdown</Tooltip>
           </Link>
-          ；
-          <Link target="_blank" rel="noopener noreferrer" href="https://www.runoob.com/markdown/md-tutorial.html">
-            <Tooltip title="在新窗口打开Markdown菜鸟教程">Markdown菜鸟教程(中文)</Tooltip>
-          </Link>
-          。
+          .
         </small>
         {text && (
           <React.Fragment>
             <Divider dashed />
-            <strong className="preview-title">预览：</strong>
+            <strong className="preview-title">Preview:</strong>
             <HtmlContent className="preview markdown">{preview}</HtmlContent>
           </React.Fragment>
         )}

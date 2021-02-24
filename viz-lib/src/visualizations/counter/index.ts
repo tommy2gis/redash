@@ -14,7 +14,7 @@ const DEFAULT_OPTIONS = {
 
 export default {
   type: "COUNTER",
-  name: "计数器(Counter)",
+  name: "Counter",
   getOptions: (options: any) => ({
     ...DEFAULT_OPTIONS,
     ...options

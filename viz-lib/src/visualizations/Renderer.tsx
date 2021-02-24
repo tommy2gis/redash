@@ -44,7 +44,7 @@ export default function Renderer({ type, data, options: optionsProp, visualizati
       {/* @ts-expect-error ts-migrate(2769) FIXME: No overload matches this call. */}
       <ErrorBoundary
         ref={errorHandlerRef}
-        renderError={() => <ErrorMessage>视图加载出错。</ErrorMessage>}>
+        renderError={() => <ErrorMessage>Error while rendering visualization.</ErrorMessage>}>
         <div className="visualization-renderer-wrapper">
           <Renderer options={options} data={data} visualizationName={visualizationName} {...otherProps} />
         </div>

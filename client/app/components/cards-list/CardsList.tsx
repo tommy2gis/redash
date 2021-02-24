@@ -45,7 +45,7 @@ export default function CardsList({ items = [], showSearch = false }: CardsListP
         <div className="row p-10">
           <div className="col-md-4 col-md-offset-4">
             <Input.Search
-              placeholder="搜索..."
+              placeholder="Search..."
               onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchText(e.target.value)}
               autoFocus
             />

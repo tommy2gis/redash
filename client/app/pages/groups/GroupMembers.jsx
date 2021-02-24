@@ -40,19 +40,19 @@ class GroupMembers extends React.Component {
     {
       key: "users",
       href: `groups/${this.groupId}`,
-      title: "成员",
+      title: "Members",
     },
     {
       key: "datasources",
       href: `groups/${this.groupId}/data_sources`,
-      title: "数据源",
+      title: "Data Sources",
       isAvailable: () => currentUser.isAdmin,
     },
   ];
 
   listColumns = [
     Columns.custom((text, user) => <UserPreviewCard user={user} withLink />, {
-      title: "名称",
+      title: "Name",
       field: "name",
       width: null,
     }),
@@ -68,7 +68,7 @@ class GroupMembers extends React.Component {
         }
         return (
           <Button className="w-100" type="danger" onClick={event => this.removeGroupMember(event, user)}>
-            移除
+            Remove
           </Button>
         );
       },
@@ -97,15 +97,15 @@ class GroupMembers extends React.Component {
         this.props.controller.update();
       })
       .catch(() => {
-        notification.error("移出成员失败。");
+        notification.error("Failed to remove member from group.");
       });
 
   addMembers = () => {
     const alreadyAddedUsers = map(this.props.controller.allItems, u => u.id);
     SelectItemsDialog.showModal({
-      dialogTitle: "添加成员",
-      inputPlaceholder: "搜索用户...",
-      selectedItemsTitle: "添加用户",
+      dialogTitle: "Add Members",
+      inputPlaceholder: "Search users...",
+      selectedItemsTitle: "New Members",
       searchItems: searchTerm => User.query({ q: searchTerm }).then(({ results }) => results),
       renderItem: (item, { isSelected }) => {
         const alreadyInGroup = includes(alreadyAddedUsers, item.id);
@@ -152,11 +152,11 @@ class GroupMembers extends React.Component {
             {!controller.isLoaded && <LoadingState className="" />}
             {controller.isLoaded && controller.isEmpty && (
               <div className="text-center">
-                <p>该角色尚没有成员。</p>
+                <p>There are no members in this group yet.</p>
                 {currentUser.isAdmin && (
                   <Button type="primary" onClick={this.addMembers}>
                     <i className="fa fa-plus m-r-5" />
-                    添加成员
+                    Add Members
                   </Button>
                 )}
               </div>
@@ -212,7 +212,7 @@ routes.register(
   "Groups.Members",
   routeWithUserSession({
     path: "/groups/:groupId",
-    title: "角色成员",
+    title: "Group Members",
     render: pageProps => <GroupMembersPage {...pageProps} currentPage="users" />,
   })
 );

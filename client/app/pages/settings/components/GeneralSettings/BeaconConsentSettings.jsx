@@ -14,7 +14,7 @@ export default function BeaconConsentSettings(props) {
       <Form.Item
         label={
           <span>
-            匿名共享使用统计数据
+            Anonymous Usage Data Sharing
             <HelpTrigger className="m-l-5 m-r-5" type="USAGE_DATA_SHARING" />
           </span>
         }>
@@ -25,7 +25,7 @@ export default function BeaconConsentSettings(props) {
             name="beacon_consent"
             checked={values.beacon_consent}
             onChange={e => onChange({ beacon_consent: e.target.checked })}>
-            自动匿名发送使用统计数据，帮助Redash完善产品
+            Help Redash improve by automatically sending anonymous usage data
           </Checkbox>
         )}
       </Form.Item>

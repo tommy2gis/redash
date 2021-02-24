@@ -82,8 +82,8 @@ function useDashboard(dashboardData) {
             notification.error("Dashboard update failed", "Permission Denied.");
           } else if (status === 409) {
             notification.error(
-              "报表被另外的用户变更了。",
-              "请备份信息重新加载。",
+              "It seems like the dashboard has been modified by another user. ",
+              "Please copy/backup your changes and reload this page.",
               { duration: null }
             );
           }

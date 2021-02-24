@@ -28,10 +28,10 @@ export default class InputWithCopy extends React.Component {
       if (!success) {
         throw new Error();
       }
-      this.setState({ copied: "复制成功！" });
+      this.setState({ copied: "Copied!" });
     } catch (err) {
       this.setState({
-        copied: "复制失败。",
+        copied: "Copy failed",
       });
     }
 
@@ -41,7 +41,7 @@ export default class InputWithCopy extends React.Component {
 
   render() {
     const copyButton = (
-      <Tooltip title={this.state.copied || "复制"}>
+      <Tooltip title={this.state.copied || "Copy"}>
         <CopyOutlinedIcon style={{ cursor: "pointer" }} onClick={this.copy} />
       </Tooltip>
     );

@@ -18,11 +18,12 @@ export default function QuerySourceAlerts({ query, dataSourcesAvailable }) {
     message = (
       <React.Fragment>
         <Typography.Title level={4}>
-          没有任何数据源权限，不能创建查询。
+          You don't have permission to create new queries on any of the data sources available to you.
         </Typography.Title>
         <p>
           <Typography.Text type="secondary">
-            你可以<Link href="queries">查看查询</Link>, ，或者联系系统管理员申请权限。
+            You can either <Link href="queries">browse existing queries</Link>, or ask for additional permissions from
+            your Redash admin.
           </Typography.Text>
         </p>
       </React.Fragment>
@@ -32,18 +33,18 @@ export default function QuerySourceAlerts({ query, dataSourcesAvailable }) {
       message = (
         <React.Fragment>
           <Typography.Title level={4}>
-            没有创建数据源，或者没有任何数据源权限。
+            Looks like no data sources were created yet or none of them available to the group(s) you're member of.
           </Typography.Title>
           <p>
-            <Typography.Text type="secondary">请先建立数据源然后再创建查询。</Typography.Text>
+            <Typography.Text type="secondary">Please create one first, and then start querying.</Typography.Text>
           </p>
 
           <div className="query-source-alerts-actions">
             <Link.Button type="primary" href="data_sources/new">
-              创建数据源
+              Create Data Source
             </Link.Button>
             <Link.Button type="default" href="groups">
-              管理角色权限
+              Manage Group Permissions
             </Link.Button>
           </div>
         </React.Fragment>
@@ -52,10 +53,10 @@ export default function QuerySourceAlerts({ query, dataSourcesAvailable }) {
       message = (
         <React.Fragment>
           <Typography.Title level={4}>
-          没有创建数据源，或者没有任何数据源权限。
+            Looks like no data sources were created yet or none of them available to the group(s) you're member of.
           </Typography.Title>
           <p>
-            <Typography.Text type="secondary">请联系系统管理员先创建数据源。</Typography.Text>
+            <Typography.Text type="secondary">Please ask your Redash admin to create one first.</Typography.Text>
           </p>
         </React.Fragment>
       );

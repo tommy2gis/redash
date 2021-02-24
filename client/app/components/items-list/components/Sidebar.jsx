@@ -42,7 +42,7 @@ SearchInput.propTypes = {
 };
 
 SearchInput.defaultProps = {
-  placeholder: "搜索...",
+  placeholder: "Search...",
   showIcon: false,
 };
 

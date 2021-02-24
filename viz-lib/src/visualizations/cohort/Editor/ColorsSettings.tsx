@@ -28,7 +28,7 @@ export default function ColorsSettings({
       <Section>
         <ColorPicker
           layout="horizontal"
-          label="最小值颜色"
+          label="Min Color"
           presetColors={ColorPalette}
           interactive
           color={options.colors.min}
@@ -41,7 +41,7 @@ export default function ColorsSettings({
       <Section>
         <ColorPicker
           layout="horizontal"
-          label="最大值颜色"
+          label="Max Color"
           presetColors={ColorPalette}
           interactive
           color={options.colors.max}
@@ -54,7 +54,7 @@ export default function ColorsSettings({
       <Section>
         <InputNumber
           layout="horizontal"
-          label="层级"
+          label="Steps"
           min={minSteps}
           max={maxSteps}
           value={options.colors.steps}
