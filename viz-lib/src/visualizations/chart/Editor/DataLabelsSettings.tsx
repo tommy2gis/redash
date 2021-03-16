@@ -104,8 +104,8 @@ export default function DataLabelsSettings({
                 <div style={{ paddingTop: 5 }}>
                   所有查询结果列都可关联使用
                   <br />
-                  using
-                  <code style={{ whiteSpace: "nowrap" }}>{"{{ column_name }}"}</code> syntax.
+                  用
+                  <code style={{ whiteSpace: "nowrap" }}>{"{{ column_name }}"}</code> 表达式.
                 </div>
               </ContextHelp>
             </React.Fragment>

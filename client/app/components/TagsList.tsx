@@ -77,7 +77,7 @@ function TagsList({ tagsUrl, showUnselectAll = false, onUpdate }: TagsListProps)
   return (
     <div className="tags-list">
       <div className="tags-list-title">
-        <label>Tags</label>
+        <span className="tags-list-label">标签</span>
         {showUnselectAll && selectedTags.length > 0 && (
           <a onClick={unselectAll}>
             <CloseOutlinedIcon />

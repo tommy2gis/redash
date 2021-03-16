@@ -58,10 +58,6 @@ export default class DefaultPolicy {
     return isArray(result) ? result : null;
   }
 
-  isAdmin() {
-    return currentUser.isAdmin;
-  }
-  
   canEdit(object) {
     return get(object, "can_edit", false);
   }

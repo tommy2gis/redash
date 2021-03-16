@@ -25,7 +25,7 @@ function DynamicButton({ options, selectedDynamicValue, onSelect, enabled, stati
       {options.map((option, index) => (
         // eslint-disable-next-line react/no-array-index-key
         <Menu.Item key={index}>
-          {option.title} {option.label && <em>{isFunction(option.label) ? option.label() : option.label}</em>}
+          {option.name} {option.label && <em>{isFunction(option.label) ? option.label() : option.label}</em>}
         </Menu.Item>
       ))}
       {enabled && <Menu.Divider />}
@@ -42,7 +42,7 @@ function DynamicButton({ options, selectedDynamicValue, onSelect, enabled, stati
 
   return (
     <div ref={containerRef}>
-      <a onClick={e => e.stopPropagation()}>
+      <div role="presentation" onClick={e => e.stopPropagation()}>
         <Dropdown.Button
           overlay={menu}
           className="dynamic-button"
@@ -58,7 +58,7 @@ function DynamicButton({ options, selectedDynamicValue, onSelect, enabled, stati
           getPopupContainer={() => containerRef.current}
           data-test="DynamicButton"
         />
-      </a>
+      </div>
     </div>
   );
 }

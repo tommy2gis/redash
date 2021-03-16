@@ -56,19 +56,6 @@ function deleteUser(user) {
     });
 }
 
-function activeUser(user) {
-  const userName = sanitize(user.name);
-  return axios
-    .post(`api/users/${user.id}/active`)
-    .then(data => {
-      notification.warning(`用户 ${userName} 已激活！默认密码为“dazdada”，请为其分配角色即可正常使用。`);
-      return data;
-    })
-    .catch(error => {
-      notification.error("不能激活用户！", getErrorMessage(error));
-    });
-}
-
 function convertUserInfo(user) {
   return {
     id: user.id,
@@ -91,17 +78,6 @@ function regenerateApiKey(user) {
     })
     .catch(error => {
       notification.error("重新生成API Key失败！", getErrorMessage(error));
-    });
-}
-
-function resetPassword(user) {
-  return axios
-    .get(`api/users/${user.id}/reset_password`)
-    .then(data => {
-      notification.success("重置密码已成功。");
-    })
-    .catch(error => {
-      notification.error("重置密码不成功。", getErrorMessage(error));
     });
 }
 
@@ -143,11 +119,9 @@ const User = {
   enableUser,
   disableUser,
   deleteUser,
-  activeUser,
   convertUserInfo,
   regenerateApiKey,
   sendPasswordReset,
-  resetPassword,
   resendInvitation,
 };
 

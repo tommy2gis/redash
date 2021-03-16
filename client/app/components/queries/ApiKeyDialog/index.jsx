@@ -56,12 +56,16 @@ function ApiKeyDialog({ dialog, ...props }) {
 
         <h5>API调用示例：</h5>
         <div className="m-b-10">
-          <label>结果用CSV格式输出：</label>
-          <CodeBlock copyable>{csvUrl}</CodeBlock>
+          <span id="csv-results-label">结果用CSV格式输出：</span>
+          <CodeBlock aria-labelledby="csv-results-label" copyable>
+            {csvUrl}
+          </CodeBlock>
         </div>
         <div>
-          <label>结果用JSON格式输出：</label>
-          <CodeBlock copyable>{jsonUrl}</CodeBlock>
+          <span id="json-results-label">结果用JSON格式输出：</span>
+          <CodeBlock aria-labelledby="json-results-label" copyable>
+            {jsonUrl}
+          </CodeBlock>
         </div>
       </div>
     </Modal>

@@ -329,13 +329,13 @@ default_query_runners = [
     "redash.query_runner.graphite",
     "redash.query_runner.mongodb",
     "redash.query_runner.couchbase",
-    "redash.query_runner.oracle",
     "redash.query_runner.mysql",
     "redash.query_runner.pg",
     "redash.query_runner.url",
     "redash.query_runner.influx_db",
     "redash.query_runner.elasticsearch",
     "redash.query_runner.amazon_elasticsearch",
+    "redash.query_runner.trino",
     "redash.query_runner.presto",
     "redash.query_runner.databricks",
     "redash.query_runner.hive_ds",
@@ -366,8 +366,6 @@ default_query_runners = [
     "redash.query_runner.snowflake",
     "redash.query_runner.phoenix",
     "redash.query_runner.json_ds",
-    "redash.query_runner.csv",
-    "redash.query_runner.excel",
     "redash.query_runner.cass",
     "redash.query_runner.dgraph",
     "redash.query_runner.azure_kusto",
@@ -518,3 +516,6 @@ ENFORCE_CSRF = parse_boolean(
 # Databricks
 
 CSRF_TIME_LIMIT = int(os.environ.get("REDASH_CSRF_TIME_LIMIT", 3600 * 6))
+
+# Email blocked domains, use delimiter comma to separated multiple domains
+BLOCKED_DOMAINS = set_from_string(os.environ.get("REDASH_BLOCKED_DOMAINS", "qq.com"))

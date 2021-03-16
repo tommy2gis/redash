@@ -73,30 +73,6 @@ function DynamicFormFields({ fields, feedbackIcons, form }) {
       };
     }
 
-/* 
-    renderUpload(field, props) {
-      const { getFieldDecorator, getFieldValue } = this.props.form;
-      const { name, initialValue } = field;
-  
-      const fileOptions = {
-        rules: fieldRules(field),
-        initialValue,
-        getValueFromEvent: this.base64File.bind(this, name),
-      };
-  
-      const disabled = getFieldValue(name) !== undefined && getFieldValue(name) !== initialValue;
-  
-      const upload = (
-        <Upload {...props} beforeUpload={() => false}>
-          <Button disabled={disabled}>
-            <Icon type="upload" /> 点击上载
-          </Button>
-        </Upload>
-      );
-  
-      return getFieldDecorator(name, fileOptions)(upload);
-    }
- */        
     return (
       <React.Fragment key={name}>
         <Form.Item {...formItemProps}>

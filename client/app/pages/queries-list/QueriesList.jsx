@@ -33,19 +33,19 @@ const sidebarMenu = [
     key: "all",
     href: "queries",
     title: "所有查询",
-  },
-  {
-    key: "favorites",
-    href: "queries/favorites",
-    title: "关注的查询",
-    icon: () => <Sidebar.MenuIcon icon="fa fa-star" />,
+    icon: () => <Sidebar.MenuIcon icon="fa fa-code" />,
   },
   {
     key: "my",
     href: "queries/my",
     title: "我的查询",
     icon: () => <Sidebar.ProfileImage user={currentUser} />,
-    isAvailable: () => currentUser.hasPermission("create_query"),
+  },
+  {
+    key: "favorites",
+    href: "queries/favorites",
+    title: "关注的查询",
+    icon: () => <Sidebar.MenuIcon icon="fa fa-star" />,
   },
   {
     key: "archive",
@@ -213,7 +213,7 @@ routes.register(
   "Queries.Favorites",
   routeWithUserSession({
     path: "/queries/favorites",
-    title: "我关注的查询",
+    title: "关注的查询",
     render: pageProps => <QueriesListPage {...pageProps} currentPage="favorites" />,
   })
 );

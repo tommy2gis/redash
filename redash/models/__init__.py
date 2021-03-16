@@ -804,7 +804,7 @@ class Query(ChangeTrackingMixin, TimestampMixin, BelongsToOrgMixin, db.Model):
 
         # Query.create will add default TABLE visualization, so use constructor to create bare copy of query
         forked_query = Query(
-            name="副本(#{}){}".format(self.id, self.name), user=user, **kwargs
+            name="副本(#{}) {}".format(self.id, self.name), user=user, **kwargs
         )
 
         for v in sorted(self.visualizations, key=lambda v: v.id):
@@ -1151,6 +1151,10 @@ class Dashboard(ChangeTrackingMixin, TimestampMixin, BelongsToOrgMixin, db.Model
         )
 
     @classmethod
+    def search_by_user(cls, term, user, limit=None):
+        return cls.by_user(user).filter(cls.name.ilike("%{}%".format(term))).limit(limit)
+
+    @classmethod
     def all_tags(cls, org, user):
         dashboards = cls.all(org, user.group_ids, user.id)
 
@@ -1178,6 +1182,10 @@ class Dashboard(ChangeTrackingMixin, TimestampMixin, BelongsToOrgMixin, db.Model
                 ),
             )
         ).filter(Favorite.user_id == user.id)
+
+    @classmethod
+    def by_user(cls, user):
+        return cls.all(user.org, user.group_ids, user.id).filter(Dashboard.user == user)
 
     @classmethod
     def get_by_slug_and_org(cls, slug, org):

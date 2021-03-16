@@ -30,6 +30,13 @@ const sidebarMenu = [
     key: "all",
     href: "dashboards",
     title: "所有报表",
+    icon: () => <Sidebar.MenuIcon icon="zmdi zmdi-view-quilt" />,
+  },
+  {
+    key: "my",
+    href: "dashboards/my",
+    title: "我的报表",
+    icon: () => <Sidebar.ProfileImage user={currentUser} />,
   },
   {
     key: "favorites",
@@ -61,7 +68,7 @@ const listColumns = [
       width: null,
     }
   ),
-  Columns.custom((text, item) => item.user.name, { title: "创建人", width: "1%" }),
+  Columns.custom((text, item) => item.user.name, { title: "Created By", width: "1%" }),
   Columns.dateTime.sortable({
     title: "创建时间",
     field: "created_at",
@@ -157,6 +164,7 @@ const DashboardListPage = itemsList(
       getResource({ params: { currentPage } }) {
         return {
           all: Dashboard.query.bind(Dashboard),
+          my: Dashboard.myDashboards.bind(Dashboard),
           favorites: Dashboard.favorites.bind(Dashboard),
         }[currentPage];
       },
@@ -179,7 +187,15 @@ routes.register(
   "Dashboards.Favorites",
   routeWithUserSession({
     path: "/dashboards/favorites",
-    title: "我关注的报表",
+    title: "关注的报表",
     render: pageProps => <DashboardListPage {...pageProps} currentPage="favorites" />,
+  })
+);
+routes.register(
+  "Dashboards.My",
+  routeWithUserSession({
+    path: "/dashboards/my",
+    title: "我的报表",
+    render: pageProps => <DashboardListPage {...pageProps} currentPage="my" />,
   })
 );

@@ -11,6 +11,7 @@ from redash.handlers.alerts import (
 )
 from redash.handlers.base import org_scoped_rule
 from redash.handlers.dashboards import (
+    MyDashboardsResource,
     DashboardFavoriteListResource,
     DashboardListResource,
     DashboardResource,
@@ -69,7 +70,6 @@ from redash.handlers.query_results import (
     QueryDropdownsResource,
     QueryResultListResource,
     QueryResultResource,
-    QueryUploadResource,
 )
 from redash.handlers.query_snippets import (
     QuerySnippetListResource,
@@ -210,6 +210,8 @@ api.add_org_resource(
     endpoint="dashboard_favorite",
 )
 
+api.add_org_resource(MyDashboardsResource, "/api/dashboards/my", endpoint="my_dashboards")
+
 api.add_org_resource(QueryTagsResource, "/api/queries/tags", endpoint="query_tags")
 api.add_org_resource(
     DashboardTagsResource, "/api/dashboards/tags", endpoint="dashboard_tags"
@@ -271,9 +273,6 @@ api.add_org_resource(
     "/api/queries/<query_id>/results.<filetype>",
     "/api/queries/<query_id>/results/<query_result_id>.<filetype>",
     endpoint="query_result",
-)
-api.add_org_resource(
-    QueryUploadResource,"/api/queries/<datasource_id>/upload",endpoint="query_upload",
 )
 api.add_org_resource(
     JobResource,
