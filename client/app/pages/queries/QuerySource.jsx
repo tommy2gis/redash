@@ -301,7 +301,7 @@ function QuerySource(props) {
                         shortcut: "mod+enter, alt+enter, ctrl+enter, shift+enter",
                         onClick: doExecuteQuery,
                         text: (
-                          <span className="hidden-xs">{selectedText === null ? "Execute" : "Execute Selected"}</span>
+                          <span className="hidden-xs">{selectedText === null ? "执行" : "执行选取脚本"}</span>
                         ),
                       }}
                       autocompleteToggleProps={{
