@@ -68,7 +68,7 @@ const listColumns = [
       width: null,
     }
   ),
-  Columns.custom((text, item) => item.user.name, { title: "Created By", width: "1%" }),
+  Columns.custom((text, item) => item.user.name, { title: "创建人", width: "1%" }),
   Columns.dateTime.sortable({
     title: "创建时间",
     field: "created_at",
