@@ -199,7 +199,7 @@ class UsersList extends React.Component {
     return (
       <div className="m-b-15">
         <Button type="primary" disabled={!policy.isCreateUserEnabled()} onClick={this.showCreateUserDialog}>
-          <i className="fa fa-plus m-r-5" />
+          <i className="fa fa-plus m-r-5" aria-hidden="true" />
           新建用户
         </Button>
         <DynamicComponent name="UsersListExtra" />

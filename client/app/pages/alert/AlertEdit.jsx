@@ -55,11 +55,20 @@ export default class AlertEdit extends React.Component {
         <Title name={name} alert={alert} onChange={onNameChange} editMode>
           <DynamicComponent name="AlertEdit.HeaderExtra" alert={alert} />
           <Button className="m-r-5" onClick={() => this.cancel()}>
-            <i className="fa fa-times m-r-5" />
+            <i className="fa fa-times m-r-5" aria-hidden="true" />
             取消
           </Button>
           <Button type="primary" onClick={() => this.save()}>
-            {saving ? <i className="fa fa-spinner fa-pulse m-r-5" /> : <i className="fa fa-check m-r-5" />}
+            {saving ? (
+              <span role="status" aria-live="polite" aria-relevant="additions removals">
+                <i className="fa fa-spinner fa-pulse m-r-5" aria-hidden="true" />
+                <span className="sr-only">保存中...</span>
+              </span>
+            ) : (
+              <>
+                <i className="fa fa-check m-r-5" aria-hidden="true" />
+              </>
+            )}
             保存
           </Button>
           {menuButton}
@@ -101,7 +110,8 @@ export default class AlertEdit extends React.Component {
             </Form>
             <div>
               <HelpTrigger className="f-13" type="ALERT_SETUP">
-                设置说明 <i className="fa fa-question-circle" />
+                设置说明 <i className="fa fa-question-circle" aria-hidden="true" />
+                <span className="sr-only">(帮助)</span>
               </HelpTrigger>
             </div>
           </div>

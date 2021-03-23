@@ -147,7 +147,7 @@ class QuerySnippetsList extends React.Component {
             type="primary"
             onClick={() => this.showSnippetDialog()}
             disabled={!policy.isCreateQuerySnippetEnabled()}>
-            <i className="fa fa-plus m-r-5" />
+            <i className="fa fa-plus m-r-5" aria-hidden="true" />
             新建常用查询脚本
           </Button>
         </div>

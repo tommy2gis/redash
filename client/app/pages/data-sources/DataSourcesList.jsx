@@ -137,7 +137,7 @@ class DataSourcesList extends React.Component {
       <div>
         <div className="m-b-15">
           <Button {...newDataSourceProps}>
-            <i className="fa fa-plus m-r-5" />
+            <i className="fa fa-plus m-r-5" aria-hidden="true" />
             新建数据源
           </Button>
           <DynamicComponent name="DataSourcesListExtra" />

@@ -74,13 +74,19 @@ export default class AlertNew extends React.Component {
               )}
               <HorizontalFormItem>
                 <Button type="primary" onClick={this.save} disabled={!query} className="btn-create-alert">
-                  {saving && <i className="fa fa-spinner fa-pulse m-r-5" />}
+                  {saving && (
+                    <span role="status" aria-live="polite" aria-relevant="additions removals">
+                      <i className="fa fa-spinner fa-pulse m-r-5" aria-hidden="true" />
+                      <span className="sr-only">保存中...</span>
+                    </span>
+                  )}
                   创建提醒
                 </Button>
               </HorizontalFormItem>
             </Form>
             <HelpTrigger className="f-13" type="ALERT_SETUP">
-              设置说明 <i className="fa fa-question-circle" />
+              设置说明 <i className="fa fa-question-circle" aria-hidden="true" />
+              <span className="sr-only">(帮助)</span>
             </HelpTrigger>
           </div>
         </div>

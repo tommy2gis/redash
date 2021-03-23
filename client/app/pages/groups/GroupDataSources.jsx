@@ -72,9 +72,9 @@ class GroupDataSources extends React.Component {
 
         return (
           <Dropdown trigger={["click"]} overlay={menu}>
-            <Button className="w-100">
+            <Button className="w-100" aria-label="Permissions">
               {datasource.view_only ? "只读权限" : "全部权限"}
-              <DownOutlinedIcon />
+              <DownOutlinedIcon aria-hidden="true" />
             </Button>
           </Dropdown>
         );
@@ -192,7 +192,7 @@ class GroupDataSources extends React.Component {
                 <p>该角色没有添加数据源。</p>
                 {currentUser.isAdmin && (
                   <Button type="primary" onClick={this.addDataSources}>
-                    <i className="fa fa-plus m-r-5" />
+                    <i className="fa fa-plus m-r-5" aria-hidden="true" />
                     添加数据源
                   </Button>
                 )}

@@ -78,7 +78,7 @@ function RefreshButton({ dashboardConfiguration }) {
     <Button.Group>
       <Tooltip title={refreshRate ? `自动刷新频率 ${durationHumanize(refreshRate)}` : null}>
         <Button type={buttonType(refreshRate)} onClick={() => refreshDashboard()}>
-          <i className={cx("zmdi zmdi-refresh m-r-5", { "zmdi-hc-spin": refreshing })} />
+          <i className={cx("zmdi zmdi-refresh m-r-5", { "zmdi-hc-spin": refreshing })} aria-hidden="true" />
           {refreshRate ? durationHumanize(refreshRate) : "刷新"}
         </Button>
       </Tooltip>
@@ -96,7 +96,7 @@ function RefreshButton({ dashboardConfiguration }) {
           </Menu>
         }>
         <Button className="icon-button hidden-xs" type={buttonType(refreshRate)}>
-          <i className="fa fa-angle-down" />
+          <i className="fa fa-angle-down" aria-hidden="true" />
           <span className="sr-only">Split button!</span>
         </Button>
       </Dropdown>
@@ -156,8 +156,8 @@ function DashboardMoreOptionsButton({ dashboardConfiguration }) {
           </Menu.Item>
         </Menu>
       }>
-      <Button className="icon-button m-l-5" data-test="DashboardMoreButton">
-        <EllipsisOutlinedIcon rotate={90} />
+      <Button className="icon-button m-l-5" data-test="DashboardMoreButton" aria-label="More actions">
+        <EllipsisOutlinedIcon rotate={90} aria-hidden="true" />
       </Button>
     </Dropdown>
   );
@@ -194,8 +194,12 @@ function DashboardControl({ dashboardConfiguration, headerExtra }) {
           {showRefreshButton && <RefreshButton dashboardConfiguration={dashboardConfiguration} />}
           {showFullscreenButton && (
             <Tooltip className="hidden-xs" title="进入/退出 全屏显示">
-              <Button type={buttonType(fullscreen)} className="icon-button m-l-5" onClick={toggleFullscreen}>
-                <i className="zmdi zmdi-fullscreen" />
+              <Button
+                type={buttonType(fullscreen)}
+                className="icon-button m-l-5"
+                onClick={toggleFullscreen}
+                aria-label="Toggle fullscreen display">
+                <i className="zmdi zmdi-fullscreen" aria-hidden="true" />
               </Button>
             </Tooltip>
           )}
@@ -206,8 +210,9 @@ function DashboardControl({ dashboardConfiguration, headerExtra }) {
                 className="icon-button m-l-5"
                 type={buttonType(dashboard.publicAccessEnabled)}
                 onClick={showShareDashboardDialog}
-                data-test="OpenShareForm">
-                <i className="zmdi zmdi-share" />
+                data-test="OpenShareForm"
+                aria-label="Share">
+                <i className="zmdi zmdi-share" aria-hidden="true" />
               </Button>
             </Tooltip>
           )}
@@ -255,7 +260,7 @@ function DashboardEditControl({ dashboardConfiguration, headerExtra }) {
         </Button>
       ) : (
         <Button loading={doneBtnClickedWhileSaving} type="primary" onClick={() => setEditingLayout(false)}>
-          {!doneBtnClickedWhileSaving && <i className="fa fa-check m-r-5" />} 保存
+          {!doneBtnClickedWhileSaving && <i className="fa fa-check m-r-5" aria-hidden="true" />} 保存
         </Button>
       )}
       {headerExtra}

@@ -119,7 +119,7 @@ class DestinationsList extends React.Component {
       <div>
         <div className="m-b-15">
           <Button {...newDestinationProps}>
-            <i className="fa fa-plus m-r-5" />
+            <i className="fa fa-plus m-r-5" aria-hidden="true" />
             新建提醒设置
           </Button>
         </div>

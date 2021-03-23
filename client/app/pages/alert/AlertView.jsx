@@ -70,7 +70,7 @@ export default class AlertView extends React.Component {
           <DynamicComponent name="AlertView.HeaderExtra" alert={alert} />
           <Tooltip title={canEdit ? "" : "没有权限编辑提醒"}>
             <Button type="default" onClick={canEdit ? onEdit : null} className={cx({ disabled: !canEdit })}>
-              <i className="fa fa-edit m-r-5" />
+              <i className="fa fa-edit m-r-5" aria-hidden="true" />
               编辑
             </Button>
             {menuButton}
@@ -110,7 +110,7 @@ export default class AlertView extends React.Component {
                   className="m-b-20"
                   message={
                     <>
-                      <i className="fa fa-bell-slash-o" /> 通知设为静音
+                      <i className="fa fa-bell-slash-o" aria-hidden="true" /> 通知设为静音
                     </>
                   }
                   description={
@@ -139,7 +139,8 @@ export default class AlertView extends React.Component {
                 目标{" "}
                 <Tooltip title="在新标签页打开提醒设置。">
                   <Link href="destinations" target="_blank">
-                    <i className="fa fa-external-link f-13" />
+                    <i className="fa fa-external-link f-13" aria-hidden="true" />
+                    <span className="sr-only">(opens in a new tab)</span>
                   </Link>
                 </Tooltip>
               </h4>

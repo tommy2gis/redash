@@ -440,7 +440,9 @@ class TitleEditor extends React.Component {
     if (mapping.type === MappingType.StaticValue) {
       return (
         <Tooltip placement="right" title="静态值标题不显示在部件里">
-          <i className="fa fa-eye-slash" />
+          <span tabIndex={0}>
+            <i className="fa fa-eye-slash" aria-hidden="true" />
+          </span>
         </Tooltip>
       );
     }

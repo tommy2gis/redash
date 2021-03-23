@@ -96,7 +96,8 @@ function NotificationTemplate({ alert, query, columnNames, resultValues, subject
             data-test="CustomBody"
           />
           <HelpTrigger type="ALERT_NOTIF_TEMPLATE_GUIDE" className="f-13">
-            <i className="fa fa-question-circle" /> 格式化指南
+            <i className="fa fa-question-circle" aria-hidden="true" /> 格式化指南{" "}
+            <span className="sr-only">(帮助)</span>
           </HelpTrigger>
         </div>
       )}

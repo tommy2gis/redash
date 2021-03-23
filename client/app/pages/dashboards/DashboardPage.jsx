@@ -47,7 +47,7 @@ function AddWidgetContainer({ dashboardConfiguration, className, ...props }) {
   return (
     <div className={cx("add-widget-container", className)} {...props}>
       <h2>
-        <i className="zmdi zmdi-widgets" />
+        <i className="zmdi zmdi-widgets" aria-hidden="true" />
         <span className="hidden-xs hidden-sm">
           独立的查询视图部件或文本框，可以连续放置到报表上。
         </span>
