@@ -6,7 +6,7 @@ import Button from "antd/lib/button";
 import SyncOutlinedIcon from "@ant-design/icons/SyncOutlined";
 import Input from "antd/lib/input";
 import Select from "antd/lib/select";
-import Tooltip from "antd/lib/tooltip";
+import Tooltip from "@/components/Tooltip";
 import { SchemaList, applyFilterOnSchema } from "@/components/queries/SchemaBrowser";
 import useImmutableCallback from "@/lib/hooks/useImmutableCallback";
 import useDatabricksSchema from "./useDatabricksSchema";
@@ -84,6 +84,7 @@ export default function DatabricksSchemaBrowser({
         <Input
           className={isDatabaseSelectOpen ? "database-select-open" : ""}
           placeholder="筛选表和列..."
+          aria-label="搜索数据表"
           disabled={loadingDatabases || loadingSchema}
           onChange={event => handleFilterChange(event.target.value)}
           addonBefore={

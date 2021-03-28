@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 import { useDebouncedCallback } from "use-debounce";
 import Modal from "antd/lib/modal";
 import Input from "antd/lib/input";
-import Tooltip from "antd/lib/tooltip";
+import Tooltip from "@/components/Tooltip";
 import Divider from "antd/lib/divider";
 import Link from "@/components/Link";
 import HtmlContent from "@redash/viz/lib/components/HtmlContent";
@@ -75,6 +75,7 @@ function TextboxDialog({ dialog, isNew, ...props }) {
           className="resize-vertical"
           rows="5"
           value={text}
+          aria-label="Textbox widget content"
           onChange={handleInputChange}
           autoFocus
           placeholder="请输入文本"

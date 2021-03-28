@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 import { useDebouncedCallback } from "use-debounce";
 import Input from "antd/lib/input";
 import Button from "antd/lib/button";
-import Tooltip from "antd/lib/tooltip";
+import Tooltip from "@/components/Tooltip";
 import AutoSizer from "react-virtualized/dist/commonjs/AutoSizer";
 import List from "react-virtualized/dist/commonjs/List";
 import useDataSourceSchema from "@/pages/queries/hooks/useDataSourceSchema";
@@ -229,6 +229,7 @@ export default function SchemaBrowser({
         <Input
           className="m-r-5"
           placeholder="搜索数据表..."
+          aria-label="搜索数据表"
           disabled={schema.length === 0}
           onChange={event => handleFilterChange(event.target.value)}
         />

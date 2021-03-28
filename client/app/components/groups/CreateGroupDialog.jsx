@@ -28,6 +28,7 @@ class CreateGroupDialog extends React.Component {
           onChange={event => this.setState({ name: event.target.value })}
           onPressEnter={() => this.save()}
           placeholder="角色名称"
+          aria-label="角色名称"
           autoFocus
         />
       </Modal>

@@ -133,6 +133,7 @@ function QueriesList({ controller }) {
           <Layout.Sidebar className="m-b-0">
             <Sidebar.SearchInput
               placeholder="搜索查询..."
+              label="搜索查询"
               value={controller.searchTerm}
               onChange={controller.updateSearch}
             />

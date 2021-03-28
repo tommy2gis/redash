@@ -23,7 +23,7 @@ export default function PasswordLinkAlert(props) {
             <p>
             邮件服务器没有配置，请自行发送下列激活连接给<b>{user.name}</b>:
             </p>
-            <InputWithCopy value={absoluteUrl(passwordLink)} readOnly />
+            <InputWithCopy value={absoluteUrl(passwordLink)} aria-label="Password link" readOnly />
           </React.Fragment>
         }
         type="warning"

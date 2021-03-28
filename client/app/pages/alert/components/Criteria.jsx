@@ -63,7 +63,7 @@ export default function Criteria({ columnNames, resultValues, alertOptions, onCh
   return (
     <div data-test="Criteria">
       <div className="input-title">
-        <span>取值列</span>
+        <span className="input-label">取值列</span>
         {editMode ? (
           <Select
             value={alertOptions.column}
@@ -79,7 +79,7 @@ export default function Criteria({ columnNames, resultValues, alertOptions, onCh
         )}
       </div>
       <div className="input-title">
-        <span>条件</span>
+        <span className="input-label">条件</span>
         {editMode ? (
           <Select
             value={alertOptions.op}
@@ -117,9 +117,16 @@ export default function Criteria({ columnNames, resultValues, alertOptions, onCh
         )}
       </div>
       <div className="input-title">
-        <span>阈值</span>
+        <label className="input-label" htmlFor="threshold-criterion">
+          阈值
+        </label>
         {editMode ? (
-          <Input style={{ width: 90 }} value={alertOptions.value} onChange={e => onChange({ value: e.target.value })} />
+          <Input
+            id="threshold-criterion"
+            style={{ width: 90 }}
+            value={alertOptions.value}
+            onChange={e => onChange({ value: e.target.value })}
+          />
         ) : (
           <DisabledInput minWidth={50}>{alertOptions.value}</DisabledInput>
         )}

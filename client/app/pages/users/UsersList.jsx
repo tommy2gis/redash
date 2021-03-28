@@ -156,7 +156,7 @@ class UsersList extends React.Component {
                 <p>
                   由于系统没有配置电子邮件服务器，邀请用户自行激活账户的电子邮件未能自动发送；请复制下列激活链接地址给<b>{user.name}</b>，自行点击激活:
                 </p>
-                <InputWithCopy value={absoluteUrl(user.invite_link)} readOnly />
+                <InputWithCopy value={absoluteUrl(user.invite_link)} aria-label="Invite link" readOnly />
               </React.Fragment>
             ),
           });
@@ -214,7 +214,11 @@ class UsersList extends React.Component {
         {this.renderPageHeader()}
         <Layout>
           <Layout.Sidebar className="m-b-0">
-            <Sidebar.SearchInput value={controller.searchTerm} onChange={controller.updateSearch} />
+            <Sidebar.SearchInput
+              value={controller.searchTerm}
+              onChange={controller.updateSearch}
+              label="Search users"
+            />
             <Sidebar.Menu items={this.sidebarMenu} selected={controller.params.currentPage} />
           </Layout.Sidebar>
           <Layout.Content>
