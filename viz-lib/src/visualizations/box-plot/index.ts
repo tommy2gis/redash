@@ -6,7 +6,7 @@ export default {
   name: "箱线图(Boxplot)",
   isDeprecated: true,
   getOptions: (options: any) => ({
-    ...options
+    ...options,
   }),
   Renderer,
   Editor,

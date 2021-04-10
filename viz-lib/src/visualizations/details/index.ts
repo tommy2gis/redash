@@ -7,7 +7,7 @@ export default {
   name: "<记录明细显示>",
   getOptions: (options: any) => ({
     ...DEFAULT_OPTIONS,
-    ...options
+    ...options,
   }),
   Renderer: DetailsRenderer,
   defaultColumns: 2,

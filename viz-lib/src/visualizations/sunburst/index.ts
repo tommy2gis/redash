@@ -5,7 +5,7 @@ export default {
   type: "SUNBURST_SEQUENCE",
   name: "旭辉图(Sunburst Sequence)",
   getOptions: (options: any) => ({
-    ...options
+    ...options,
   }),
   Renderer,
   Editor,

@@ -86,8 +86,9 @@ ENV PIP_NO_CACHE_DIR=1
 
 #pip国内源
 COPY pip.conf /etc/pip.conf
-# Use legacy resolver to work around broken build due to resolver changes in pip
-ENV PIP_USE_DEPRECATED=legacy-resolver
+
+# rollback pip version to avoid legacy resolver problem
+RUN pip install pip==20.2.4;
 
 # We first copy only the requirements file, to avoid rebuilding on every file
 # change.
