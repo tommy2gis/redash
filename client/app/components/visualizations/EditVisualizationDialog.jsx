@@ -10,6 +10,7 @@ import notification from "@/services/notification";
 import Visualization from "@/services/visualization";
 import recordEvent from "@/services/recordEvent";
 import useQueryResultData from "@/lib/useQueryResultData";
+import { useUniqueId } from "@/lib/hooks/useUniqueId";
 import {
   registeredVisualizations,
   getDefaultVisualization,
@@ -156,6 +157,9 @@ function EditVisualizationDialog({ dialog, visualization, query, queryResult }) 
     ? filter(registeredVisualizations, vis => !vis.isDeprecated)
     : pick(registeredVisualizations, [type]);
 
+  const vizTypeId = useUniqueId("visualization-type");
+  const vizNameId = useUniqueId("visualization-name");
+
   return (
     <Modal
       {...dialog.props}
@@ -173,10 +177,10 @@ function EditVisualizationDialog({ dialog, visualization, query, queryResult }) 
       <div className="edit-visualization-dialog">
         <div className="visualization-settings">
           <div className="m-b-15">
-            <label htmlFor="visualization-type">视图类型</label>
+            <label htmlFor={vizTypeId}>视图类型</label>
             <Select
               data-test="VisualizationType"
-              id="visualization-type"
+              id={vizTypeId}
               className="w-100"
               disabled={!isNew}
               value={type}
@@ -189,10 +193,10 @@ function EditVisualizationDialog({ dialog, visualization, query, queryResult }) 
             </Select>
           </div>
           <div className="m-b-15">
-            <label htmlFor="visualization-name">视图名称</label>
+            <label htmlFor={vizNameId}>视图名称</label>
             <Input
               data-test="VisualizationName"
-              id="visualization-name"
+              id={vizNameId}
               className="w-100"
               value={name}
               onChange={event => onNameChanged(event.target.value)}

@@ -9,6 +9,7 @@ import CodeBlock from "@/components/CodeBlock";
 import { axios } from "@/services/axios";
 import { clientConfig } from "@/services/auth";
 import notification from "@/services/notification";
+import { useUniqueId } from "@/lib/hooks/useUniqueId";
 
 import "./index.less";
 import { policy } from "@/services/policy";
@@ -39,6 +40,9 @@ function ApiKeyDialog({ dialog, ...props }) {
     [query.id, query.api_key]
   );
 
+  const csvResultsLabelId = useUniqueId("csv-results-label");
+  const jsonResultsLabelId = useUniqueId("json-results-label");
+
   return (
     <Modal {...dialog.props} width={600} footer={<Button onClick={() => dialog.close(query)}>关闭</Button>}>
       <div className="query-api-key-dialog-wrapper">
@@ -56,14 +60,14 @@ function ApiKeyDialog({ dialog, ...props }) {
 
         <h5>API调用示例：</h5>
         <div className="m-b-10">
-          <span id="csv-results-label">结果用CSV格式输出：</span>
-          <CodeBlock aria-labelledby="csv-results-label" copyable>
+          <span id={csvResultsLabelId}>结果用CSV格式输出：</span>
+          <CodeBlock aria-labelledby={csvResultsLabelId} copyable>
             {csvUrl}
           </CodeBlock>
         </div>
         <div>
-          <span id="json-results-label">结果用JSON格式输出：</span>
-          <CodeBlock aria-labelledby="json-results-label" copyable>
+          <span id={jsonResultsLabelId}>结果用JSON格式输出：</span>
+          <CodeBlock aria-labelledby={jsonResultsLabelId} copyable>
             {jsonUrl}
           </CodeBlock>
         </div>

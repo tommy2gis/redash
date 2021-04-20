@@ -7,6 +7,7 @@ import routeWithUserSession from "@/components/ApplicationArea/routeWithUserSess
 import EmptyState, { EmptyStateHelpMessage } from "@/components/empty-state/EmptyState";
 import DynamicComponent from "@/components/DynamicComponent";
 import BeaconConsent from "@/components/BeaconConsent";
+import PlainButton from "@/components/PlainButton";
 
 import { axios } from "@/services/axios";
 import recordEvent from "@/services/recordEvent";
@@ -53,9 +54,9 @@ function EmailNotVerifiedAlert() {
       message={
         <>
           电子邮箱校验邮件已发送，请查收并点击邮件里的链接，已确认邮箱输入正确。{" "}
-          <a className="clickable" onClick={verifyEmail}>
+          <PlainButton type="link" onClick={verifyEmail}>
             重新发送邮件
-          </a>
+          </PlainButton>
           .
         </>
       }

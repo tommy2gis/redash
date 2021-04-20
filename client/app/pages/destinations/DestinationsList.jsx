@@ -10,6 +10,7 @@ import LoadingState from "@/components/items-list/components/LoadingState";
 import CreateSourceDialog from "@/components/CreateSourceDialog";
 import helper from "@/components/dynamic-form/dynamicFormHelper";
 import wrapSettingsTab from "@/components/SettingsWrapper";
+import PlainButton from "@/components/PlainButton";
 
 import Destination, { IMG_ROOT } from "@/services/destination";
 import { policy } from "@/services/policy";
@@ -97,9 +98,9 @@ class DestinationsList extends React.Component {
         还没有创建提醒设置。
         {policy.isCreateDestinationEnabled() && (
           <div className="m-t-5">
-            <a className="clickable" onClick={this.showCreateSourceDialog}>
-              点击添加
-            </a>{" "}
+            <PlainButton type="link" onClick={this.showCreateSourceDialog}>
+              点击新建
+            </PlainButton>{" "}
           </div>
         )}
       </div>

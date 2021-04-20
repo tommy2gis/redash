@@ -9,6 +9,7 @@ import Button from "antd/lib/button";
 
 import LoadingOutlinedIcon from "@ant-design/icons/LoadingOutlined";
 import EllipsisOutlinedIcon from "@ant-design/icons/EllipsisOutlined";
+import PlainButton from "@/components/PlainButton";
 
 export default function MenuButton({ doDelete, canEdit, mute, unmute, muted }) {
   const [loading, setLoading] = useState(false);
@@ -47,13 +48,13 @@ export default function MenuButton({ doDelete, canEdit, mute, unmute, muted }) {
         <Menu>
           <Menu.Item>
             {muted ? (
-              <a onClick={() => execute(unmute)}>通知有声</a>
+              <PlainButton onClick={() => execute(unmute)}>通知响铃</PlainButton>
             ) : (
-              <a onClick={() => execute(mute)}>通知静音</a>
+              <PlainButton onClick={() => execute(mute)}>通知静音</PlainButton>
             )}
           </Menu.Item>
           <Menu.Item>
-            <a onClick={confirmDelete}>删除</a>
+            <PlainButton onClick={confirmDelete}>删除</PlainButton>
           </Menu.Item>
         </Menu>
       }>

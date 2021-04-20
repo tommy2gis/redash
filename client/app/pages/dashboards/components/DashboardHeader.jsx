@@ -10,6 +10,7 @@ import Modal from "antd/lib/modal";
 import Tooltip from "@/components/Tooltip";
 import FavoritesControl from "@/components/FavoritesControl";
 import EditInPlace from "@/components/EditInPlace";
+import PlainButton from "@/components/PlainButton";
 import { DashboardTagsControl } from "@/components/tags-control/TagsControl";
 import getTags from "@/services/getTags";
 import { clientConfig } from "@/services/auth";
@@ -139,20 +140,20 @@ function DashboardMoreOptionsButton({ dashboardConfiguration }) {
       overlay={
         <Menu data-test="DashboardMoreButtonMenu">
           <Menu.Item className={cx({ hidden: gridDisabled })}>
-            <a onClick={() => setEditingLayout(true)}>编辑</a>
+            <PlainButton onClick={() => setEditingLayout(true)}>编辑</PlainButton>
           </Menu.Item>
           {clientConfig.showPermissionsControl && isDashboardOwnerOrAdmin && (
             <Menu.Item>
-              <a onClick={managePermissions}>权限管理</a>
+              <PlainButton onClick={managePermissions}>权限管理</PlainButton>
             </Menu.Item>
           )}
           {!clientConfig.disablePublish && !dashboard.is_draft && (
             <Menu.Item>
-              <a onClick={togglePublished}>草稿</a>
+              <PlainButton onClick={togglePublished}>草稿</PlainButton>
             </Menu.Item>
           )}
           <Menu.Item>
-            <a onClick={archive}>归档</a>
+            <PlainButton onClick={archive}>归档</PlainButton>
           </Menu.Item>
         </Menu>
       }>

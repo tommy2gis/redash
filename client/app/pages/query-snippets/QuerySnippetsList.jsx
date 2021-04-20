@@ -15,6 +15,7 @@ import { StateStorage } from "@/components/items-list/classes/StateStorage";
 import LoadingState from "@/components/items-list/components/LoadingState";
 import ItemsTable, { Columns } from "@/components/items-list/components/ItemsTable";
 import wrapSettingsTab from "@/components/SettingsWrapper";
+import PlainButton from "@/components/PlainButton";
 
 import QuerySnippet from "@/services/query-snippet";
 import { currentUser } from "@/services/auth";
@@ -34,11 +35,9 @@ class QuerySnippetsList extends React.Component {
   listColumns = [
     Columns.custom.sortable(
       (text, querySnippet) => (
-        <div>
-          <a className="table-main-title clickable" onClick={() => this.showSnippetDialog(querySnippet)}>
-            {querySnippet.trigger}
-          </a>
-        </div>
+        <PlainButton type="link" className="table-main-title" onClick={() => this.showSnippetDialog(querySnippet)}>
+          {querySnippet.trigger}
+        </PlainButton>
       ),
       {
         title: "代码",
@@ -158,9 +157,9 @@ class QuerySnippetsList extends React.Component {
             还没有创建常用查询脚本，点击
             {policy.isCreateQuerySnippetEnabled() && (
               <div className="m-t-5">
-                <a className="clickable" onClick={() => this.showSnippetDialog()}>
+                <PlainButton type="link" onClick={() => this.showSnippetDialog()}>
                   新建常用查询脚本
-                </a>{" "}
+                </PlainButton>{" "}
               </div>
             )}
           </div>
