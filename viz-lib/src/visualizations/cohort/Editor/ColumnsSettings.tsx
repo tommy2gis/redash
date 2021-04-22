@@ -28,7 +28,7 @@ export default function ColumnsSettings({ options, data, onOptionsChange }: any)
       <Section>
         <Select
           layout="horizontal"
-          label="Stage"
+          label="层级"
           data-test="Cohort.StageColumn"
           value={options.stageColumn}
           onChange={(stageColumn: any) => onOptionsChange({ stageColumn })}>
@@ -64,7 +64,7 @@ export default function ColumnsSettings({ options, data, onOptionsChange }: any)
       <Section>
         <Select
           layout="horizontal"
-          label="Stage Value"
+          label="层级值"
           data-test="Cohort.ValueColumn"
           value={options.valueColumn}
           onChange={(valueColumn: any) => onOptionsChange({ valueColumn })}>

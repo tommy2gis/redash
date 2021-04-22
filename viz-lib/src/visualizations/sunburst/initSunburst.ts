@@ -307,9 +307,9 @@ export default function initSunburst(data: any) {
 
       // update summary
       summary.html(`
-      <span>Stage: ${d.depth}</span>
+      <span>层级:${d.depth}</span>
       <span class='percentage' style='font-size: 2em;'>${percentageString}</span>
-      <span>${d.value} of ${totalSize}</span>
+      <span>${d.value} / ${totalSize}</span>
     `);
 
       // display summary and breadcrumbs if hidden
