@@ -45,35 +45,35 @@ export default function AxisSettings({ id, options, features, onChange }: Props)
       {/* @ts-expect-error ts-migrate(2745) FIXME: This JSX tag's 'children' prop expects type 'never... Remove this comment to see the full error message */}
       <Section>
         <Select
-          label="Scale"
+          label="缩放"
           data-test={`Chart.${id}.Type`}
           defaultValue={options.type}
           onChange={(type: any) => optionsChanged({ type })}>
           {features.autoDetectType && (
             // @ts-expect-error ts-migrate(2339) FIXME: Property 'Option' does not exist on type '({ class... Remove this comment to see the full error message
             <Select.Option value="-" data-test={`Chart.${id}.Type.Auto`}>
-              Auto Detect
+              自动探测
               {/* @ts-expect-error ts-migrate(2339) FIXME: Property 'Option' does not exist on type '({ class... Remove this comment to see the full error message */}
             </Select.Option>
           )}
           {/* @ts-expect-error ts-migrate(2339) FIXME: Property 'Option' does not exist on type '({ class... Remove this comment to see the full error message */}
           <Select.Option value="datetime" data-test={`Chart.${id}.Type.DateTime`}>
-            Datetime
+            日期时间
             {/* @ts-expect-error ts-migrate(2339) FIXME: Property 'Option' does not exist on type '({ class... Remove this comment to see the full error message */}
           </Select.Option>
           {/* @ts-expect-error ts-migrate(2339) FIXME: Property 'Option' does not exist on type '({ class... Remove this comment to see the full error message */}
           <Select.Option value="linear" data-test={`Chart.${id}.Type.Linear`}>
-            Linear
+            线性缩放
             {/* @ts-expect-error ts-migrate(2339) FIXME: Property 'Option' does not exist on type '({ class... Remove this comment to see the full error message */}
           </Select.Option>
           {/* @ts-expect-error ts-migrate(2339) FIXME: Property 'Option' does not exist on type '({ class... Remove this comment to see the full error message */}
           <Select.Option value="logarithmic" data-test={`Chart.${id}.Type.Logarithmic`}>
-            Logarithmic
+            对数缩放
             {/* @ts-expect-error ts-migrate(2339) FIXME: Property 'Option' does not exist on type '({ class... Remove this comment to see the full error message */}
           </Select.Option>
           {/* @ts-expect-error ts-migrate(2339) FIXME: Property 'Option' does not exist on type '({ class... Remove this comment to see the full error message */}
           <Select.Option value="category" data-test={`Chart.${id}.Type.Category`}>
-            Category
+            分类缩放
             {/* @ts-expect-error ts-migrate(2339) FIXME: Property 'Option' does not exist on type '({ class... Remove this comment to see the full error message */}
           </Select.Option>
         </Select>
@@ -82,7 +82,7 @@ export default function AxisSettings({ id, options, features, onChange }: Props)
       {/* @ts-expect-error ts-migrate(2745) FIXME: This JSX tag's 'children' prop expects type 'never... Remove this comment to see the full error message */}
       <Section>
         <Input
-          label="Name"
+          label="名称"
           data-test={`Chart.${id}.Name`}
           defaultValue={isObject(options.title) ? options.title.text : null}
           onChange={(event: any) => handleNameChange(event.target.value)}
@@ -96,8 +96,8 @@ export default function AxisSettings({ id, options, features, onChange }: Props)
           <Grid.Row gutter={15} type="flex" align="middle">
             <Grid.Col span={12}>
               <InputNumber
-                label="Min Value"
-                placeholder="Auto"
+                label="最小值"
+                placeholder="自动"
                 data-test={`Chart.${id}.RangeMin`}
                 defaultValue={toNumber(options.rangeMin)}
                 onChange={(value: any) => handleMinMaxChange({ rangeMin: toNumber(value) })}
@@ -105,8 +105,8 @@ export default function AxisSettings({ id, options, features, onChange }: Props)
             </Grid.Col>
             <Grid.Col span={12}>
               <InputNumber
-                label="Max Value"
-                placeholder="Auto"
+                label="最大值"
+                placeholder="自动"
                 data-test={`Chart.${id}.RangeMax`}
                 defaultValue={toNumber(options.rangeMax)}
                 onChange={(value: any) => handleMinMaxChange({ rangeMax: toNumber(value) })}
