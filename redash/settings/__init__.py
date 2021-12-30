@@ -17,7 +17,7 @@ from .organization import DATE_FORMAT, TIME_FORMAT  # noqa
 
 # _REDIS_URL is the unchanged REDIS_URL we get from env vars, to be used later with RQ
 _REDIS_URL = os.environ.get(
-    "REDASH_REDIS_URL", os.environ.get("REDIS_URL", "redis://localhost:6379/0")
+    "REDASH_REDIS_URL", os.environ.get("REDIS_URL", "redis://:A123!qazWSX@@192.168.101.151:6379/0")
 )
 # This is the one to use for Redash' own connection:
 REDIS_URL = add_decode_responses_to_redis_url(_REDIS_URL)
@@ -30,7 +30,7 @@ STATSD_USE_TAGS = parse_boolean(os.environ.get("REDASH_STATSD_USE_TAGS", "false"
 
 # Connection settings for Redash's own database (where we store the queries, results, etc)
 SQLALCHEMY_DATABASE_URI = os.environ.get(
-    "REDASH_DATABASE_URL", os.environ.get("DATABASE_URL", "postgresql:///postgres")
+    "REDASH_DATABASE_URL", os.environ.get("DATABASE_URL", "postgresql://postgres:postgres@192.168.101.152:5432/redash")
 )
 SQLALCHEMY_MAX_OVERFLOW = int_or_none(os.environ.get("SQLALCHEMY_MAX_OVERFLOW"))
 SQLALCHEMY_POOL_SIZE = int_or_none(os.environ.get("SQLALCHEMY_POOL_SIZE"))
@@ -64,7 +64,7 @@ INVITATION_TOKEN_MAX_AGE = int(
 )
 
 # The secret key to use in the Flask app for various cryptographic features
-SECRET_KEY = os.environ.get("REDASH_COOKIE_SECRET")
+SECRET_KEY = "QinPGTd7Ulec03lar0vkI9ojqmXsuw4VOyirnC5NuvEdJSCwLwesmknNygXITunT"
 
 if SECRET_KEY is None:
     raise Exception("You must set the REDASH_COOKIE_SECRET environment variable. Visit http://redash.io/help/open-source/admin-guide/secrets for more information.")
