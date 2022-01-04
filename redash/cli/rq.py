@@ -20,6 +20,7 @@ from redash.tasks import (
     periodic_job_definitions,
 )
 from redash.worker import default_queues
+from rq_win import WindowsWorker
 
 manager = AppGroup(help="RQ management commands.")
 
@@ -45,7 +46,7 @@ def worker(queues):
         queues = chain(*[queue.split(",") for queue in queues])
 
     with Connection(rq_redis_connection):
-        w = Worker(queues, log_job_description=False, job_monitoring_interval=5)
+        w = WindowsWorker(queues, log_job_description=False, job_monitoring_interval=5)
         w.work()
 
 
@@ -54,7 +55,7 @@ class WorkerHealthcheck(base.BaseCheck):
 
     def __call__(self, process_spec):
         pid = process_spec["pid"]
-        all_workers = Worker.all(connection=rq_redis_connection)
+        all_workers = WindowsWorker.all(connection=rq_redis_connection)
         workers = [
             w
             for w in all_workers

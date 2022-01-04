@@ -8,7 +8,7 @@
     "bundle": "bin/bundle-extensions",
     "clean": "rm -rf ./client/dist/",
     "build:viz": "(cd viz-lib && yarn build:babel)",
-    "build": "yarn clean && yarn build:viz && NODE_ENV=production webpack",
+    "build": "yarn build:viz && set NODE_ENV=production && webpack",
     "build:old-node-version": "yarn clean && NODE_ENV=production node --max-old-space-size=4096 node_modules/.bin/webpack",
     "watch:app": "webpack --watch --progress --colors -d",
     "watch:viz": "(cd viz-lib && yarn watch:babel)",
@@ -28,7 +28,7 @@
     "test:watch": "jest --watch",
     "cypress": "node client/cypress/cypress.js",
     "preinstall": "cd viz-lib && yarn link --link-folder ../.yarn",
-    "postinstall": "(cd viz-lib && yarn --frozen-lockfile && yarn build:babel) && yarn link --link-folder ./.yarn @redash/viz"
+    "postinstall": "yarn link --link-folder ./.yarn @redash/viz"
   },
   "repository": {
     "type": "git",

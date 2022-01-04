@@ -88,14 +88,14 @@ class PublicDashboardPage extends React.Component {
         ) : (
           <PublicDashboard dashboard={dashboard} />
         )}
-        <div id="footer">
+        {/* <div id="footer">
           <div className="text-center">
             <Link href="https://redash.io">
               <img alt="Redash Logo" src={logoUrl} width="38" />
             </Link>
           </div>
           Powered by <Link href="https://redash.io/?ref=public-dashboard">Redash</Link>
-        </div>
+        </div> */}
       </div>
     );
   }

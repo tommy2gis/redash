@@ -1,6 +1,8 @@
 import { isFunction, each, map, toString, clone } from "lodash";
 import chroma from "chroma-js";
 import L from "leaflet";
+import 'proj4';
+import 'proj4leaflet';
 import "leaflet.markercluster";
 import "leaflet/dist/leaflet.css";
 import "leaflet.markercluster/dist/MarkerCluster.css";
@@ -19,6 +21,8 @@ import { formatSimpleTemplate } from "@/lib/value-format";
 import sanitize from "@/services/sanitize";
 import resizeObserver from "@/services/resizeObserver";
 import chooseTextColorForBackground from "@/lib/chooseTextColorForBackground";
+// @ts-expect-error ts-migrate(2307)
+import {GeoTDTWMTS} from './tdtwmts.js'
 
 // This is a workaround for an issue with giving Leaflet load the icon on its own.
 L.Icon.Default.mergeOptions({
@@ -158,16 +162,27 @@ function createMarkersLayer(options: any, { color, points }: any) {
 }
 
 export default function initMap(container: any) {
+  let res = [];
+  for (var i = 0; i < 21; i++) {
+      res[i] = 1.40625 / Math.pow(2, i);
+  }
+  // @ts-expect-error ts-migrate(2339)
+  const crs = new L.Proj.CRS(
+      'EPSG:4326',
+      "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs", {
+          origin: [-180.0, 90],
+          resolutions: res
+      });
   const _map = L.map(container, {
     center: [0.0, 0.0],
     zoom: 1,
+    crs: crs,
     scrollWheelZoom: false,
     // @ts-expect-error ts-migrate(2345) FIXME: Argument of type '{ center: [number, number]; zoom... Remove this comment to see the full error message
     fullscreenControl: true,
   });
-  const _tileLayer = L.tileLayer("//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-  }).addTo(_map);
+  
+  const _tileLayer = L.tileLayer("//t0.tianditu.gov.cn/vec_c/wmts?service=WMTS&request=GetTile&version=1.0.0&layer=vec&style=default&tileMatrixSet=c&format=tiles&height=256&width=256&tilematrix={z}&tilerow={y}&tilecol={x}&tk=77cbcdbfc12c0466d3205a94bf7a6c3e").addTo(_map);
   const _markerLayers = L.featureGroup().addTo(_map);
   const _layersControls = L.control.layers().addTo(_map);
 

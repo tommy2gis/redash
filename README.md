@@ -1,3 +1,12 @@
+<!--
+ * @Author: shitao
+ * @Date: 2021-12-29 13:59:52
+ * @LastEditTime: 2021-12-31 09:37:56
+ * @LastEditors: shitao
+ * @Description: 
+ * @FilePath: \redash_cn\README.md
+ * 无锡四维时空信息科技有限公司
+-->
 <p align="center">
   <img title="Redash" src='https://redash.io/assets/images/logo.png' width="200px"/>
 </p>
@@ -97,3 +106,4 @@ Please email security@redash.io to report any security vulnerabilities. We will 
 ## License
 
 BSD-2-Clause.
+python ./manage.py runserver --debugger --reload -h 0.0.0.0 -p 5000

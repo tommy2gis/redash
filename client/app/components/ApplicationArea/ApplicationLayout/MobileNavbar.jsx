@@ -1,3 +1,12 @@
+/**
+ * @Author: shitao
+ * @Date: 2021-12-30 19:50:37
+ * @LastEditTime: 2022-01-04 11:30:20
+ * @LastEditors: shitao
+ * @Description: 
+ * @FilePath: \redash_cn\client\app\components\ApplicationArea\ApplicationLayout\MobileNavbar.jsx
+ * @无锡四维时空信息科技有限公司
+ */
 import { first } from "lodash";
 import React from "react";
 import PropTypes from "prop-types";
@@ -59,12 +68,11 @@ export default function MobileNavbar({ getPopupContainer }) {
                 </Menu.Item>
               )}
               {currentUser.hasPermission("super_admin") && <Menu.Divider />}
-              <Menu.Item key="help">
-                {/* eslint-disable-next-line react/jsx-no-target-blank */}
+              {/* <Menu.Item key="help">
                 <Link href="https://redash.io/help" target="_blank" rel="noopener">
                   帮助
                 </Link>
-              </Menu.Item>
+              </Menu.Item> */}
               <Menu.Item key="logout" onClick={() => Auth.logout()}>
                 退出
               </Menu.Item>

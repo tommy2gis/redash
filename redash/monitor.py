@@ -8,7 +8,7 @@ from redash.utils import json_loads
 from rq import Queue, Worker
 from rq.job import Job
 from rq.registry import StartedJobRegistry
-
+from rq_win import WindowsWorker
 
 def get_redis_status():
     info = redis_connection.info()
@@ -115,7 +115,7 @@ def rq_workers():
             "failed_jobs": w.failed_job_count,
             "total_working_time": w.total_working_time,
         }
-        for w in Worker.all()
+        for w in WindowsWorker.all()
     ]
 
 

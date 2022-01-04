@@ -1,24 +1,21 @@
-import React, { useMemo } from "react";
-import { first, includes } from "lodash";
-import Menu from "antd/lib/menu";
+import logoUrl from "@/assets/images/redash_icon_small.png";
+import { useCurrentRoute } from "@/components/ApplicationArea/Router";
+import CreateDashboardDialog from "@/components/dashboards/CreateDashboardDialog";
 import Link from "@/components/Link";
 import PlainButton from "@/components/PlainButton";
-import HelpTrigger from "@/components/HelpTrigger";
-import CreateDashboardDialog from "@/components/dashboards/CreateDashboardDialog";
-import { useCurrentRoute } from "@/components/ApplicationArea/Router";
 import { Auth, currentUser } from "@/services/auth";
 import settingsMenu from "@/services/settingsMenu";
-import logoUrl from "@/assets/images/redash_icon_small.png";
-
-import DesktopOutlinedIcon from "@ant-design/icons/DesktopOutlined";
-import CodeOutlinedIcon from "@ant-design/icons/CodeOutlined";
 import AlertOutlinedIcon from "@ant-design/icons/AlertOutlined";
+import CodeOutlinedIcon from "@ant-design/icons/CodeOutlined";
+import DesktopOutlinedIcon from "@ant-design/icons/DesktopOutlined";
 import PlusOutlinedIcon from "@ant-design/icons/PlusOutlined";
-import QuestionCircleOutlinedIcon from "@ant-design/icons/QuestionCircleOutlined";
 import SettingOutlinedIcon from "@ant-design/icons/SettingOutlined";
-import VersionInfo from "./VersionInfo";
-
+import Menu from "antd/lib/menu";
+import { first, includes } from "lodash";
+import React, { useMemo } from "react";
+// import VersionInfo from "./VersionInfo";
 import "./DesktopNavbar.less";
+
 
 function NavbarSection({ children, ...props }) {
   return (
@@ -147,12 +144,12 @@ export default function DesktopNavbar() {
       </NavbarSection>
 
       <NavbarSection>
-        <Menu.Item key="help">
+        {/* <Menu.Item key="help">
           <HelpTrigger showTooltip={false} type="HOME" tabIndex={0}>
             <QuestionCircleOutlinedIcon />
             <span className="desktop-navbar-label">帮助</span>
           </HelpTrigger>
-        </Menu.Item>
+        </Menu.Item> */}
         {firstSettingsTab && (
           <Menu.Item key="settings" className={activeState.dataSources ? "navbar-active-item" : null}>
             <Link href={firstSettingsTab.path} data-test="SettingsLink">
@@ -188,9 +185,9 @@ export default function DesktopNavbar() {
             </PlainButton>
           </Menu.Item>
           <Menu.Divider />
-          <Menu.Item key="version" role="presentation" disabled className="version-info">
+          {/* <Menu.Item key="version" role="presentation" disabled className="version-info">
             <VersionInfo />
-          </Menu.Item>
+          </Menu.Item> */}
         </Menu.SubMenu>
       </NavbarSection>
     </nav>

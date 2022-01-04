@@ -48,12 +48,6 @@ export function EmptyStateHelpMessage({ helpTriggerType }) {
   return (
     <>
     <p>
-      Redash开源中文版，武汉达之云发行，www.dazdata.com。
-      <br/>
-      官方交流QQ群：940897906  微信公众号：Dazdata  咨询：18171315526(微信同号)
-    </p>
-    <p>
-      若需要更多支持，{" "}
       <HelpTrigger className="f-14" type={helpTriggerType} showTooltip={false}>
         请查看帮助
       </HelpTrigger>

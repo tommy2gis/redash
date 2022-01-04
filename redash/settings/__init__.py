@@ -17,7 +17,7 @@ from .organization import DATE_FORMAT, TIME_FORMAT  # noqa
 
 # _REDIS_URL is the unchanged REDIS_URL we get from env vars, to be used later with RQ
 _REDIS_URL = os.environ.get(
-    "REDASH_REDIS_URL", os.environ.get("REDIS_URL", "redis://:A123!qazWSX@@192.168.101.151:6379/0")
+    "REDASH_REDIS_URL", os.environ.get("REDIS_URL", "redis://localhost:6379/0")
 )
 # This is the one to use for Redash' own connection:
 REDIS_URL = add_decode_responses_to_redis_url(_REDIS_URL)

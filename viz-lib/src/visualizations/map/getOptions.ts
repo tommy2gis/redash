@@ -1,3 +1,12 @@
+/*
+ * @Author: shitao
+ * @Date: 2021-12-29 13:59:54
+ * @LastEditTime: 2022-01-04 15:22:54
+ * @LastEditors: shitao
+ * @Description: 
+ * @FilePath: \redash_cn\viz-lib\src\visualizations\map\getOptions.ts
+ * 无锡四维时空信息科技有限公司
+ */
 import { merge } from "lodash";
 
 export type LeafletBaseIconType = "marker" | "rectangle" | "circle" | "rectangle-dot" | "circle-dot" | "doughnut";
@@ -30,7 +39,7 @@ const DEFAULT_OPTIONS: MapOptionsType = {
   lonColName: "lon",
   classify: null,
   groups: {},
-  mapTileUrl: "//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+  mapTileUrl: "//t0.tianditu.gov.cn/vec_c/wmts?service=WMTS&request=GetTile&version=1.0.0&layer=vec&style=default&tileMatrixSet=c&format=tiles&height=256&width=256&tilematrix={z}&tilerow={y}&tilecol={x}&tk=77cbcdbfc12c0466d3205a94bf7a6c3e",
   clusterMarkers: true,
   customizeMarkers: false,
   iconShape: "marker",
