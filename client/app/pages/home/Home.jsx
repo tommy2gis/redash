@@ -76,7 +76,7 @@ export default function Home() {
         {includes(messages, "email-not-verified") && <EmailNotVerifiedAlert />}
         <DynamicComponent name="Home.EmptyState">
           <EmptyState
-            header="欢迎使用Redash 👋"
+            header="欢迎使用"
             description="连接任何数据源，轻松看见和分享数据。"
             illustration="dashboard"
             helpMessage={<EmptyStateHelpMessage helpTriggerType="GETTING_STARTED" />}

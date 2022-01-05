@@ -22,7 +22,7 @@ import VisualizationRenderer from "@/components/visualizations/VisualizationRend
 
 import Widget from "./Widget";
 
-function visualizationWidgetMenuOptions({ widget, canEditDashboard, onParametersEdit }) {
+function visualizationWidgetMenuOptions({ widget, canEditDashboard, onParametersEdit,onWidgetParametersEdit }) {
   const canViewQuery = currentUser.hasPermission("view_query");
   const canEditParameters = canEditDashboard && !isEmpty(invoke(widget, "query.getParametersDefs"));
   const widgetQueryResult = widget.getQueryResult();
@@ -69,6 +69,9 @@ function visualizationWidgetMenuOptions({ widget, canEditDashboard, onParameters
         编辑参数
       </Menu.Item>
     ),
+    <Menu.Item key="widget_parameters" onClick={onWidgetParametersEdit}>
+      部件属性
+    </Menu.Item>,
   ]);
 }
 
@@ -258,6 +261,21 @@ class VisualizationWidget extends React.Component {
     ExpandedWidgetDialog.showModal({ widget: this.props.widget, filters: this.state.localFilters });
   };
 
+  editWidgetParameterMappings= () => {
+    const { widget, dashboard, onRefresh, onParameterMappingsChange } = this.props;
+    EditParameterMappingsDialog.showModal({
+      dashboard,
+      widget,
+    }).onClose(valuesChanged => {
+      // refresh widget if any parameter value has been updated
+      if (valuesChanged) {
+        onRefresh();
+      }
+      onParameterMappingsChange();
+      this.setState({ localParameters: widget.getLocalParameters() });
+    });
+  };
+
   editParameterMappings = () => {
     const { widget, dashboard, onRefresh, onParameterMappingsChange } = this.props;
     EditParameterMappingsDialog.showModal({
@@ -335,6 +353,7 @@ class VisualizationWidget extends React.Component {
           widget,
           canEditDashboard: canEdit,
           onParametersEdit: this.editParameterMappings,
+          onWidgetParametersEdit:this.editWidgetParameterMappings,
         })}
         header={
           <VisualizationWidgetHeader

@@ -8,7 +8,7 @@ import { currentUser } from "@/services/auth";
 import recordEvent from "@/services/recordEvent";
 import { QueryResultError } from "@/services/query";
 import AddWidgetDialog from "@/components/dashboards/AddWidgetDialog";
-import TextboxDialog from "@/components/dashboards/TextboxDialog";
+import TextboxDialog from "@/components/dashboards/TextboxEditorDialog";
 import PermissionsEditorDialog from "@/components/PermissionsEditorDialog";
 import { editableMappingsToParameterMappings, synchronizeWidgetTitles } from "@/components/ParameterMappingInput";
 import ShareDashboardDialog from "../components/ShareDashboardDialog";
